@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LayoutService } from './shared/services/layout.service';
 
 @Component({
   selector: 'app-public',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PublicComponent implements OnInit {
-  constructor() { }
+  public isShow: boolean = false;
 
-  ngOnInit() { }
+  constructor(private layoutService: LayoutService) { }
+
+  ngOnInit() {
+    this.layoutService.isMenuShow$.subscribe(newState => {
+      this.isShow = newState;
+    })
+  }
 }

@@ -1,0 +1,78 @@
+<header class="header" id="header">
+  <!-- Burger Menu Mobile -->
+  <a href="#" class="header__menu" (click)="toggleNavbar()">
+    <img src="../../../../../assets/img/icons/burger-icon.svg" alt="" class="nav__icon">
+  </a>
+
+  <div class="header__search">Поиск</div>
+  <button class="header__action">Зарегистрироваться <br> войти</button>
+</header>
+
+<div class="l-navbar" id="nav-bar" [ngClass]="{'show':isShow}">
+  <nav class="nav">
+    <a href="#" class="nav__logo nav__logo-full">
+    </a>
+
+    <div class="nav__list">
+      <!-- Burger Menu -->
+      <a href="#" class="nav__link" (click)="toggleNavbar()">
+        <img src="../../../../../assets/img/icons/burger-icon.svg" alt="" class="nav__icon">
+      </a>
+
+      <!-- Core Links -->
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/list-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Стартапы и тех.компании</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/list-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Корпорации</span>
+      </a>
+
+      <!-- Main Links -->
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/open-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Венчурные фонды</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/box-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Акселераторы и инкубаторы</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/fly-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Стартап-студии</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/settings-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Площадки пилотное тестирова..</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Инжиниринговые центры</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Коворкинги и офисы</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Институты развития / ассоциац...</span>
+      </a>
+
+      <!-- Services Links -->
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/path-finder-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Гид по венчурному рынку Москвы Venture Guide</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/grow-money-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Москва для стартапов:
+          новости, аналитика</span>
+      </a>
+      <a href="#" class="nav__link">
+        <img src="../../../../../assets/img/icons/grow-money-icon.svg" alt="" class="nav__icon">
+        <span class="nav__name">Рекомедательный сервис</span>
+      </a>
+    </div>
+  </nav>
+</div>

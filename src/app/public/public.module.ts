@@ -8,6 +8,7 @@ import { AngularMaterialModule } from '../shared/modules/material.module';
 // Components
 import { PublicComponent } from './public.component';
 import { RecommendationComponent } from './containers/recommendation/recommendation.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 const routes = [
   {
@@ -35,6 +36,7 @@ const routes = [
   declarations: [
     // Layout
     PublicComponent,
+    HeaderComponent,
     // Containers
     RecommendationComponent,
     // Components
