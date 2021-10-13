@@ -4,6 +4,7 @@
 /*=============== VARIABLES SCSS ===============*/
 :root {
   --header-height: 5.813rem;
+  --footer-height: 11.188rem;
   --nav-width: 96px;
 
   /*========== Colors ==========*/
@@ -15,6 +16,7 @@
   --title-color-light: #E1E4F4;
   --white-color: #FFF;
   --body-color: #F2F3F6;
+  --body-color-dark: #24314A;
 
   /*========== Font and typography ==========*/
   --body-font: 'IBM Plex Sans', sans-serif;
@@ -40,6 +42,7 @@
   /*========== z index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
+  --z-footer: 110;
 }
 
 /* Responsive typography */

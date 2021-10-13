@@ -1,5 +1,8 @@
 <div class="main " [ngClass]="{'main-pd':isShow}">
   <app-header></app-header>
-  <router-outlet></router-outlet>
-  Public component
+  <div class="content">
+    Public component
+    <router-outlet></router-outlet>
+  </div>
 </div>
+<app-footer></app-footer>

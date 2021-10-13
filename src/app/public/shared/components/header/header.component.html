@@ -1,6 +1,6 @@
 <header class="header" id="header">
   <!-- Burger Menu Mobile -->
-  <a href="#" class="header__menu" (click)="toggleNavbar()">
+  <a href="#" class="header__menu" (click)="toggleNavbar($event)">
     <img src="../../../../../assets/img/icons/burger-icon.svg" alt="" class="nav__icon">
   </a>
 
@@ -12,67 +12,80 @@
   <nav class="nav">
     <a href="#" class="nav__logo nav__logo-full">
     </a>
-
+    <!-- Burger Menu -->
     <div class="nav__list">
-      <!-- Burger Menu -->
-      <a href="#" class="nav__link" (click)="toggleNavbar()">
+      <a href="#" class="nav__link" (click)="toggleNavbar($event)">
         <img src="../../../../../assets/img/icons/burger-icon.svg" alt="" class="nav__icon">
       </a>
+    </div>
 
+    <div class="nav__separator"></div>
+
+    <div class="nav__list-view">
       <!-- Core Links -->
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/list-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Стартапы и тех.компании</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/list-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Корпорации</span>
-      </a>
+      <div class="nav__list">
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/list-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Стартапы и тех.компании</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/ladder-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Корпорации</span>
+        </a>
+      </div>
+
+      <div class="nav__separator"></div>
 
       <!-- Main Links -->
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/open-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Венчурные фонды</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/box-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Акселераторы и инкубаторы</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/fly-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Стартап-студии</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/settings-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Площадки пилотное тестирова..</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Инжиниринговые центры</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Коворкинги и офисы</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Институты развития / ассоциац...</span>
-      </a>
+      <div class="nav__list nav__list-main">
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/open-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Венчурные фонды</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/box-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Акселераторы и инкубаторы</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/fly-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Стартап-студии</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/settings-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Площадки пилотное тестирова..</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Инжиниринговые центры</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Коворкинги и офисы</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Институты развития / ассоциац...</span>
+        </a>
+      </div>
+
+      <div class="nav__separator "></div>
 
       <!-- Services Links -->
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/path-finder-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Гид по венчурному рынку Москвы Venture Guide</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/grow-money-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Москва для стартапов:
-          новости, аналитика</span>
-      </a>
-      <a href="#" class="nav__link">
-        <img src="../../../../../assets/img/icons/grow-money-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name">Рекомедательный сервис</span>
-      </a>
+      <div class="nav__list nav__list-dark">
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/path-finder-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Гид по венчурному рынку Москвы Venture Guide</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/grow-money-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Москва для стартапов:
+            новости, аналитика</span>
+        </a>
+        <a href="#" class="nav__link">
+          <img src="../../../../../assets/img/icons/grow-money-icon.svg" alt="" class="nav__icon">
+          <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Рекомедательный сервис</span>
+        </a>
+      </div>
     </div>
   </nav>
 </div>

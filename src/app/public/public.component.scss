@@ -8,6 +8,10 @@
   transition: .5s;
 }
 
+.content {
+  min-height: 100vh;
+}
+
 /*Add padding body movil*/
 .main-pd {
   padding-left: calc(var(--nav-width) + 1rem);

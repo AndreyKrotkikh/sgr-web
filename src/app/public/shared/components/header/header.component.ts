@@ -20,7 +20,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {}
 
-  public toggleNavbar(): void {
+  public toggleNavbar(event: any): void {
+    event.preventDefault()
     this.isShow = !this.isShow;
     this.layoutService.setMenuShow(this.isShow);
   }

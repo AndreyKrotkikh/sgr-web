@@ -9,6 +9,7 @@ import { AngularMaterialModule } from '../shared/modules/material.module';
 import { PublicComponent } from './public.component';
 import { RecommendationComponent } from './containers/recommendation/recommendation.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 const routes = [
   {
@@ -37,6 +38,7 @@ const routes = [
     // Layout
     PublicComponent,
     HeaderComponent,
+    FooterComponent,
     // Containers
     RecommendationComponent,
     // Components
