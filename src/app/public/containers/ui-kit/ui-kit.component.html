@@ -1,0 +1,53 @@
+<div class="form-wrapper">
+  <div class="form-control">
+    <div class="form-control__label">
+      Dropdown с одиночным выбором
+    </div>
+    <div class="form-control__input">
+      <sgr-dropdown
+        [options]="['Transport & Logistics', 'Transport & Logistics 2', 'Transport & Logistics 3', 'Transport & Logistics 4', 'Transport & Logistics 4', 'Transport & Logistics 4', 'Transport & Logistics 4', 'Transport & Logistics 4', 'Transport & Logistics 4', 'Transport & Logistics 4', 'Transport & Logistics 4']">
+      </sgr-dropdown>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <div class="form-control__label">
+      Dropdown с множественным выбором
+    </div>
+    <div class="form-control__input">
+      <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems"
+        (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)"
+        (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+    </div>
+  </div>
+
+
+  <div class="form-control">
+    <div class="form-control__label">
+      Input текстовый
+    </div>
+    <div class="form-control__input">
+      <input type="text">
+    </div>
+  </div>
+
+
+  <div class="form-control">
+    <div class="form-control__label">
+      Input дата
+    </div>
+    <div class="form-control__input">
+      <input type="date">
+    </div>
+  </div>
+
+
+  <div class="form-control">
+    <div class="form-control__label">
+      Input radio button
+    </div>
+    <div class="form-control__input">
+      <input type="radio">
+    </div>
+  </div>
+</div>

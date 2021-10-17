@@ -15,6 +15,9 @@ import { SubHeaderComponent } from './shared/components/layout/sub-header/sub-he
 import { RecommendationComponent } from './containers/recommendation/recommendation.component';
 import { ExpressSelectionComponent } from './containers/express-selection/express-selection.component';
 import { GreetingCardComponent } from './shared/components/greetings/greeting-card/greeting-card.component';
+import { SGRDropdownComponent } from './shared/components/common/sgr-dropdown/sgr-dropdown.component';
+import { UIKitComponent } from './containers/ui-kit/ui-kit.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 const routes = [
   {
@@ -34,6 +37,10 @@ const routes = [
         component: DetailedSelectionComponent
       },
       {
+        path: 'ui-kit',
+        component: UIKitComponent
+      },
+      {
         path: 'recommendation',
         component: RecommendationComponent
       }
@@ -50,6 +57,8 @@ const routes = [
     ReactiveFormsModule,
     // Material
     AngularMaterialModule,
+    // Other
+    AngularMultiSelectModule,
   ],
   declarations: [
     // Layout
@@ -59,7 +68,10 @@ const routes = [
     FooterComponent,
     // Common Components
     GreetingCardComponent,
+    // Inputs
+    SGRDropdownComponent,
     // Containers
+    UIKitComponent,
     GreetingsComponent,
     ExpressSelectionComponent,
     DetailedSelectionComponent,
