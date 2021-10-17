@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LayoutService } from '../../shared/services/layout.service';
 
 @Component({
   selector: 'app-detailed-selection',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DetailedSelectionComponent implements OnInit {
-  constructor() { }
+  constructor(private _layoutService: LayoutService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this._layoutService.setCurrentPageConfig({
+      title: 'Точный подбор',
+      subTitle: 'Подбор сервисов с высокой точностью'
+    })
+  }
 }

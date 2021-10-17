@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LayoutService } from '../../shared/services/layout.service';
 
 @Component({
   selector: 'app-express-selection',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ExpressSelectionComponent implements OnInit {
-  constructor() { }
+  constructor(private _layoutService: LayoutService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this._layoutService.setCurrentPageConfig({
+      title: 'Экспресс-подбор',
+      subTitle: 'Быстрый подбор сервисов, за несколько кликов'
+    })
+  }
 }
