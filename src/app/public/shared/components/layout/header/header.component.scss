@@ -51,7 +51,7 @@
   .nav__logo {
     height: 40px;
     width: 56px;
-    background-image: url('../../../../../assets/img/logo-short.svg');
+    background-image: url('../../../../../../assets/img/logo-short.svg');
   }
 }
 
@@ -269,12 +269,12 @@
     .nav__logo {
       &.nav__logo-short {
         width: 56px;
-        background-image: url('../../../../../assets/img/logo-short.svg');
+        background-image: url('../../../../../../assets/img/logo-short.svg');
       }
 
       &.nav__logo-full {
         width: 198px;
-        background-image: url('../../../../../assets/img/logo-full.svg');
+        background-image: url('../../../../../../assets/img/logo-full.svg');
       }
     }
 

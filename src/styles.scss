@@ -123,10 +123,75 @@ button {
   font-size: var(--normal-font-size);
 }
 
-/* ===== MEDIA QUERIES=====*/
+/* ===== MEDIA QUERIES =====*/
 @media screen and (min-width: 768px) {
   body {
     margin: calc(var(--header-height) + 1rem) 0 0 0;
     padding-left: calc(var(--nav-width) + 2.438rem);
   }
 }
+
+
+/* ===== FORM =====*/
+// Desktop styles
+.form-wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .form-control {
+    width: 384px;
+    margin-bottom: 30px;
+
+    .form-control__label {
+      margin-bottom: 14px;
+      font-size: 16px;
+      line-height: 26px;
+      color: #1D2435;
+    }
+
+    .form-control__input {
+      margin-bottom: 10px;
+      /* ===== INPUT =====*/
+      input {
+        width: 384px;
+        height: 46px;
+        padding: 14px 16px 14px 16px;
+
+        background: #F2F3F6;
+        box-shadow: -4px -4px 8px 2px #FFFFFF, 4px 4px 8px 2px rgba(36, 49, 74, 0.26);
+        border-radius: 16px;
+
+        font-size: 14px;
+        line-height: 18px;
+        color: #1D2435;
+      }
+      /* ===== DATE PICKER =====*/
+
+      /* ===== ACCORDION =====*/
+
+      /* ===== SELECT BOX =====*/
+
+      /* ===== MULTISELECT BOX =====*/
+
+      /* ===== RADIO BUTTON =====*/
+    }
+
+    .form-control__description {
+      margin-bottom: 10px;
+      font-size: 11px;
+      line-height: 14px;
+      color: #6D798F;
+    }
+
+    .form-control__error {
+      font-size: 11px;
+      line-height: 14px;
+      color: #FF4040;
+    }
+  }
+}
+
+
+/* ===== BUTTONS =====*/

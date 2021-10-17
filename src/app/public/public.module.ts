@@ -9,9 +9,9 @@ import { AngularMaterialModule } from '../shared/modules/material.module';
 // Components
 import { PublicComponent } from './public.component';
 import { GreetingsComponent } from './containers/greetings/greetings.component';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
-import { SubHeaderComponent } from './shared/components/sub-header/sub-header.component';
+import { HeaderComponent } from './shared/components/layout/header/header.component';
+import { FooterComponent } from './shared/components/layout/footer/footer.component';
+import { SubHeaderComponent } from './shared/components/layout/sub-header/sub-header.component';
 import { RecommendationComponent } from './containers/recommendation/recommendation.component';
 import { ExpressSelectionComponent } from './containers/express-selection/express-selection.component';
 import { GreetingCardComponent } from './shared/components/greetings/greeting-card/greeting-card.component';

@@ -1,7 +1,7 @@
-import { CurrentPageInterface } from './../../types/current-page.interface';
 import { Component, Input, OnInit } from '@angular/core';
-import { LayoutService } from '../../services/layout.service';
 import { Observable } from 'rxjs';
+import { LayoutService } from '../../../services/layout.service';
+import { CurrentPageInterface } from '../../../types/current-page.interface';
 
 @Component({
   selector: 'app-sub-header',

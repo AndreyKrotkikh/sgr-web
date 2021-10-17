@@ -1,4 +1,4 @@
-import { LayoutService } from './../../services/layout.service';
+import { LayoutService } from '../../../services/layout.service';
 import {
   Component,
   ElementRef,
