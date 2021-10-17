@@ -1,37 +1,10 @@
 <div class="greetings">
-  <div class="greetings__card" [routerLink]="['express']">
-    <div class="greetings__card-img">
-      <img src="../../../../assets/img/greetings-cards/express-icon.svg" />
-    </div>
-    <div class="greetings__card-information">
-      <h2 class="greetings__card-title">
-        Экспресс-подбор
-      </h2>
-      <p class="greetings__card-subtitle">Время заполнения 5 минут</p>
-
-      <p class="greetings__card-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis vestibulum sit cras senectus lectus leo interdum
-        laoreet viverra. Cursus rhoncus gravida lacinia venenatis est venenatis. Pellentesque elit, feugiat diam id
-        adipiscing pulvinar vitae egestas dui.
-      </p>
-    </div>
-  </div>
-
-  <div class="greetings__card" [routerLink]="['detailed']">
-    <div class="greetings__card-img">
-      <img src="../../../../assets/img/greetings-cards/detailed-icon.svg" />
-    </div>
-    <div class="greetings__card-information">
-      <h2 class="greetings__card-title">
-        Точный подбор
-      </h2>
-      <p class="greetings__card-subtitle">Время заполнения 15 минут</p>
-
-      <p class="greetings__card-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis vestibulum sit cras senectus lectus leo interdum
-        laoreet viverra. Cursus rhoncus gravida lacinia venenatis est venenatis. Pellentesque elit, feugiat diam id
-        adipiscing pulvinar vitae egestas dui.
-      </p>
-    </div>
-  </div>
+  <app-greeting-card [title]="'Экспресс-подбор'" [img]="'../../../../assets/img/greetings-cards/express-icon.svg'"
+    [greetingType]="'express'" [subTitle]="'Время заполнения 5 минут'"
+    [description]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis vestibulum sit cras senectus lectus leo interdum laoreet viverra. Cursus rhoncus gravida lacinia venenatis est venenatis. Pellentesque elit, feugiat diam id adipiscing pulvinar vitae egestas dui. '">
+  </app-greeting-card>
+  <app-greeting-card [title]="'Точный подбор'" [img]="'../../../../assets/img/greetings-cards/detailed-icon.svg'"
+    [greetingType]="'detailed'" [subTitle]="'Время заполнения 15 минут'"
+    [description]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis vestibulum sit cras senectus lectus leo interdum laoreet viverra. Cursus rhoncus gravida lacinia venenatis est venenatis. Pellentesque elit, feugiat diam id adipiscing pulvinar vitae egestas dui. '">
+  </app-greeting-card>
 </div>

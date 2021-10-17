@@ -14,6 +14,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { SubHeaderComponent } from './shared/components/sub-header/sub-header.component';
 import { RecommendationComponent } from './containers/recommendation/recommendation.component';
 import { ExpressSelectionComponent } from './containers/express-selection/express-selection.component';
+import { GreetingCardComponent } from './shared/components/greetings/greeting-card/greeting-card.component';
 
 const routes = [
   {
@@ -56,6 +57,8 @@ const routes = [
     HeaderComponent,
     SubHeaderComponent,
     FooterComponent,
+    // Common Components
+    GreetingCardComponent,
     // Containers
     GreetingsComponent,
     ExpressSelectionComponent,
