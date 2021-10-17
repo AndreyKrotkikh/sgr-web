@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'TT Firs';
+    src: local('TT Firs Regular'), local('TT-Firs-Regular'),
+        url('TTFirs-Regular.woff2') format('woff2'),
+        url('TTFirs-Regular.woff') format('woff'),
+        url('TTFirs-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }

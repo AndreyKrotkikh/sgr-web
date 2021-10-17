@@ -1,4 +1,4 @@
-<header class="header" id="header">
+<header class="header" id="header" [ngClass]="{'header-pd':isShow}">
   <!-- Burger Menu Mobile -->
   <a href="#" class="header__menu" (click)="toggleNavbar($event)">
     <img src="../../../../../assets/img/icons/burger-icon.svg" alt="" class="nav__icon">
@@ -45,7 +45,7 @@
         <img src="../../../../../assets/img/icons/box-icon.svg" alt="" class="nav__icon">
         <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Акселераторы и инкубаторы</span>
       </a>
-      <a href="#" class="nav__link">
+      <!-- <a href="#" class="nav__link">
         <img src="../../../../../assets/img/icons/fly-icon.svg" alt="" class="nav__icon">
         <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Стартап-студии</span>
       </a>
@@ -64,7 +64,7 @@
       <a href="#" class="nav__link">
         <img src="../../../../../assets/img/icons/grow-icon.svg" alt="" class="nav__icon">
         <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Институты развития / ассоциац...</span>
-      </a>
+      </a> -->
     </div>
 
     <!-- TODO: Add expand -->
@@ -86,13 +86,12 @@
     <div class="nav__list nav__list-dark">
       <a href="#" class="nav__link">
         <img src="../../../../../assets/img/icons/path-finder-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Гид по венчурному рынку <br> Москвы Venture
-          Guide</span>
+        <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Гид по венчурному рынку...
+        </span>
       </a>
       <a href="#" class="nav__link">
         <img src="../../../../../assets/img/icons/grow-money-icon.svg" alt="" class="nav__icon">
-        <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Москва для стартапов: <br>
-          новости, аналитика</span>
+        <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Москва для стартапов...</span>
       </a>
       <a href="#" class="nav__link">
         <img src="../../../../../assets/img/icons/grow-money-icon.svg" alt="" class="nav__icon">
