@@ -188,6 +188,10 @@
       display: block
     }
   }
+
+  &.active-link {
+    background: #E1E4F4;
+  }
 }
 
 .nav__link:first-child {
@@ -231,9 +235,11 @@
     height: var(--header-height);
     padding: 0 0 0 calc(var(--nav-width) + 2.438rem);
   }
+
   .header-pd {
     padding-left: calc(var(--nav-width) + 262px + 2.438rem);
   }
+
   .header__img {
     width: 40px;
     height: 40px;

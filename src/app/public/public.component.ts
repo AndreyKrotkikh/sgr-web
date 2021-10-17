@@ -10,10 +10,10 @@ import { LayoutService } from './shared/services/layout.service';
 export class PublicComponent implements OnInit {
   public isShow: boolean = false;
 
-  constructor(private layoutService: LayoutService) { }
+  constructor(private _layoutService: LayoutService) { }
 
   ngOnInit() {
-    this.layoutService.isMenuShow$.subscribe(newState => {
+    this._layoutService.isMenuShow$.subscribe(newState => {
       this.isShow = newState;
     })
   }

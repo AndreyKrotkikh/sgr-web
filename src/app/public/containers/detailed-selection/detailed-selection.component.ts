@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-recommendation',
+  selector: 'app-detailed-selection',
   template: ``
 })
 
-export class RecommendationComponent implements OnInit {
+export class DetailedSelectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
