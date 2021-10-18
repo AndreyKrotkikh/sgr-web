@@ -167,14 +167,23 @@ button {
 
 // Desktop styles
 .form-wrapper {
+  width: 100%;
   margin-top: 30px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-auto-flow: row dense;
+  grid-gap: 100px;
+  row-gap: 30px;
+
+  .full-width {
+    grid-column: 1 / 3;
+  }
 
   .form-control {
-    width: 384px;
-    margin-bottom: 30px;
+    width: 100%;
+    max-width: 384px;
+    // margin-bottom: 30px;
 
     .form-control__label {
       margin-bottom: 14px;
@@ -188,7 +197,8 @@ button {
 
       /* ===== INPUT =====*/
       input {
-        width: 384px;
+        width: 100%;
+        max-width: 384px;
         height: 46px;
         padding: 14px 16px 14px 16px;
 
