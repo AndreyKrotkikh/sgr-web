@@ -4,6 +4,7 @@ import { LayoutService } from '../../shared/services/layout.service';
 import { RecommendationService } from '../../shared/services/recommendation.service';
 import { switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { FormConverter } from '../../shared/tools/form-converter';
 @Component({
   selector: 'app-recommendation',
   styleUrls: ['./recommendation.component.scss'],
@@ -31,18 +32,25 @@ export class RecommendationComponent implements OnInit {
     this._formService
       .getForm()
       .pipe(
-        switchMap((form) => {
-          console.log('FORM: ', form);
-          if (!form) {
+        switchMap((formObject) => {
+          console.log('FORM: ', formObject);
+          if (!formObject) {
             this._router.navigate(['/']);
           }
 
-          this.questionnaire = form;
-          if (form.type === 'express') {
+          this.questionnaire = formObject;
+          if (formObject.type === 'express') {
             console.log('IM EXPRESS');
-            return this._recommendationService.getExpressRecommendation(form);
+            const requestForm = FormConverter.convertExpressForm(
+              formObject.form
+            );
+            return this._recommendationService.getExpressRecommendation(
+              requestForm
+            );
           } else {
-            return this._recommendationService.getDetailedRecommendation(form);
+            return this._recommendationService.getDetailedRecommendation(
+              formObject
+            );
           }
         })
       )

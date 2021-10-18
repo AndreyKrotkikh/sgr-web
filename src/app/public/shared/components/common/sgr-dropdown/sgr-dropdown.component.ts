@@ -81,7 +81,7 @@ export class SGRDropdownComponent implements OnInit, ControlValueAccessor {
             this.isSelectedValue = true;
             this.isOpen = false;
             this.onChangeCallback(this.selected);
-            this.optSelect.emit(this.options[this.selected]);
+            this.optSelect.emit(this.options[this.selected].title);
           }
           break;
       }
@@ -96,11 +96,12 @@ export class SGRDropdownComponent implements OnInit, ControlValueAccessor {
    */
   optionSelect(selectedOption: string, idx: any, e: any) {
     e.stopPropagation();
+    //this.selected = idx;
     this.selected = idx;
     this.isSelectedValue = true;
     // this.placeholder = '';
     this.isOpen = false;
-    this.onChangeCallback(this.selected);
+    this.onChangeCallback(selectedOption);
     this.optSelect.emit(selectedOption);
   }
 
