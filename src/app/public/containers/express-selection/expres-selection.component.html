@@ -1,15 +1,15 @@
-<div class="form-wrapper">
+<form [formGroup]="expressForm" class="form-wrapper" (ngSubmit)="onSubmit()">
   <!-- РЫНОК -->
   <div class="form-control">
     <div class="form-control__label">
       Рынок для Инновационных компаний
     </div>
     <div class="form-control__input">
-      <sgr-dropdown [options]="['Transport & Logistics', 'Transport & Logistics 2', 'Transport & Logistics 3', 'Transport & Logistics 4']">
-      </sgr-dropdown>
+      <angular2-multiselect [data]="marketList" formControlName="market"
+        [settings]="dropdownSettings"></angular2-multiselect>
     </div>
     <div class="form-control__description">
-      Выберите рынок
+      Можно выбрать несколько вариантов
     </div>
     <div class="form-control__error">
       Это обязательное поле
@@ -22,10 +22,10 @@
       Дата основания
     </div>
     <div class="form-control__input">
-      <input type="date">
+      <input type="date" formControlName="creationDate">
     </div>
     <div class="form-control__description">
-      Выберите рынок
+      Выберите дату основания
     </div>
     <div class="form-control__error">
       Это обязательное поле
@@ -38,15 +38,11 @@
       Технологии для Инновационных компаний
     </div>
     <div class="form-control__input">
-      <select>
-        <option value="1">Новые материалы</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
+      <angular2-multiselect [data]="technologiesList" formControlName="technologies"
+        [settings]="dropdownSettings"></angular2-multiselect>
     </div>
     <div class="form-control__description">
-      Выберите рынок
+      Можно выбрать несколько вариантов
     </div>
     <div class="form-control__error">
       Это обязательное поле
@@ -59,12 +55,8 @@
       Предоставляемые Услуги от Акселератора
     </div>
     <div class="form-control__input">
-      <select>
-        <option value="1">Новые материалы</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
+      <sgr-dropdown [options]="servicesList" formControlName="services">
+      </sgr-dropdown>
     </div>
     <div class="form-control__description">
       Выберите рынок
@@ -80,18 +72,21 @@
       Бизнес-модель для Инновационных компаний
     </div>
     <div class="form-control__input">
-      <select>
-        <option value="1">Новые материалы</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
+      <angular2-multiselect [data]="businessModelList" formControlName="businessModel"
+        [settings]="dropdownSettings"></angular2-multiselect>
     </div>
     <div class="form-control__description">
-      Выберите рынок
+      Можно выбрать несколько вариантов
     </div>
     <div class="form-control__error">
       Это обязательное поле
     </div>
   </div>
-</div>
+
+  <div class="full-width">
+    <div class="actions">
+      <button (click)="cancel()" >Отмена</button>
+      <button type="submit" class="button__accent">Подобрать</button>
+    </div>
+  </div>
+</form>

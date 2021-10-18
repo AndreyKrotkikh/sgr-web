@@ -18,6 +18,9 @@ import { GreetingCardComponent } from './shared/components/greetings/greeting-ca
 import { SGRDropdownComponent } from './shared/components/common/sgr-dropdown/sgr-dropdown.component';
 import { UIKitComponent } from './containers/ui-kit/ui-kit.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { HttpClientModule } from '@angular/common/http';
+import { RecommendationService } from './shared/services/recommendation.service';
+import { RecommendationCardComponent } from './shared/components/recommendation-card/recommendation-card.component';
 
 const routes = [
   {
@@ -55,6 +58,7 @@ const routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     // Material
     AngularMaterialModule,
     // Other
@@ -68,6 +72,7 @@ const routes = [
     FooterComponent,
     // Common Components
     GreetingCardComponent,
+    RecommendationCardComponent,
     // Inputs
     SGRDropdownComponent,
     // Containers
@@ -79,6 +84,6 @@ const routes = [
     // Components
     // Modals
   ],
-  providers: [],
+  providers: [RecommendationService],
 })
 export class PublicModule {}

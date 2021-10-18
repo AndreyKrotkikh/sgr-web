@@ -1,3 +1,4 @@
+import { DropdownInterface } from './../../../types/data/dropdown-interface';
 import {
   Component,
   OnInit,
@@ -24,7 +25,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
 })
 export class SGRDropdownComponent implements OnInit, ControlValueAccessor {
-  @Input() options!: Array<string>;
+  @Input() options: DropdownInterface[] = [];
   @Input() selected!: number;
   @Input() className!: string;
   @Input() placeholder!: string;
