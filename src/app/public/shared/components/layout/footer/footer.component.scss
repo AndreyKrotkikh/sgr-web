@@ -32,6 +32,7 @@
 
 /* ===== MEDIA QUERIES=====*/
 @media screen and (min-width: 768px) {
+
   /*===== FOOTER =====*/
   .footer {
     position: absolute;
@@ -52,6 +53,8 @@
   .footer__brand {
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding-left: 24px;
     height: 100%;
     flex-grow: 0;
     flex-shrink: 0;
@@ -61,7 +64,51 @@
   .footer__information {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    gap: 100px;
     height: 100%;
-    background-color: #1D2435
+    background-color: #1D2435;
+    padding-top: 40px;
+    padding-left: 52px;
+
+    .footer__about {
+      max-width: 320px;
+      h4 {
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 18px;
+        text-decoration-line: underline;
+        text-transform: uppercase;
+        color: #F2F3F6;
+        opacity: 0.5;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-size: 11px;
+        line-height: 140%;
+        color: #878B95;
+      }
+    }
+
+    .footer__help {
+      max-width: 320px;
+      p {
+        font-size: 11px;
+        line-height: 140%;
+        color: #878B95;
+        margin-bottom: 12px;
+      }
+
+      strong {
+        font-weight: 700;
+        font-size: 11px;
+        line-height: 140%;
+        color: #FFFFFF;
+      }
+      a {
+        color: #EB3D59;
+      }
+    }
   }
 }
