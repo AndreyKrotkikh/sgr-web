@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://testdragonsflask.herokuapp.com/api',
+  apiUrl: 'https://testdragonsflask.herokuapp.com/api',
   production: true
 };

@@ -16,6 +16,9 @@
       </mat-expansion-panel>
     </mat-accordion>
 
-    <app-recommendation-card [name]="'Сколково'" [rate]="'10'" [score]="'94'"></app-recommendation-card>
+    <ng-container *ngFor="let recommendation of recommendationList">
+      <app-recommendation-card [name]="recommendation" [rate]="'10'" [score]="'94'"></app-recommendation-card>
+    </ng-container>
+
   </div>
 </ng-template>

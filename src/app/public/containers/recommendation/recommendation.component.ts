@@ -14,6 +14,8 @@ export class RecommendationComponent implements OnInit {
   public isLoading: boolean = false;
 
   public questionnaire: any;
+  public recommendationList: string[] = [];
+
 
   constructor(
     private _router: Router,
@@ -28,7 +30,7 @@ export class RecommendationComponent implements OnInit {
       subTitle: 'Ознакомьтесь с Вашими результатами',
     });
 
-    // this.isLoading = true;
+    this.isLoading = true;
     this._recommendationService
       .checkAPI()
       .pipe(
@@ -134,6 +136,8 @@ export class RecommendationComponent implements OnInit {
       )
       .subscribe(
         (response) => {
+          this.isLoading = false;
+          this.recommendationList = response;
           console.log('response: ', response);
         },
         (error) => {
