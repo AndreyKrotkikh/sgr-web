@@ -5,11 +5,14 @@
       Основной ОКВЭД
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="ocvdList" [settings]="dropdownSettingsSingle" formControlName="ocvd"
-        (onSelect)="onItemSelect($event)"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="ocvd" disableRipple>
+          <mat-option *ngFor="let ocvd of ocvdList" [value]="ocvd.itemName">{{ocvd.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
-      Выберите один ОКВЭД
+      Выберите один ОКВЭД. Позже будет добавлен поиск и оптимизация.
     </div>
     <div class="form-control__error">
       Это обязательное поле
@@ -38,8 +41,14 @@
       Предоставляемые Услуги от Акселератора
     </div>
     <div class="form-control__input">
-      <sgr-dropdown [options]="servicesList" formControlName="services">
-      </sgr-dropdown>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="services" disableRipple>
+          <mat-option *ngFor="let service of servicesList" [value]="service.itemName">{{service.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- <sgr-dropdown [options]="servicesList" formControlName="services">
+      </sgr-dropdown> -->
     </div>
     <div class="form-control__description">
       Выберите рынок
@@ -55,8 +64,12 @@
       Стадия развития компании
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="stageList" formControlName="companyStage"
-        [settings]="dropdownSettingsSingle"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <!-- <mat-label>Выберите</mat-label> -->
+        <mat-select formControlName="companyStage" disableRipple>
+          <mat-option *ngFor="let stage of stageList" [value]="stage.itemName">{{stage.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
       Можно выбрать несколько вариантов
@@ -72,8 +85,11 @@
       Рынок для Инновационных компаний
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="marketList" formControlName="market"
-        [settings]="dropdownSettingsMultie"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="market" multiple disableRipple>
+          <mat-option *ngFor="let market of marketList" [value]="market.itemName">{{market.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
       Можно выбрать несколько вариантов

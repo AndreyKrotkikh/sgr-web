@@ -12,7 +12,7 @@ export interface DetailedFormInterface {
     // Стадия развития компании
     stage: string;
     // Рынок для Инновационных компаний
-    market: string;
+    market: string[];
 
     // step 2
     // Технологическая ниша компании

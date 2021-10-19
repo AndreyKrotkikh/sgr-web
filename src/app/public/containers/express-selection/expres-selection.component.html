@@ -5,8 +5,11 @@
       Рынок для Инновационных компаний
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="marketList" formControlName="market"
-        [settings]="dropdownSettings"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="market" multiple disableRipple>
+          <mat-option *ngFor="let market of marketList" [value]="market.itemName">{{market.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
       Можно выбрать несколько вариантов
@@ -38,8 +41,11 @@
       Технологии для Инновационных компаний
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="technologiesList" formControlName="technologies"
-        [settings]="dropdownSettings"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="technologies" multiple disableRipple>
+          <mat-option *ngFor="let tech of technologiesList" [value]="tech.itemName">{{tech.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
       Можно выбрать несколько вариантов
@@ -55,8 +61,11 @@
       Предоставляемые Услуги от Акселератора
     </div>
     <div class="form-control__input">
-      <sgr-dropdown [options]="servicesList" formControlName="services">
-      </sgr-dropdown>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="services" disableRipple>
+          <mat-option *ngFor="let serviceItem of servicesList" [value]="serviceItem.itemName">{{serviceItem.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
       Выберите рынок
@@ -72,8 +81,11 @@
       Бизнес-модель для Инновационных компаний
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="businessModelList" formControlName="businessModel"
-        [settings]="dropdownSettings"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="businessModel" multiple disableRipple>
+          <mat-option *ngFor="let business of businessModelList" [value]="business.itemName">{{business.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
       Можно выбрать несколько вариантов

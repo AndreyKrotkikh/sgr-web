@@ -2,13 +2,17 @@
   <!-- Технологическая ниша компании -->
   <div class="form-control">
     <div class="form-control__label">
-      Технологическая ниша компании
+      Ваша технологическая ниша
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="companyTechnologyList" [settings]="dropdownSettingsMultie" formControlName="companyTechnology"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="companyTechnology" multiple disableRipple>
+          <mat-option *ngFor="let company of companyTechnologyList" [value]="company.itemName">{{company.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
-      Выберите ниши
+      Выберите ниши, можно выбрать несколько вариантов
     </div>
     <div class="form-control__error">
       Это обязательное поле
@@ -18,7 +22,7 @@
     <!-- Компания является малым или средним предприятием -->
     <div class="form-control">
       <div class="form-control__label">
-        Вы являетесь малым или средним предприятием
+        Вы являетесь малым или средним предприятием (МСП)
       </div>
       <div class="form-control__input">
         <mat-radio-group formControlName="isCompanyMSP">
@@ -34,10 +38,14 @@
       Технологии для Инновационных компаний
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="technologyList" [settings]="dropdownSettingsMultie" formControlName="technologies"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="technologies" multiple disableRipple>
+          <mat-option *ngFor="let tech of technologyList" [value]="tech.itemName">{{tech.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
-      Выберите технологии
+      Выберите технологии, можно выбрать несколько вариантов
     </div>
     <div class="form-control__error">
       Это обязательное поле
@@ -45,12 +53,16 @@
   </div>
 
   <!-- Категория МСП - если на предыдущий вопрос ответ "Да" *ngIf="stepTwoForm.value.isCompanyMSP" -->
-  <div class="form-control" >
+  <div class="form-control" *ngIf="stepTwoForm.value.isCompanyMSP === 1">
     <div class="form-control__label">
       Категория МСП
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="mspList" [settings]="dropdownSettingsSingle" formControlName="mspCategory"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="mspCategory" disableRipple>
+          <mat-option *ngFor="let msp of mspList" [value]="msp.itemName">{{msp.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
       Выберите Категорию
@@ -63,13 +75,17 @@
   <!-- Бизнес-модель для Инновационных компаний -->
   <div class="form-control">
     <div class="form-control__label">
-      Бизнес-модель для Инновационных компаний
+      Ваша бизнес-модель
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="businessModelList" [settings]="dropdownSettingsMultie" formControlName="businessModel"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="businessModel" multiple disableRipple>
+          <mat-option *ngFor="let business of businessModelList" [value]="business.itemName">{{business.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
-      Выберите Бизнес-модель
+      Выберите Бизнес-модель, можно выбрать несколько вариантов
     </div>
     <div class="form-control__error">
       Это обязательное поле
@@ -82,10 +98,14 @@
       Является ли компания резидентом технопарков
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="residentAvaibleList" [settings]="dropdownSettingsMultie" formControlName="residentList"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="residentList" multiple disableRipple>
+          <mat-option *ngFor="let resident of residentAvaibleList" [value]="resident.itemName">{{resident.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="form-control__description">
-      Выберите технопарки
+      Выберите технопарки, можно выбрать несколько вариантов
     </div>
     <div class="form-control__error">
       Это обязательное поле

@@ -37,7 +37,7 @@ export class FormService {
         isPublished: 0,
         isSkolkovo: 0,
         isStatup: 0,
-        market: '',
+        market: [],
         mspCategory: '',
         ocvd: '',
         patentList: [],
@@ -65,4 +65,5 @@ export class FormService {
     console.log('Form getted: ', this._form);
     return of<any>(this._form);
   }
+
 }

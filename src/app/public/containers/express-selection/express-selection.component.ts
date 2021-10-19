@@ -21,7 +21,7 @@ export class ExpressSelectionComponent implements OnInit {
   // Dropdown data
   public marketList: DropdownInterfaceMilti[] = [];
   public technologiesList: DropdownInterfaceMilti[] = [];
-  public servicesList: DropdownInterface[] = [];
+  public servicesList: DropdownInterfaceMilti[] = [];
   public businessModelList: DropdownInterfaceMilti[] = [];
 
   public dropdownSettings: any = [];
@@ -85,7 +85,12 @@ export class ExpressSelectionComponent implements OnInit {
         };
       }
     );
-    this.servicesList = this._dataService.serviceList;
+    this.servicesList = this._dataService.serviceList.map((x, index) => {
+      return {
+        id: index,
+        itemName: x.title,
+      };
+    });
 
     this.dropdownSettings = {
       text: 'Выберите',

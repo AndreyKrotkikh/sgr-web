@@ -16,7 +16,7 @@ export class StepOneComponent implements OnInit {
 
   public stageList: DropdownInterfaceMilti[] = [];
   public ocvdList: DropdownInterfaceMilti[] = [];
-  public servicesList: DropdownInterface[] = [];
+  public servicesList: DropdownInterfaceMilti[] = [];
   public marketList: DropdownInterfaceMilti[] = [];
 
   public dropdownSettingsSingle: any = [];
@@ -49,7 +49,7 @@ export class StepOneComponent implements OnInit {
           ocvd: changedForm.ocvd,
           dateCreation: changedForm.creationDate,
           service: changedForm.services,
-          stage: changedForm.companyStage[0],
+          stage: changedForm.companyStage,
           market: changedForm.market,
         },
       };
@@ -73,7 +73,12 @@ export class StepOneComponent implements OnInit {
         itemName: x.title,
       };
     });
-    this.servicesList = this._dataService.serviceList;
+    this.servicesList = this._dataService.serviceList.map((x, index) => {
+      return {
+        id: index,
+        itemName: x.title,
+      };
+    });
 
     this.stageList = this._dataService.stateCompanyList.map((x, index) => {
       return {
@@ -98,13 +103,21 @@ export class StepOneComponent implements OnInit {
     };
 
     this.stepOneForm = this._formBuilder.group({
-      ocvd: this._stepperForm.isNew ? '' : this._stepperForm.form.ocvd,
-      creationDate: this._stepperForm.isNew
-        ? ''
-        : this._stepperForm.form.dateCreation,
-      services: this._stepperForm.isNew ? '' : this._stepperForm.form.service,
-      companyStage: this._stepperForm.isNew ? '' : this._stepperForm.form.stage,
-      market: this._stepperForm.isNew ? [] : this._stepperForm.form.market,
+      ocvd: '',
+      creationDate: '',
+      services: '',
+      companyStage: '',
+      market: [],
     });
+
+    if (!this._stepperForm.isNew) {
+      this.stepOneForm.patchValue({
+        market: this._stepperForm.form.market,
+        companyStage: this._stepperForm.form.stage,
+        services: this._stepperForm.form.service,
+        creationDate: this._stepperForm.form.dateCreation,
+        ocvd: this._stepperForm.form.ocvd,
+      });
+    }
   }
 }

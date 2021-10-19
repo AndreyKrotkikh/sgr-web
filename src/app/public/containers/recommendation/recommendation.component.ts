@@ -29,33 +29,105 @@ export class RecommendationComponent implements OnInit {
     });
 
     // this.isLoading = true;
-    this._formService
-      .getForm()
+    this._recommendationService
+      .checkAPI()
       .pipe(
-        switchMap((formObject) => {
-          console.log('FORM: ', formObject);
-          if (!formObject) {
-            this._router.navigate(['/']);
-          }
+        switchMap((isAPIready) => {
+          if (isAPIready.status === 'data not loaded') {
+            return this._recommendationService.initAPI().pipe(
+              switchMap((isAPIinit) => {
+                if (isAPIinit.status === 'ok') {
+                  return this._formService.getForm().pipe(
+                    switchMap((formObject) => {
+                      console.log('FORM: ', formObject);
+                      if (!formObject) {
+                        this._router.navigate(['/']);
+                      }
 
-          this.questionnaire = formObject;
-          if (formObject.type === 'express') {
-            const requestForm = FormConverter.convertExpressForm(
-              formObject.form
-            );
+                      this.questionnaire = formObject;
+                      if (formObject.type === 'express') {
+                        const requestForm = FormConverter.convertExpressForm(
+                          formObject.form
+                        );
 
-            console.log('In Express: ', requestForm);
-            return this._recommendationService.getExpressRecommendation(
-              requestForm
+                        console.log('In Express: ', requestForm);
+                        return this._recommendationService.getExpressRecommendation(
+                          requestForm
+                        );
+                      } else {
+                        const requestForm = FormConverter.convertDetailedForm(
+                          formObject.form
+                        );
+
+                        console.log('In Detailed: ', requestForm);
+                        return this._recommendationService.getDetailedRecommendation(
+                          formObject
+                        );
+                      }
+                    })
+                  );
+                } else {
+                  return this._formService.getForm().pipe(
+                    switchMap((formObject) => {
+                      console.log('FORM: ', formObject);
+                      if (!formObject) {
+                        this._router.navigate(['/']);
+                      }
+
+                      this.questionnaire = formObject;
+                      if (formObject.type === 'express') {
+                        const requestForm = FormConverter.convertExpressForm(
+                          formObject.form
+                        );
+
+                        console.log('In Express: ', requestForm);
+                        return this._recommendationService.getExpressRecommendation(
+                          requestForm
+                        );
+                      } else {
+                        const requestForm = FormConverter.convertDetailedForm(
+                          formObject.form
+                        );
+
+                        console.log('In Detailed: ', requestForm);
+                        return this._recommendationService.getDetailedRecommendation(
+                          formObject
+                        );
+                      }
+                    })
+                  );
+                }
+              })
             );
           } else {
-            const requestForm = FormConverter.convertDetailedForm(
-              formObject.form
-            );
+            return this._formService.getForm().pipe(
+              switchMap((formObject) => {
+                console.log('FORM: ', formObject);
+                if (!formObject) {
+                  this._router.navigate(['/']);
+                }
 
-            console.log('In Detailed: ', requestForm);
-            return this._recommendationService.getDetailedRecommendation(
-              formObject
+                this.questionnaire = formObject;
+                if (formObject.type === 'express') {
+                  const requestForm = FormConverter.convertExpressForm(
+                    formObject.form
+                  );
+
+                  console.log('In Express: ', requestForm);
+                  return this._recommendationService.getExpressRecommendation(
+                    requestForm
+                  );
+                } else {
+                  const requestForm = FormConverter.convertDetailedForm(
+                    formObject.form
+                  );
+
+                  console.log('In Detailed: ', requestForm);
+                  return this._recommendationService.getDetailedRecommendation(
+                    formObject
+                  );
+                }
+              })
             );
           }
         })
@@ -68,6 +140,46 @@ export class RecommendationComponent implements OnInit {
           console.log('error');
         }
       );
+
+    // this._formService
+    //   .getForm()
+    //   .pipe(
+    //     switchMap((formObject) => {
+    //       console.log('FORM: ', formObject);
+    //       if (!formObject) {
+    //         this._router.navigate(['/']);
+    //       }
+
+    //       this.questionnaire = formObject;
+    //       if (formObject.type === 'express') {
+    //         const requestForm = FormConverter.convertExpressForm(
+    //           formObject.form
+    //         );
+
+    //         console.log('In Express: ', requestForm);
+    //         return this._recommendationService.getExpressRecommendation(
+    //           requestForm
+    //         );
+    //       } else {
+    //         const requestForm = FormConverter.convertDetailedForm(
+    //           formObject.form
+    //         );
+
+    //         console.log('In Detailed: ', requestForm);
+    //         return this._recommendationService.getDetailedRecommendation(
+    //           formObject
+    //         );
+    //       }
+    //     })
+    //   )
+    //   .subscribe(
+    //     (response) => {
+    //       console.log('response: ', response);
+    //     },
+    //     (error) => {
+    //       console.log('error');
+    //     }
+    //   );
 
     // subscribe(expressForm => {
     //   this._recommendationService.getExpressRecommendation(expressForm).subscribe(response => {
