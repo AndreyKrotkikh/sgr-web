@@ -27,4 +27,8 @@ export class FormConverter {
     console.log('CONVERTED', formRequest);
     return formRequest;
   }
+
+  public static convertDetailedForm(form: any): any {
+    return form;
+  }
 }

@@ -40,14 +40,20 @@ export class RecommendationComponent implements OnInit {
 
           this.questionnaire = formObject;
           if (formObject.type === 'express') {
-            console.log('IM EXPRESS');
             const requestForm = FormConverter.convertExpressForm(
               formObject.form
             );
+
+            console.log('In Express: ', requestForm);
             return this._recommendationService.getExpressRecommendation(
               requestForm
             );
           } else {
+            const requestForm = FormConverter.convertDetailedForm(
+              formObject.form
+            );
+
+            console.log('In Detailed: ', requestForm);
             return this._recommendationService.getDetailedRecommendation(
               formObject
             );

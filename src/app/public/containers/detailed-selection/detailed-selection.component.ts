@@ -11,7 +11,6 @@ import { FormService } from '../../shared/services/form.service';
   templateUrl: 'detailed-selection.component.html',
 })
 export class DetailedSelectionComponent implements OnInit {
-  public expressForm!: FormGroup;
   public stepperConfig!: StepperFormInterface;
 
   constructor(private _layoutService: LayoutService, private _formService: FormService) {}
@@ -22,16 +21,11 @@ export class DetailedSelectionComponent implements OnInit {
       subTitle: 'Подбор сервисов с высокой точностью',
     });
 
+    this._formService.resetAll();
+    this._formService.initDetailedForm();
+
     this._formService.stepper$.subscribe(stepper => {
       this.stepperConfig = stepper;
     })
   }
-
-  //#region Stepper
-
-  //#endregion
-
-  public cancel() {}
-
-  public onSubmit() {}
 }

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { SGRDataService } from 'src/app/public/shared/services/data.service';
 import { DropdownInterface } from 'src/app/public/shared/types/data/dropdown-interface';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DetailedFormInterface } from 'src/app/public/shared/types/common/detailed-form.interface';
+import { FormService } from 'src/app/public/shared/services/form.service';
 
 @Component({
   selector: 'app-step-three',
@@ -10,32 +12,71 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class StepThreeComponent implements OnInit {
   // Form
-  public stepOneForm!: FormGroup;
-
-  public ocvdList: DropdownInterfaceMilti[] = [];
-  public dropdownSettings: any = [];
+  public stepThreeForm!: FormGroup;
+  private _stepperForm!: DetailedFormInterface;
 
   constructor(
-    private _dataService: SGRDataService,
+    private _formService: FormService,
     private _formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
-    this.dropdownSettings = {
-      text: 'Выберите',
-      singleSelection: true,
-      enableSearchFilter: true,
-    };
+    this.initValue();
+    this.formUpdate();
+  }
 
-    this._dataService.getOCVDList().subscribe((resp) => {
-      this.ocvdList = resp.data.map((x: { group: string; name: string }) => {
-        return {
-          id: x.group,
-          itemName: `${x.group} ${x.name}`,
-        };
-      });
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+
+  private formUpdate() {
+    this.stepThreeForm.valueChanges.subscribe((changedForm) => {
+      const updatedForm: DetailedFormInterface = {
+        ...this._stepperForm,
+        isNew: false,
+        form: {
+          ...this._stepperForm.form,
+          isExporter: changedForm.isExporter,
+          isSkolkovo: changedForm.isSkolkovo,
+          isMemberMoscow: changedForm.isMemberMoscow,
+          isInnovation: changedForm.isInnovation,
+          isPublished: changedForm.isPublished,
+          isAccreditated: changedForm.isAccreditated,
+          isStatup: changedForm.isStatup,
+        },
+      };
+
+      this._formService.setDetailedForm(updatedForm);
     });
   }
 
+  private initValue(): void {
+    // ============== GET CURRENT FORM ============================= //
+    this._formService.getForm().subscribe((form) => {
+      this._stepperForm = form;
+    });
 
+    // ============== SET CURRENT FORM ============================= //
+    this.stepThreeForm = this._formBuilder.group({
+      isExporter: this._stepperForm.isNew
+        ? ''
+        : this._stepperForm.form.isExporter,
+      isSkolkovo: this._stepperForm.isNew
+        ? 0
+        : this._stepperForm.form.isSkolkovo,
+      isMemberMoscow: this._stepperForm.isNew
+        ? ''
+        : this._stepperForm.form.isMemberMoscow,
+      isInnovation: this._stepperForm.isNew
+        ? ''
+        : this._stepperForm.form.isInnovation,
+      isPublished: this._stepperForm.isNew
+        ? []
+        : this._stepperForm.form.isPublished,
+      isAccreditated: this._stepperForm.isNew
+        ? 0
+        : this._stepperForm.form.isAccreditated,
+      isStatup: this._stepperForm.isNew ? 0 : this._stepperForm.form.isStatup,
+    });
+  }
 }

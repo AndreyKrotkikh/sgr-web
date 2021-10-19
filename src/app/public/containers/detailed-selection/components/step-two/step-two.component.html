@@ -1,19 +1,97 @@
-<form class="form-wrapper">
-  <!-- Список ОКВЭД -->
+<form class="form-wrapper" [formGroup]="stepTwoForm">
+  <!-- Технологическая ниша компании -->
   <div class="form-control">
     <div class="form-control__label">
-      Предоставляемые Услуги от Акселератора
+      Технологическая ниша компании
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="ocvdList" [settings]="dropdownSettings"></angular2-multiselect>
+      <angular2-multiselect [data]="companyTechnologyList" [settings]="dropdownSettingsMultie" formControlName="companyTechnology"></angular2-multiselect>
     </div>
     <div class="form-control__description">
-      Выберите рынок
+      Выберите ниши
     </div>
     <div class="form-control__error">
       Это обязательное поле
     </div>
   </div>
+
+    <!-- Компания является малым или средним предприятием -->
+    <div class="form-control">
+      <div class="form-control__label">
+        Вы являетесь малым или средним предприятием
+      </div>
+      <div class="form-control__input">
+        <mat-radio-group formControlName="isCompanyMSP">
+          <mat-radio-button value="1">Да</mat-radio-button>
+          <mat-radio-button value="0">Нет</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+  <!-- Технологии для Инновационных компаний -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Технологии для Инновационных компаний
+    </div>
+    <div class="form-control__input">
+      <angular2-multiselect [data]="technologyList" [settings]="dropdownSettingsMultie" formControlName="technologies"></angular2-multiselect>
+    </div>
+    <div class="form-control__description">
+      Выберите технологии
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
+  <!-- Категория МСП - если на предыдущий вопрос ответ "Да" *ngIf="stepTwoForm.value.isCompanyMSP" -->
+  <div class="form-control" >
+    <div class="form-control__label">
+      Категория МСП
+    </div>
+    <div class="form-control__input">
+      <angular2-multiselect [data]="mspList" [settings]="dropdownSettingsSingle" formControlName="mspCategory"></angular2-multiselect>
+    </div>
+    <div class="form-control__description">
+      Выберите Категорию
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
+  <!-- Бизнес-модель для Инновационных компаний -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Бизнес-модель для Инновационных компаний
+    </div>
+    <div class="form-control__input">
+      <angular2-multiselect [data]="businessModelList" [settings]="dropdownSettingsMultie" formControlName="businessModel"></angular2-multiselect>
+    </div>
+    <div class="form-control__description">
+      Выберите Бизнес-модель
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
+  <!-- Является ли компания резидентом технопарков -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Является ли компания резидентом технопарков
+    </div>
+    <div class="form-control__input">
+      <angular2-multiselect [data]="residentAvaibleList" [settings]="dropdownSettingsMultie" formControlName="residentList"></angular2-multiselect>
+    </div>
+    <div class="form-control__description">
+      Выберите технопарки
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
   <div class="full-width">
     <app-stepper-actions></app-stepper-actions>
   </div>

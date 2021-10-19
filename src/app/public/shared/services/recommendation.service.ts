@@ -13,7 +13,7 @@ export class RecommendationService {
   }
 
   getDetailedRecommendation(data: any): Observable<any> {
-    const url = environment.apiUrl + `/get-detailed`;
-    return this.http.get<any>(url);
+    const url = environment.apiUrl + `/easyrecommend`;
+    return this.http.post<any>(url, data);
   }
 }
