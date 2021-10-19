@@ -1,26 +1,20 @@
-<form  class="form-wrapper" (ngSubmit)="onSubmit()">
+<div class="form-wrapper__stepper">
+  <h4 class="form-wrapper__steps">
+    Шаг {{stepperConfig.currentStepIdx+1}} из {{stepperConfig.maxSteps}}
+  </h4>
+</div>
 
-  <ng-container [ngSwitch]="stepperConfig.currentStepIdx">
-    <ng-container *ngSwitchCase="0">
-      Step 1
-    </ng-container>
-    <ng-container *ngSwitchCase="1">
-      Step 2
-    </ng-container>
-    <ng-container *ngSwitchCase="2">
-      Step 3
-    </ng-container>
-    <ng-container *ngSwitchCase="3">
-      Step 4
-    </ng-container>
+<ng-container [ngSwitch]="stepperConfig.currentStepIdx">
+  <ng-container *ngSwitchCase="0">
+    <app-step-one></app-step-one>
   </ng-container>
-
-  <div class="full-width">
-    <div class="actions">
-      <button type="button" (click)="cancel()">Отмена</button>
-      <button type="button"  (click)="prevStep()">Назад</button>
-      <button type="button" class="button__accent" (click)="nextStep()" >Далее</button>
-      <button type="submit" class="button__accent">Подобрать</button>
-    </div>
-  </div>
-</form>
+  <ng-container *ngSwitchCase="1">
+    <app-step-two></app-step-two>
+  </ng-container>
+  <ng-container *ngSwitchCase="2">
+    <app-step-three></app-step-three>
+  </ng-container>
+  <ng-container *ngSwitchCase="3">
+    <app-step-four></app-step-four>
+  </ng-container>
+</ng-container>

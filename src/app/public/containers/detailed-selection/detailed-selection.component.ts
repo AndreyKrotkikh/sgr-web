@@ -2,6 +2,8 @@ import { StepperFormInterface } from './../../shared/types/common/stepper-form.i
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../../shared/services/layout.service';
+import { SGRDataService } from '../../shared/services/data.service';
+import { FormService } from '../../shared/services/form.service';
 
 @Component({
   selector: 'app-detailed-selection',
@@ -12,7 +14,7 @@ export class DetailedSelectionComponent implements OnInit {
   public expressForm!: FormGroup;
   public stepperConfig!: StepperFormInterface;
 
-  constructor(private _layoutService: LayoutService) {}
+  constructor(private _layoutService: LayoutService, private _formService: FormService) {}
 
   ngOnInit() {
     this._layoutService.setCurrentPageConfig({
@@ -20,28 +22,14 @@ export class DetailedSelectionComponent implements OnInit {
       subTitle: 'Подбор сервисов с высокой точностью',
     });
 
-    this.stepperConfig = {
-      currentStepIdx: 0,
-      currentStepName: '1',
-      maxSteps: 4,
-    };
+    this._formService.stepper$.subscribe(stepper => {
+      this.stepperConfig = stepper;
+    })
   }
 
-  public prevStep() {
-    if (this.stepperConfig.currentStepIdx === 0) {
-      return;
-    }
+  //#region Stepper
 
-    this.stepperConfig.currentStepIdx--;
-  }
-
-  public nextStep() {
-    if (this.stepperConfig.currentStepIdx === this.stepperConfig.maxSteps-1) {
-      return;
-    }
-
-    this.stepperConfig.currentStepIdx++;
-  }
+  //#endregion
 
   public cancel() {}
 

@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { DropdownInterface } from './../types/data/dropdown-interface';
 import { Injectable } from '@angular/core';
-
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SGRDataService {
   //#region config & private vars
 
@@ -401,7 +402,7 @@ export class SGRDataService {
   ];
 
   //#endregion
-  constructor() {}
+  constructor(private _http: HttpClient) {}
 
   // Сервис (Предоставляемые Услуги от Акселератора)
   get serviceList(): DropdownInterface[] {
@@ -442,4 +443,21 @@ export class SGRDataService {
   get residentOfParkList(): DropdownInterface[] {
     return this._residentOfParksInitialValue;
   }
+
+  public getOCVDList(): Observable<any> {
+    const url = '../../../../assets/data/okvedList.json';
+    return this._http.get<any>(url);
+  }
+
+  // var options = {
+  //     method: "POST",
+  //     mode: "cors",
+  //
+  //     body:
+  // }
+
+  // fetch(url, options)
+  // .then(response => response.text())
+  // .then(result => console.log(result))
+  // .catch(error => console.log("error", error));
 }

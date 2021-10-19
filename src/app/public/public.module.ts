@@ -1,3 +1,5 @@
+import { StepFourComponent } from './containers/detailed-selection/components/step-four/step-four.component';
+import { StepOneComponent } from './containers/detailed-selection/components/step-one/step-one.component';
 import { DetailedSelectionComponent } from './containers/detailed-selection/detailed-selection.component';
 // System
 import { NgModule } from '@angular/core';
@@ -21,6 +23,10 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { HttpClientModule } from '@angular/common/http';
 import { RecommendationService } from './shared/services/recommendation.service';
 import { RecommendationCardComponent } from './shared/components/recommendation-card/recommendation-card.component';
+import { SGRDataService } from './shared/services/data.service';
+import { StepperActionsComponent } from './containers/detailed-selection/components/stepper-actions/stepper-actions.component';
+import { StepTwoComponent } from './containers/detailed-selection/components/step-two/step-two.component';
+import { StepThreeComponent } from './containers/detailed-selection/components/step-three/step-three.component';
 
 const routes = [
   {
@@ -82,8 +88,14 @@ const routes = [
     DetailedSelectionComponent,
     RecommendationComponent,
     // Components
+    // Detailed Selection
+    StepOneComponent,
+    StepTwoComponent,
+    StepThreeComponent,
+    StepFourComponent,
+    StepperActionsComponent
     // Modals
   ],
-  providers: [RecommendationService],
+  providers: [RecommendationService, SGRDataService],
 })
 export class PublicModule {}

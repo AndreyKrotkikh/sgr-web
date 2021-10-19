@@ -8,7 +8,7 @@ export class RecommendationService {
   constructor(private http: HttpClient) {}
 
   getExpressRecommendation(data: any): Observable<any> {
-    const url = environment.apiUrl + '/get-express';
+    const url = environment.apiUrl + `/easyrecommend`;
     return this.http.post<any>(url, data);
   }
 

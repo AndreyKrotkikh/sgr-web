@@ -166,6 +166,14 @@ button {
 }
 
 // Desktop styles
+.form-wrapper__stepper {
+  margin-top: 60px;
+
+  .form-wrapper__steps {
+    margin-bottom: 20px;
+  }
+}
+
 .form-wrapper {
   width: 100%;
   margin-top: 30px;
@@ -183,6 +191,7 @@ button {
       display: flex;
       flex-direction: row;
       gap: 20px;
+      margin-bottom: 20px;
     }
   }
 

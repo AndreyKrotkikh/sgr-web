@@ -1,0 +1,20 @@
+<form class="form-wrapper">
+  <!-- Список ОКВЭД -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Предоставляемые Услуги от Акселератора
+    </div>
+    <div class="form-control__input">
+      <angular2-multiselect [data]="ocvdList" [settings]="dropdownSettings"></angular2-multiselect>
+    </div>
+    <div class="form-control__description">
+      Выберите рынок
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+  <div class="full-width">
+    <app-stepper-actions></app-stepper-actions>
+  </div>
+</form>
