@@ -5,6 +5,7 @@ import { DropdownInterface } from 'src/app/public/shared/types/data/dropdown-int
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DetailedFormInterface } from 'src/app/public/shared/types/common/detailed-form.interface';
 import { FormService } from 'src/app/public/shared/services/form.service';
+import { LocalStorageService } from 'src/app/public/shared/services/localstorage.service';
 
 @Component({
   selector: 'app-step-three',
@@ -17,7 +18,8 @@ export class StepThreeComponent implements OnInit {
 
   constructor(
     private _formService: FormService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _localstorageService: LocalStorageService
   ) {}
 
   ngOnInit() {
@@ -46,6 +48,7 @@ export class StepThreeComponent implements OnInit {
         },
       };
 
+      this._localstorageService.setDetailedDraft(updatedForm);
       this._formService.setDetailedForm(updatedForm);
     });
   }

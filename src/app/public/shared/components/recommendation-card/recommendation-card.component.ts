@@ -11,10 +11,13 @@ export class RecommendationCardComponent implements OnInit {
   name: string = '';
 
   @Input()
+  type: string = '';
+
+  @Input()
   rate: string = '';
 
   @Input()
-  score: string = '';
+  score: number = 0;
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormService } from '../../shared/services/form.service';
 import { LayoutService } from '../../shared/services/layout.service';
 import { RecommendationService } from '../../shared/services/recommendation.service';
@@ -7,17 +7,20 @@ import { Router } from '@angular/router';
 import { FormConverter } from '../../shared/tools/form-converter';
 import { LocalStorageService } from '../../shared/services/localstorage.service';
 import { ResultInterface } from '../../shared/types/data/recommendation-results.inerface';
-import { throwError } from 'rxjs';
+
 @Component({
   selector: 'app-recommendation',
   styleUrls: ['./recommendation.component.scss'],
   templateUrl: './recommendation.component.html',
+  encapsulation: ViewEncapsulation.None,
 })
 export class RecommendationComponent implements OnInit {
   public isLoading: boolean = false;
+  public isError: boolean = false;
+  public errorText: string = '';
 
   public questionnaire: any;
-  public recommendationList: string[] = [];
+  public recommendationList: ResultInterface[] = [];
   public prevRecommendationList: ResultInterface[] = [];
 
   constructor(
@@ -34,7 +37,23 @@ export class RecommendationComponent implements OnInit {
       subTitle: 'Ознакомьтесь с Вашими результатами',
     });
 
-    this.prevRecommendationList = this._localstorageService.getResults()?.prev.slice(0, 5);
+    this.prevRecommendationList = this._localstorageService
+      .getResults()
+      ?.prev?.slice(0, 5);
+
+    this._getRecommendation();
+  }
+
+  public tryAgain() {
+    this._getRecommendation();
+  }
+
+  public doNewAnket() {
+    this._router.navigate(['/']);
+  }
+
+  private _getRecommendation() {
+    this.isError = false;
     this.isLoading = true;
 
     // Создаем переиспользуемый observable, с логикой запросов - если тип Express - отправляем на аналитику экспресса, иначе в Detailed
@@ -42,6 +61,7 @@ export class RecommendationComponent implements OnInit {
       switchMap((formObject) => {
         console.log('FORM: ', formObject);
         if (!formObject) {
+          console.log('NO FORM, ERROR THROW');
           throw 'err_no_form';
         }
 
@@ -90,27 +110,24 @@ export class RecommendationComponent implements OnInit {
       )
       .subscribe(
         (response) => {
+          console.log('IN SUBSCRIBE');
           this.isLoading = false;
           this.recommendationList = response;
 
           // improve it, after API update
-          const newRecommendationList: ResultInterface[] = response.map((x: string) => {
-            return {
-              name: x,
-              score: 10,
-              rate: 10
-            }
-          })
-          this._localstorageService.setResults(newRecommendationList)
+          const newRecommendationList: ResultInterface[] = response;
+          this._localstorageService.setResults(newRecommendationList);
           console.log('response: ', response);
         },
         (error) => {
-          // ADD MESSAGE ABOUT ERROR
-          this.isLoading = false;
+          console.log('IN ERROR', error);
           if (error === 'err_no_form') {
-            console.log('обработать ошибку, нет данных в форме')
+            this.errorText = 'Вы не заполнили анкету.';
+          } else {
+            this.errorText = 'Не удалось подобрать сервисы.';
           }
-          console.log('error', error);
+          this.isError = true;
+          this.isLoading = false;
         }
       );
   }

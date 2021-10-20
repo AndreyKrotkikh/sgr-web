@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/public/shared/services/form.service';
 import { DetailedFormInterface } from 'src/app/public/shared/types/common/detailed-form.interface';
 import { MatSelect } from '@angular/material/select';
+import { LocalStorageService } from 'src/app/public/shared/services/localstorage.service';
 
 @Component({
   selector: 'app-step-one',
@@ -33,7 +34,8 @@ export class StepOneComponent implements OnInit, AfterViewInit {
   constructor(
     private _formService: FormService,
     private _dataService: SGRDataService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _localstorageService: LocalStorageService
   ) {}
 
   ngOnInit() {
@@ -76,7 +78,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
           market: changedForm.market,
         },
       };
-
+      this._localstorageService.setDetailedDraft(updatedForm);
       this._formService.setDetailedForm(updatedForm);
     });
   }
@@ -148,13 +150,13 @@ export class StepOneComponent implements OnInit, AfterViewInit {
       market: [],
     });
 
-    if (!this._stepperForm.isNew) {
+    if (!this._stepperForm?.isNew) {
       this.stepOneForm.patchValue({
-        market: this._stepperForm.form.market,
-        companyStage: this._stepperForm.form.stage,
-        services: this._stepperForm.form.service,
-        creationDate: this._stepperForm.form.dateCreation,
-        ocvd: this._stepperForm.form.ocvd,
+        market: this._stepperForm?.form?.market,
+        companyStage: this._stepperForm?.form?.stage,
+        services: this._stepperForm?.form?.service,
+        creationDate: this._stepperForm?.form?.dateCreation,
+        ocvd: this._stepperForm?.form?.ocvd,
       });
     }
   }

@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Обнаружен черновик!</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Хотите продолжить редактирование или начать заново?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="'edit'" cdkFocusInitial>Редактировать</button>
+  <button mat-button [mat-dialog-close]="'new'" mat-dialog-close>Новая анкета</button>
+</mat-dialog-actions>

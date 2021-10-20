@@ -5,6 +5,7 @@ export interface RecommendationResultsInterface {
 
 export interface ResultInterface {
   name: string;
-  score: string;
+  rating: string;
   rate: string;
+  type: string;
 }

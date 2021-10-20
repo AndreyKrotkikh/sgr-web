@@ -1,11 +1,113 @@
 .loading {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   text-align: center;
   min-height: 100vh;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 29px;
+  color: #1D2435;
 }
 
 .recommendation-content {
   margin-top: 40px;
+}
+
+.recommendation__data {
+  margin-bottom: 60px;
+}
+
+.recommendation__card {
+  width: 100%;
+  height: 470px;
+  background: #F2F3F6;
+  box-shadow: -4px -4px 8px 2px #FFFFFF, 4px 4px 8px 2px rgba(36, 49, 74, 0.26);
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 86px;
+
+  .recommendation__card-title {
+    font-size: 35px;
+    line-height: 41px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #1D2435;
+    margin-bottom: 8px;
+  }
+
+  .recommendation__card-description {
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    color: #1D2435;
+    margin-bottom: 74px;
+  }
+
+  .recommendation__card-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+  }
+}
+
+.recommendation__list {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.recommendation__title {
+  font-size: 35px;
+  line-height: 41px;
+  letter-spacing: 0.05em;
+  color: #1D2435;
+  margin-bottom: 40px;
+}
+
+.profile__table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  .profile__table-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &.profile__table-row__title {
+      p {
+        font-size: 22px;
+        line-height: 29px;
+        color: #1D2435;
+        margin-top: 12px;
+        margin-bottom: 10px;
+
+        strong {
+          color: #FF1F55;
+        }
+      }
+    }
+
+    .profile__property-name {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      color: #1D2435;
+    }
+
+    .profile__property-value {
+      font-size: 16px;
+      line-height: 20px;
+      color: #1D2435;
+      max-width: 200px;
+      text-align: right;
+    }
+  }
 }

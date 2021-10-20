@@ -1,35 +1,78 @@
 <ng-container *ngIf="isLoading; else contentTemplate">
   <div class="loading">
+    <img src="../../../../assets/img/logo-loading.svg" alt="">
     Загрузка...
   </div>
 </ng-container>
 <ng-template #contentTemplate>
   <div class="recommendation-content">
-    <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Ваша Анкета
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Данные анкеты</p>
-      </mat-expansion-panel>
-    </mat-accordion>
+    <div class="recommendation__data">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Ваша Анкета
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="profile__data">
+            <ng-container *ngIf="questionnaire?.type === 'express'; else detailedTemplate">
+              <express-anket [questionnaire]="questionnaire"></express-anket>
+            </ng-container>
+            <ng-template #detailedTemplate>
+              <detailed-anket [questionnaire]="questionnaire"></detailed-anket>
+            </ng-template>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
 
-    <ng-container *ngIf="recommendationList.length < 1; else contentTemplate">
-      Новых данных нет
+    <ng-container *ngIf="isError; else noErrorTemplate">
+      <div class="recommendation__card">
+        <div class="recommendation__card-title">Произошла ошибка!</div>
+        <div class="recommendation__card-description">
+          {{errorText}}
+        </div>
+        <div class="recommendation__card-actions">
+          <button class="button__accent" (click)="tryAgain()">Повторить</button>
+          <button class="button__accent" (click)="doNewAnket()">Новая анкета</button>
+        </div>
+      </div>
     </ng-container>
-    <ng-template #contentTemplate>
-      <ng-container *ngFor="let recommendation of recommendationList">
-        <app-recommendation-card [name]="recommendation" [rate]="'10'" [score]="'94'"></app-recommendation-card>
+    <ng-template #noErrorTemplate>
+      <ng-container *ngIf="recommendationList && recommendationList.length < 1; else contentTemplate">
+        <div class="recommendation__card">
+          <div class="recommendation__card-title">По вашему запросу нет результатов</div>
+          <div class="recommendation__card-description">
+            Попробуйте изменить параметры запроса
+          </div>
+          <div class="recommendation__card-actions">
+            <button class="button__accent" (click)="doNewAnket()">Новая анкета</button>
+          </div>
+        </div>
       </ng-container>
+      <ng-template #contentTemplate>
+        <div class="recommendation__list">
+          <ng-container *ngFor="let recommendation of recommendationList">
+            <app-recommendation-card [name]="recommendation.name" [type]="recommendation.type"
+              [score]="+recommendation.rating"></app-recommendation-card>
+          </ng-container>
+        </div>
+      </ng-template>
     </ng-template>
 
-    <ng-container *ngIf="prevRecommendationList.length > 0">
-      Предыдущие результаты
-      <ng-container *ngFor="let prevRecommendation of prevRecommendationList">
-        <app-recommendation-card [name]="prevRecommendation.name" [rate]="'10'" [score]="'94'"></app-recommendation-card>
-      </ng-container>
+
+    <ng-container *ngIf="prevRecommendationList && prevRecommendationList.length > 0">
+      <div class="recommendation__title">
+        История просмотров
+      </div>
+      <div class="recommendation__list">
+        <ng-container *ngFor="let prevRecommendation of prevRecommendationList">
+          <app-recommendation-card [name]="prevRecommendation.name" [type]="prevRecommendation.type"
+            [score]="+prevRecommendation.rating">
+          </app-recommendation-card>
+        </ng-container>
+      </div>
+
     </ng-container>
   </div>
 </ng-template>

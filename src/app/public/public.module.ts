@@ -1,3 +1,4 @@
+import { DraftModalDialog } from './shared/components/modals/draft-modal-dialog/draft-modal-dialog.component';
 import { StepFourComponent } from './containers/detailed-selection/components/step-four/step-four.component';
 import { StepOneComponent } from './containers/detailed-selection/components/step-one/step-one.component';
 import { DetailedSelectionComponent } from './containers/detailed-selection/detailed-selection.component';
@@ -27,6 +28,8 @@ import { SGRDataService } from './shared/services/data.service';
 import { StepperActionsComponent } from './containers/detailed-selection/components/stepper-actions/stepper-actions.component';
 import { StepTwoComponent } from './containers/detailed-selection/components/step-two/step-two.component';
 import { StepThreeComponent } from './containers/detailed-selection/components/step-three/step-three.component';
+import { ExpressAnketComponent } from './containers/recommendation/express-anket/express-anket.component';
+import { DetailedAnketComponent } from './containers/recommendation/detailed-anket/detailed-anket.component';
 
 const routes = [
   {
@@ -93,8 +96,12 @@ const routes = [
     StepTwoComponent,
     StepThreeComponent,
     StepFourComponent,
-    StepperActionsComponent
+    StepperActionsComponent,
+    // Result view
+    ExpressAnketComponent,
+    DetailedAnketComponent,
     // Modals
+    DraftModalDialog
   ],
   providers: [RecommendationService, SGRDataService],
 })
