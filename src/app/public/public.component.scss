@@ -9,6 +9,7 @@
   background: var(--body-color);
   color: var(--text-color);
   transition: .5s;
+  padding-bottom: calc(var(--footer-height) + 1rem);
 }
 
 .content {
