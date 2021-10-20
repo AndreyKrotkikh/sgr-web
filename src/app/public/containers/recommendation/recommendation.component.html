@@ -16,9 +16,20 @@
       </mat-expansion-panel>
     </mat-accordion>
 
-    <ng-container *ngFor="let recommendation of recommendationList">
-      <app-recommendation-card [name]="recommendation" [rate]="'10'" [score]="'94'"></app-recommendation-card>
+    <ng-container *ngIf="recommendationList.length < 1; else contentTemplate">
+      Новых данных нет
     </ng-container>
+    <ng-template #contentTemplate>
+      <ng-container *ngFor="let recommendation of recommendationList">
+        <app-recommendation-card [name]="recommendation" [rate]="'10'" [score]="'94'"></app-recommendation-card>
+      </ng-container>
+    </ng-template>
 
+    <ng-container *ngIf="prevRecommendationList.length > 0">
+      Предыдущие результаты
+      <ng-container *ngFor="let prevRecommendation of prevRecommendationList">
+        <app-recommendation-card [name]="prevRecommendation.name" [rate]="'10'" [score]="'94'"></app-recommendation-card>
+      </ng-container>
+    </ng-container>
   </div>
 </ng-template>

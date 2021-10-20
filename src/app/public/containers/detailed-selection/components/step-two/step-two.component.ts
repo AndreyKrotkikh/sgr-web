@@ -36,6 +36,10 @@ export class StepTwoComponent implements OnInit {
     this.formUpdate();
   }
 
+  public isMSP(): boolean {
+    return this.stepTwoForm.value.isCompanyMSP === '1' ? true : false;
+  }
+
   onItemSelect(item: any) {
     console.log(item);
   }

@@ -53,7 +53,7 @@
   </div>
 
   <!-- Категория МСП - если на предыдущий вопрос ответ "Да" *ngIf="stepTwoForm.value.isCompanyMSP" -->
-  <div class="form-control" *ngIf="stepTwoForm.value.isCompanyMSP === 1">
+  <div class="form-control" *ngIf="isMSP()">
     <div class="form-control__label">
       Категория МСП
     </div>

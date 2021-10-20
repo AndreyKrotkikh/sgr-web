@@ -86,5 +86,7 @@ export class StepperActionsComponent implements OnInit {
     this.stepperConfig.currentStepIdx++;
   }
 
-  public cancel() {}
+  public cancel(): void {
+    this._router.navigate(['/']);
+  }
 }
