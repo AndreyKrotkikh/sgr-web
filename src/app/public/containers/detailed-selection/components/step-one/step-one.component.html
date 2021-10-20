@@ -1,11 +1,55 @@
-<form class="form-wrapper">
+<form class="form-wrapper" [formGroup]="stepOneForm">
   <!-- Список ОКВЭД -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Основной ОКВЭД
+    </div>
+    <div class="form-control__input">
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="ocvd" disableRipple #ocvdSelect>
+          <input (keyup)="onKey($event.target)" />
+          <mat-option *ngFor="let ocvd of viewOcvdList" [value]="ocvd.itemName">{{ocvd.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-control__description">
+      Выберите один ОКВЭД. Позже будет добавлен поиск и оптимизация.
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
+  <!-- ДАТА ОСНОВАНИЯ -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Дата основания
+    </div>
+    <div class="form-control__input">
+      <input type="date" formControlName="creationDate">
+    </div>
+    <div class="form-control__description">
+      Выберите дату основания
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
+  <!-- Предоставляемые Услуги от Акселератора -->
   <div class="form-control">
     <div class="form-control__label">
       Предоставляемые Услуги от Акселератора
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="ocvdList" [settings]="dropdownSettings"></angular2-multiselect>
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="services" disableRipple>
+          <mat-option *ngFor="let service of servicesList" [value]="service.itemName">{{service.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- <sgr-dropdown [options]="servicesList" formControlName="services">
+      </sgr-dropdown> -->
     </div>
     <div class="form-control__description">
       Выберите рынок
@@ -14,6 +58,49 @@
       Это обязательное поле
     </div>
   </div>
+
+  <!-- Стадия развития компании -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Стадия развития компании
+    </div>
+    <div class="form-control__input">
+      <mat-form-field appearance="fill">
+        <!-- <mat-label>Выберите</mat-label> -->
+        <mat-select formControlName="companyStage" disableRipple>
+          <mat-option *ngFor="let stage of stageList" [value]="stage.itemName">{{stage.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-control__description">
+      Можно выбрать несколько вариантов
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
+  <!-- Рынок для инновационных компаний -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Рынок для Инновационных компаний
+    </div>
+    <div class="form-control__input">
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="market" multiple disableRipple>
+          <mat-option *ngFor="let market of marketList" [value]="market.itemName">{{market.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-control__description">
+      Можно выбрать несколько вариантов
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
+
   <div class="full-width">
     <app-stepper-actions></app-stepper-actions>
   </div>

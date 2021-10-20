@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, Observable, of } from 'rxjs';
+import { DetailedFormInterface } from '../types/common/detailed-form.interface';
+import { ExpressFormInterface } from '../types/common/express-form.interface';
 import { StepperFormInterface } from '../types/common/stepper-form.interface';
-import { CurrentPageInterface } from '../types/current-page.interface';
 
 @Injectable({ providedIn: 'root' })
 export class FormService {
@@ -20,18 +21,49 @@ export class FormService {
     this._form = null;
   }
 
-  public setDetailedForm(value: any) {
-    console.log('SETED', value);
-    this._form = value;
+  public initDetailedForm() {
+    const initDetailedForm: DetailedFormInterface = {
+      type: 'detailed',
+      isNew: true,
+      form: {
+        businessModel: [],
+        companyTechnology: '',
+        dateCreation: '',
+        isAccreditated: 0,
+        isCompanyMSP: 0,
+        isExporter: 0,
+        isInnovation: 0,
+        isMemberMoscow: 0,
+        isPublished: 0,
+        isSkolkovo: 0,
+        isStatup: 0,
+        market: [],
+        mspCategory: '',
+        ocvd: '',
+        patentList: [],
+        productList: [],
+        residentList: [],
+        service: '',
+        stage: '',
+        technologies: [],
+      },
+    };
+    this._form = initDetailedForm;
   }
 
-  public setExpressForm(value: any) {
-    console.log('SETED', value);
-    this._form = value;
+  public setDetailedForm(detailedForm: DetailedFormInterface) {
+    console.log('Detailed Form Setted: ', detailedForm);
+    this._form = detailedForm;
+  }
+
+  public setExpressForm(expressForm: ExpressFormInterface) {
+    console.log('Express Form Setted: ', expressForm);
+    this._form = expressForm;
   }
 
   public getForm(): Observable<any> {
-    console.log('GETTED', this._form);
-    return of(this._form);
+    console.log('Form getted: ', this._form);
+    return of<any>(this._form);
   }
+
 }

@@ -1,18 +1,38 @@
-<form class="form-wrapper">
-  <!-- Список ОКВЭД -->
+<form class="form-wrapper" [formGroup]="stepFourForm">
+  <!-- Патенты компании -->
   <div class="form-control">
     <div class="form-control__label">
-      Предоставляемые Услуги от Акселератора
+      Патенты компании
     </div>
-    <div class="form-control__input">
-      <angular2-multiselect [data]="ocvdList" [settings]="dropdownSettings"></angular2-multiselect>
+    <div class="form-control__input form-control__input__dynamic" formArrayName="patentList">
+      <div *ngFor="let patent of getPatents(); let i = index;">
+        <div class="form-control__input__dynamic-row" [formGroupName]="i">
+          <input formControlName="name" placeholder="Название патента">
+          <div class="button__remove" (click)="removePatent(i)">
+            <img src="../../../../../../assets/img/inputs/close-icon.svg" alt="">
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-control__description">
-      Выберите рынок
+    <button class="button__small" (click)="addPatent()">Добавить</button>
+  </div>
+
+  <!-- Продукты компании -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Продукты компании
     </div>
-    <div class="form-control__error">
-      Это обязательное поле
+    <div class="form-control__input form-control__input__dynamic" formArrayName="productList">
+      <div *ngFor="let patent of getProducts(); let i = index;">
+        <div class="form-control__input__dynamic-row" [formGroupName]="i">
+          <input formControlName="name" placeholder="Название продукта">
+          <div class="button__remove" (click)="removeProduct(i)">
+            <img src="../../../../../../assets/img/inputs/close-icon.svg" alt="">
+          </div>
+        </div>
+      </div>
     </div>
+    <button class="button__small" (click)="addProduct()">Добавить</button>
   </div>
   <div class="full-width">
     <app-stepper-actions></app-stepper-actions>

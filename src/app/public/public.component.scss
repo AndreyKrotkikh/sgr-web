@@ -13,7 +13,9 @@
 }
 
 .content {
+  height: 100%;
   min-height: 100vh;
+  padding-bottom: var(--footer-height);
 }
 
 /*Add padding body movil*/
@@ -23,8 +25,103 @@
 
 /* ===== MEDIA QUERIES=====*/
 @media screen and (min-width: 768px) {
+
   /*Add padding body desktop*/
   .main-pd {
     padding-left: calc(var(--nav-width) + 188px);
+  }
+}
+
+/* ===== MATERIAL RESTYLE =====*/
+::ng-deep {
+
+  // ------------- SELECT ----------------- //
+  .mat-select-panel {
+    background: #F2F3F6 !important;
+    box-shadow: -4px -4px 8px 2px #FFFFFF, 4px 4px 8px 2px rgba(36, 49, 74, 0.26) !important;
+    border-radius: 16px !important;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    font-size: 14px;
+    line-height: 18px;
+
+    .mat-form-field-flex {
+      padding: 14px 16px !important;
+      background: #F2F3F6;
+      box-shadow: -4px -4px 8px 2px #FFFFFF, 4px 4px 8px 2px rgba(36, 49, 74, 0.26);
+      border-radius: 16px !important;
+    }
+
+    .mat-form-field-infix {
+      border-top: unset !important;
+      padding: unset;
+    }
+
+    .mat-form-field-underline {
+      display: none !important;
+    }
+
+    .mat-form-field-wrapper {
+      padding-bottom: unset;
+    }
+
+    .mat-select-arrow-wrapper {
+      display: unset !important;
+    }
+  }
+
+  .mat-select-panel {
+    .mat-option {
+      height: 42px !important;
+      padding: 0px 16px !important;
+      font-size: 14px !important;
+      line-height: 18px !important;
+      font-family: IBM Plex Sans !important;
+      font-weight: normal !important;
+      color: #1D2435;
+
+      &.mat-selected {
+        color: #1F5EFF !important;
+      }
+
+      &.mat-active {
+        background: unset !important;
+      }
+
+      .mat-pseudo-checkbox {
+        display: none !important;
+      }
+
+      .mat-selected {
+        font-size: 14px;
+        line-height: 18px;
+
+        color: #FF1F55 !important;
+      }
+    }
+
+
+  }
+
+  // ------------- RADIO BUTTON ----------------- //
+  .mat-radio-group {
+    display: flex;
+    gap: 40px;
+
+    .mat-radio-outer-circle {
+      border-style: unset;
+      background: #F2F3F6;
+      box-shadow: -4px -4px 20px #FFFFFF, 2px 2px 8px -2px rgba(0, 0, 0, 0.25), inset -3px -2px 5px 1px #FFFFFF, inset 1px 1px 4px 1px rgba(36, 49, 74, 0.36);
+    }
+
+    .mat-radio-inner-circle {
+      background: #1F5EFF !important;
+      box-shadow: -3px -2px 5px 1px #FFFFFF, 1px 1px 4px 1px rgba(36, 49, 74, 0.36);
+    }
+  }
+  .mat-ripple-element{
+    display: none !important;
   }
 }

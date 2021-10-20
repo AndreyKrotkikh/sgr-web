@@ -1,17 +1,92 @@
-<form class="form-wrapper">
-  <!-- Список ОКВЭД -->
+<form class="form-wrapper" [formGroup]="stepThreeForm">
+  <!-- Является ли комнания экспортером -->
   <div class="form-control">
     <div class="form-control__label">
-      Предоставляемые Услуги от Акселератора
+      Является ли комнания экспортером
     </div>
     <div class="form-control__input">
-      <angular2-multiselect [data]="ocvdList" [settings]="dropdownSettings"></angular2-multiselect>
+      <mat-radio-group formControlName="isExporter">
+        <mat-radio-button value="1">Да</mat-radio-button>
+        <mat-radio-button value="0">Нет</mat-radio-button>
+      </mat-radio-group>
     </div>
-    <div class="form-control__description">
-      Выберите рынок
+  </div>
+
+  <!-- Организация  участник Сколково -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Организация участник Сколково
     </div>
-    <div class="form-control__error">
-      Это обязательное поле
+    <div class="form-control__input">
+      <mat-radio-group formControlName="isSkolkovo">
+        <mat-radio-button value="1">Да</mat-radio-button>
+        <mat-radio-button value="0">Нет</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <!-- Участник инновационного кластера города Москвы -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Участник инновационного кластера города Москвы
+    </div>
+    <div class="form-control__input">
+      <mat-radio-group formControlName="isMemberMoscow">
+        <mat-radio-button value="1">Да</mat-radio-button>
+        <mat-radio-button value="0">Нет</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <!-- Инновационная компания -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Инновационная компания
+    </div>
+    <div class="form-control__input">
+      <mat-radio-group formControlName="isInnovation">
+        <mat-radio-button value="1">Да</mat-radio-button>
+        <mat-radio-button value="0">Нет</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <!-- Опубликован на Навигаторе по стартап-экосистеме Москвы  -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Опубликован на Навигаторе по стартап-экосистеме Москвы
+    </div>
+    <div class="form-control__input">
+      <mat-radio-group formControlName="isPublished">
+        <mat-radio-button value="1">Да</mat-radio-button>
+        <mat-radio-button value="0">Нет</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <!-- Организация аккредитована на Бирже контрактного производства -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Организация аккредитована на Бирже контрактного производства
+    </div>
+    <div class="form-control__input">
+      <mat-radio-group formControlName="isAccreditated">
+        <mat-radio-button value="1">Да</mat-radio-button>
+        <mat-radio-button value="0">Нет</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <!-- Стартап -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Стартап
+    </div>
+    <div class="form-control__input">
+      <mat-radio-group formControlName="isStatup">
+        <mat-radio-button value="1">Да</mat-radio-button>
+        <mat-radio-button value="0">Нет</mat-radio-button>
+      </mat-radio-group>
     </div>
   </div>
   <div class="full-width">

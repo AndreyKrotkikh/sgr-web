@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormService } from 'src/app/public/shared/services/form.service';
 import { StepperFormInterface } from 'src/app/public/shared/types/common/stepper-form.interface';
@@ -6,7 +7,8 @@ import { StepperFormInterface } from 'src/app/public/shared/types/common/stepper
   selector: 'app-stepper-actions',
   template: `
     <div class="actions">
-      <button type="button" (click)="prevStep()" *ngIf="getIsBackAvaible()">
+      <button type="button" (click)="cancel()">Отмена</button>
+      <button type="button" (click)="prevStep()" [disabled]="!getIsBackAvaible()">
         Назад
       </button>
       <button
@@ -26,18 +28,13 @@ import { StepperFormInterface } from 'src/app/public/shared/types/common/stepper
         Подобрать
       </button>
     </div>
-    <div class="actions">
-      <button type="button" (click)="cancel()">Отмена</button>
-    </div>
   `,
 })
 export class StepperActionsComponent implements OnInit {
-  @Output()
-  onSubmit = new EventEmitter<any>();
 
   public stepperConfig!: StepperFormInterface;
 
-  constructor(private _formService: FormService) {}
+  constructor(private _formService: FormService, private _router: Router) {}
 
   ngOnInit() {
     this._formService.stepper$.subscribe((stepper) => {
@@ -46,7 +43,7 @@ export class StepperActionsComponent implements OnInit {
   }
 
   public applyForm() {
-    this.onSubmit.emit();
+    this._router.navigate(['/recommendation']);
   }
 
   public getIsApplyAvaible(): boolean {
@@ -89,5 +86,7 @@ export class StepperActionsComponent implements OnInit {
     this.stepperConfig.currentStepIdx++;
   }
 
-  public cancel() {}
+  public cancel(): void {
+    this._router.navigate(['/']);
+  }
 }
