@@ -1,21 +1,27 @@
 import { DropdownInterfaceMilti } from './../../../../shared/types/data/dropdown-interface';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { SGRDataService } from 'src/app/public/shared/services/data.service';
 import { DropdownInterface } from 'src/app/public/shared/types/data/dropdown-interface';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/public/shared/services/form.service';
 import { DetailedFormInterface } from 'src/app/public/shared/types/common/detailed-form.interface';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-step-one',
   templateUrl: './step-one.component.html',
 })
-export class StepOneComponent implements OnInit {
+export class StepOneComponent implements OnInit, AfterViewInit {
+  private readonly RELOAD_TOP_SCROLL_POSITION = 100;
+  @ViewChild('ocvdSelect') selectOcvd!: MatSelect;
+
   // Form
   public stepOneForm!: FormGroup;
 
   public stageList: DropdownInterfaceMilti[] = [];
   public ocvdList: DropdownInterfaceMilti[] = [];
+  public viewOcvdList: DropdownInterfaceMilti[] = [];
+
   public servicesList: DropdownInterfaceMilti[] = [];
   public marketList: DropdownInterfaceMilti[] = [];
 
@@ -35,8 +41,25 @@ export class StepOneComponent implements OnInit {
     this.formUpdate();
   }
 
+  ngAfterViewInit() {
+    this.selectOcvd.openedChange.subscribe(() => {
+      this.registerPanelScrollEvent();
+    });
+  }
+
   onItemSelect(item: any) {
     console.log(item);
+  }
+
+  public onKey(target: any) {
+    console.log('Search result: ', this.search(target.value));
+  }
+
+  public search(value: string) {
+    let filter = value.toLowerCase();
+    return this.ocvdList.filter((ocvd) =>
+      ocvd.itemName.toLowerCase().startsWith(filter)
+    );
   }
 
   private formUpdate() {
@@ -58,6 +81,19 @@ export class StepOneComponent implements OnInit {
     });
   }
 
+  private registerPanelScrollEvent() {
+    const panel = this.selectOcvd.panel.nativeElement;
+    panel.addEventListener('scroll', (event: any) =>
+      this.loadAllOnScroll(event)
+    );
+  }
+
+  private loadAllOnScroll(event: any) {
+    if (event.target.scrollTop > this.RELOAD_TOP_SCROLL_POSITION) {
+      this.viewOcvdList = this.ocvdList;
+    }
+  }
+
   private initValue(): void {
     this._dataService.getOCVDList().subscribe((resp) => {
       this.ocvdList = resp.data.map((x: { group: string; name: string }) => {
@@ -66,7 +102,9 @@ export class StepOneComponent implements OnInit {
           itemName: `${x.group} ${x.name}`,
         };
       });
+      this.viewOcvdList = [...this.ocvdList.slice(0, 10)];
     });
+
     this.marketList = this._dataService.marketList.map((x, index) => {
       return {
         id: index,
