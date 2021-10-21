@@ -61,25 +61,25 @@ export class StepThreeComponent implements OnInit {
 
     // ============== SET CURRENT FORM ============================= //
     this.stepThreeForm = this._formBuilder.group({
-      isExporter: this._stepperForm.isNew
-        ? ''
-        : this._stepperForm.form.isExporter,
-      isSkolkovo: this._stepperForm.isNew
-        ? 0
-        : this._stepperForm.form.isSkolkovo,
-      isMemberMoscow: this._stepperForm.isNew
-        ? ''
-        : this._stepperForm.form.isMemberMoscow,
-      isInnovation: this._stepperForm.isNew
-        ? ''
-        : this._stepperForm.form.isInnovation,
-      isPublished: this._stepperForm.isNew
-        ? []
-        : this._stepperForm.form.isPublished,
-      isAccreditated: this._stepperForm.isNew
-        ? 0
-        : this._stepperForm.form.isAccreditated,
-      isStatup: this._stepperForm.isNew ? 0 : this._stepperForm.form.isStatup,
+      isExporter: '',
+      isSkolkovo: 0,
+      isMemberMoscow: '',
+      isInnovation: '',
+      isPublished: [],
+      isAccreditated: 0,
+      isStatup: 0,
     });
+
+    if (!this._stepperForm?.isNew) {
+      this.stepThreeForm.patchValue({
+        isExporter: this._stepperForm?.form?.isExporter,
+        isSkolkovo: this._stepperForm?.form?.isSkolkovo,
+        isMemberMoscow: this._stepperForm?.form?.isMemberMoscow,
+        isInnovation: this._stepperForm?.form?.isInnovation,
+        isPublished: this._stepperForm?.form?.isPublished,
+        isAccreditated: this._stepperForm?.form?.isAccreditated,
+        isStatup: this._stepperForm?.form?.isStatup,
+      });
+    }
   }
 }

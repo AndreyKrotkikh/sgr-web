@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   selector: 'app-greeting-card',
   styleUrls: ['./greeting-card.component.scss'],
   template: `
-    <div class="greetings__card" (click)="navigateToPage()">
+    <div class="greetings__card">
       <div class="greetings__card-img">
         <img [src]=img />
       </div>

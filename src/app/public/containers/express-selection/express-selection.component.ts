@@ -8,6 +8,11 @@ import { FormService } from '../../shared/services/form.service';
 import { LayoutService } from '../../shared/services/layout.service';
 import { SGRDataService } from '../../shared/services/data.service';
 import { Router } from '@angular/router';
+import {
+  ExpressFormInnerInterface,
+  ExpressFormInterface,
+} from '../../shared/types/common/express-form.interface';
+import { LocalStorageService } from '../../shared/services/localstorage.service';
 
 @Component({
   selector: 'app-express-selection',
@@ -18,9 +23,12 @@ export class ExpressSelectionComponent implements OnInit {
   // Form
   public expressForm!: FormGroup;
 
+  private _stepperForm!: ExpressFormInterface;
+
   // Dropdown data
   public marketList: DropdownInterfaceMilti[] = [];
   public technologiesList: DropdownInterfaceMilti[] = [];
+  public stageList: DropdownInterfaceMilti[] = [];
   public servicesList: DropdownInterfaceMilti[] = [];
   public businessModelList: DropdownInterfaceMilti[] = [];
 
@@ -31,6 +39,7 @@ export class ExpressSelectionComponent implements OnInit {
     private _router: Router,
     private _layoutService: LayoutService,
     private _dataService: SGRDataService,
+    private _localstorageService: LocalStorageService,
     private _formService: FormService
   ) {}
 
@@ -39,8 +48,8 @@ export class ExpressSelectionComponent implements OnInit {
       title: 'Экспресс-подбор',
       subTitle: 'Быстрый подбор сервисов, за несколько кликов',
     });
-    this._formService.resetAll();
     this.initValue();
+    this.formUpdate();
   }
 
   public cancel(): void {
@@ -49,15 +58,37 @@ export class ExpressSelectionComponent implements OnInit {
 
   onSubmit() {
     console.log(this.expressForm.value);
-    let mappedData = this.expressForm.value;
-    this._formService.setExpressForm({ type: 'express', form: mappedData });
     this._router.navigate(['/recommendation']);
   }
 
+  private formUpdate() {
+    this.expressForm.valueChanges.subscribe((changedForm) => {
+      const updatedForm: ExpressFormInterface = {
+        type: 'express',
+        isNew: false,
+        form: {
+          businessModel: changedForm.businessModel,
+          market: changedForm.market,
+          dateCreation: changedForm.creationDate,
+          service: changedForm.services,
+          technologies: changedForm.technologies,
+          stage: changedForm.companyStage
+        },
+      };
+      this._localstorageService.setExpressDraft(updatedForm);
+      this._formService.setExpressForm(updatedForm);
+    });
+  }
+
   private initValue(): void {
+    this._formService.getForm().subscribe((form) => {
+      this._stepperForm = form;
+    });
+
     this.expressForm = this._formBuilder.group({
       market: [],
       creationDate: '',
+      companyStage: '',
       technologies: [],
       services: '',
       businessModel: [],
@@ -85,6 +116,12 @@ export class ExpressSelectionComponent implements OnInit {
         };
       }
     );
+    this.stageList = this._dataService.stateCompanyList.map((x, index) => {
+      return {
+        id: index,
+        itemName: x.title,
+      };
+    });
     this.servicesList = this._dataService.serviceList.map((x, index) => {
       return {
         id: index,
@@ -96,6 +133,17 @@ export class ExpressSelectionComponent implements OnInit {
       text: 'Выберите',
       enableSearchFilter: false,
     };
+
+    if (!this._stepperForm?.isNew) {
+      this.expressForm.patchValue({
+        market: this._stepperForm?.form?.market,
+        creationDate: this._stepperForm?.form?.dateCreation,
+        technologies: this._stepperForm?.form?.technologies,
+        services: this._stepperForm?.form?.service,
+        businessModel: this._stepperForm?.form?.businessModel,
+        companyStage: this._stepperForm?.form?.stage,
+      });
+    }
   }
 
   get market() {

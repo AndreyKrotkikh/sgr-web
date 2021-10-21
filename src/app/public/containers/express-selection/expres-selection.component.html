@@ -55,6 +55,27 @@
     </div>
   </div>
 
+  <!-- Стадия развития компании -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Стадия развития компании
+    </div>
+    <div class="form-control__input">
+      <mat-form-field appearance="fill">
+        <!-- <mat-label>Выберите</mat-label> -->
+        <mat-select formControlName="companyStage" disableRipple>
+          <mat-option *ngFor="let stage of stageList" [value]="stage.itemName">{{stage.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-control__description">
+      Можно выбрать несколько вариантов
+    </div>
+    <div class="form-control__error">
+      Это обязательное поле
+    </div>
+  </div>
+
   <!-- Предоставляемые Услуги от Акселератора -->
   <div class="form-control">
     <div class="form-control__label">

@@ -124,24 +124,23 @@ export class StepTwoComponent implements OnInit {
 
     // ============== SET CURRENT FORM ============================= //
     this.stepTwoForm = this._formBuilder.group({
-      companyTechnology: this._stepperForm.isNew
-        ? ''
-        : this._stepperForm.form.companyTechnology,
-      isCompanyMSP: this._stepperForm.isNew
-        ? 0
-        : this._stepperForm.form.isCompanyMSP,
-      technologies: this._stepperForm.isNew
-        ? ''
-        : this._stepperForm.form.technologies,
-      mspCategory: this._stepperForm.isNew
-        ? ''
-        : this._stepperForm.form.mspCategory,
-      businessModel: this._stepperForm.isNew
-        ? []
-        : this._stepperForm.form.businessModel,
-      residentList: this._stepperForm.isNew
-        ? 0
-        : this._stepperForm.form.residentList,
+      companyTechnology: '',
+      isCompanyMSP: 0,
+      technologies: '',
+      mspCategory: '',
+      businessModel: [],
+      residentList: [],
     });
+
+    if (!this._stepperForm?.isNew) {
+      this.stepTwoForm.patchValue({
+        companyTechnology: this._stepperForm?.form?.companyTechnology,
+        isCompanyMSP: this._stepperForm?.form?.isCompanyMSP,
+        technologies: this._stepperForm?.form?.technologies,
+        mspCategory: this._stepperForm?.form?.mspCategory,
+        businessModel: this._stepperForm?.form?.businessModel,
+        residentList: this._stepperForm?.form?.residentList,
+      });
+    }
   }
 }

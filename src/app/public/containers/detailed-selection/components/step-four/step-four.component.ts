@@ -46,14 +46,14 @@ export class StepFourComponent implements OnInit {
     this.productList.removeAt(index);
   }
 
-  public addPatent(): void {
+  public addPatent(init = ''): void {
     this.patentList = this.stepFourForm.get('patentList') as FormArray;
-    this.patentList.push(this.createPatentItem());
+    this.patentList.push(this.createPatentItem(init));
   }
 
-  public addProduct(): void {
+  public addProduct(init = ''): void {
     this.productList = this.stepFourForm.get('productList') as FormArray;
-    this.productList.push(this.createProductItem());
+    this.productList.push(this.createProductItem(init));
   }
 
   private formUpdate() {
@@ -64,7 +64,7 @@ export class StepFourComponent implements OnInit {
         form: {
           ...this._stepperForm.form,
           patentList: changedForm.patentList,
-          productList: changedForm.productList
+          productList: changedForm.productList,
         },
       };
 
@@ -73,15 +73,15 @@ export class StepFourComponent implements OnInit {
     });
   }
 
-  private createPatentItem(): FormGroup {
+  private createPatentItem(init = ''): FormGroup {
     return this._formBuilder.group({
-      name: '',
+      name: init,
     });
   }
 
-  private createProductItem(): FormGroup {
+  private createProductItem(init = ''): FormGroup {
     return this._formBuilder.group({
-      name: '',
+      name: init,
     });
   }
 
@@ -93,12 +93,17 @@ export class StepFourComponent implements OnInit {
 
     // ============== SET CURRENT FORM ============================= //
     this.stepFourForm = this._formBuilder.group({
-      patentList: this._stepperForm.isNew
-        ? this._formBuilder.array([])
-        : this._formBuilder.array(this._stepperForm.form.patentList),
-      productList: this._stepperForm.isNew
-        ? this._formBuilder.array([])
-        : this._formBuilder.array(this._stepperForm.form.productList),
+      patentList: this._formBuilder.array([]),
+      productList: this._formBuilder.array([]),
     });
+
+    if (!this._stepperForm?.isNew) {
+      this._stepperForm?.form?.patentList.forEach(patent => {
+          this.addPatent(patent.name)
+      });
+      this._stepperForm?.form?.productList.forEach(product => {
+        this.addProduct(product.name)
+    });
+    }
   }
 }

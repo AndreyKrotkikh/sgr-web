@@ -1,14 +1,21 @@
+import {
+  ExpressFormInnerInterface,
+  ExpressFormInterface,
+} from './../types/common/express-form.interface';
 import { formatDate } from '@angular/common';
 import { ExpressFormRequestInterface } from '../types/express-form-request.interface';
 
 export class FormConverter {
-  public static convertExpressForm(form: any): ExpressFormRequestInterface {
-    console.log('EXPRESSS FORM: ', form)
+  public static convertExpressForm(
+    form: ExpressFormInnerInterface
+  ): ExpressFormRequestInterface {
+    console.log('EXPRESSS FORM: ', form);
     const b_model = form.businessModel;
-    const found_date = formatDate(form.creationDate, 'yyyy-MM-dd', 'en-US');
+    const found_date = new Array(formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US'));
     const market_type = form.market;
-    const service = form.services;
+    const service = new Array(form.service);
     const tech_type = form.technologies;
+    const evo_stage = new Array(form.stage);
 
     let formRequest: ExpressFormRequestInterface = {
       start_up: {
@@ -17,6 +24,7 @@ export class FormConverter {
         market_type: market_type,
         service: service,
         tech_type: tech_type,
+        evo_stage: evo_stage
       },
     };
     console.log('CONVERTED', formRequest);

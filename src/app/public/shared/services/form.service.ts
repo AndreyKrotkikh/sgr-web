@@ -21,6 +21,22 @@ export class FormService {
     this._form = null;
   }
 
+  public initExpressForm() {
+    const initExpressForm: ExpressFormInterface = {
+      type: 'express',
+      isNew: true,
+      form: {
+        businessModel: [],
+        dateCreation: '',
+        market: [],
+        service: '',
+        technologies: [],
+        stage: ''
+      },
+    };
+    this._form = initExpressForm;
+  }
+
   public initDetailedForm() {
     const initDetailedForm: DetailedFormInterface = {
       type: 'detailed',
@@ -65,5 +81,4 @@ export class FormService {
     console.log('Form getted: ', this._form);
     return of<any>(this._form);
   }
-
 }
