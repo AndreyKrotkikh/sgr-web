@@ -23,15 +23,6 @@
   padding-left: calc(var(--nav-width) + 1rem);
 }
 
-/* ===== MEDIA QUERIES=====*/
-@media screen and (min-width: 768px) {
-
-  /*Add padding body desktop*/
-  .main-pd {
-    padding-left: calc(var(--nav-width) + 188px);
-  }
-}
-
 /* ===== MATERIAL RESTYLE =====*/
 ::ng-deep {
 
@@ -46,6 +37,7 @@
     width: 100%;
     font-size: 14px;
     line-height: 18px;
+
 
     .mat-form-field-flex {
       padding: 14px 16px !important;
@@ -70,7 +62,15 @@
     .mat-select-arrow-wrapper {
       display: unset !important;
     }
+
+    &.ng-invalid {
+      .mat-form-field-flex {
+        box-shadow: 0px 0px 8px #FF4040, 0px 0px 8px #FF4040;
+      }
+    }
   }
+
+
 
   .mat-select-panel {
     .mat-option {
@@ -126,7 +126,7 @@
     display: none !important;
   }
 
-  // -- accordion
+  // ------------- ACCORDION ----------------- //
   .mat-expansion-panel {
     background: #F2F3F6 !important;
     box-shadow: -4px -4px 8px 2px #FFFFFF, 4px 4px 8px 2px rgba(36, 49, 74, 0.26) !important;
@@ -137,5 +137,72 @@
       line-height: 29px;
       color: #1D2435;
     }
+  }
+
+  // ------------- MODAL DESKTOP ----------------- //
+  .mat-dialog-container {
+    background: #F2F3F6 !important;
+    border-radius: 16px !important;
+
+    .mat-dialog-content {
+      padding: 0 50px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h2 {
+        font-size: 2.1rem;
+        text-align: center;
+        line-height: 41px;
+        letter-spacing: 0.05em;
+        font-family: TT Firs;
+        color: #1D2435;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 23px;
+        text-align: center;
+        color: #6D798F;
+        margin-bottom: 40px;
+      }
+
+      .actions {
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+    }
+  }
+
+  /* ===== MOBILE =====*/
+  @media screen and (max-width: 768px) {
+    .mat-dialog-container {
+      .mat-dialog-content {
+        h2 {
+        }
+        p {
+          margin-bottom: 20px;
+        }
+
+        .actions {
+        }
+      }
+    }
+  }
+
+}
+
+/* ===== MEDIA QUERIES=====*/
+@media screen and (min-width: 768px) {
+
+  /*Add padding body desktop*/
+  .main-pd {
+    padding-left: calc(var(--nav-width) + 188px);
   }
 }

@@ -2,9 +2,12 @@ import { DropdownInterfaceMilti } from './../../../../shared/types/data/dropdown
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { SGRDataService } from 'src/app/public/shared/services/data.service';
 import { DropdownInterface } from 'src/app/public/shared/types/data/dropdown-interface';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormService } from 'src/app/public/shared/services/form.service';
-import { DetailedFormInterface } from 'src/app/public/shared/types/common/detailed-form.interface';
+import {
+  DetailedFormInterface,
+  IsInvalidStateInterface,
+} from 'src/app/public/shared/types/common/detailed-form.interface';
 import { MatSelect } from '@angular/material/select';
 import { LocalStorageService } from 'src/app/public/shared/services/localstorage.service';
 
@@ -66,11 +69,13 @@ export class StepOneComponent implements OnInit, AfterViewInit {
 
   private formUpdate() {
     this.stepOneForm.valueChanges.subscribe((changedForm) => {
+      this._formService.setStepperValidState(this.stepOneForm.invalid)
+
       const updatedForm: DetailedFormInterface = {
         ...this._stepperForm,
         isNew: false,
         form: {
-          ...this._stepperForm.form,
+          ...this._stepperForm?.form,
           ocvd: changedForm.ocvd,
           dateCreation: changedForm.creationDate,
           service: changedForm.services,
@@ -144,7 +149,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
 
     this.stepOneForm = this._formBuilder.group({
       ocvd: '',
-      creationDate: '',
+      creationDate: ['', [Validators.required]],
       services: '',
       companyStage: '',
       market: [],
@@ -159,5 +164,9 @@ export class StepOneComponent implements OnInit, AfterViewInit {
         ocvd: this._stepperForm?.form?.ocvd,
       });
     }
+  }
+
+  get creationDate() {
+    return this.stepOneForm.get('creationDate');
   }
 }

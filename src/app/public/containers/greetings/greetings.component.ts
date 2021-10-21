@@ -33,8 +33,8 @@ export class GreetingsComponent implements OnInit {
   }
 
   onExpress() {
-    this._expressFormDraft = this._localstorageService.getDetailedDraft();
-    if (this._detailedFormDraft) {
+    this._expressFormDraft = this._localstorageService.getExpressDraft();
+    if (this._expressFormDraft) {
       this.openExpressDialog();
     } else {
       this._router.navigate(['/express']);
@@ -51,7 +51,10 @@ export class GreetingsComponent implements OnInit {
   }
 
   openDetailedDialog() {
-    const dialogRef = this.dialog.open(DraftModalDialog);
+    const dialogRef = this.dialog.open(DraftModalDialog, {
+      height: '390px',
+      width: '485px',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -69,7 +72,10 @@ export class GreetingsComponent implements OnInit {
   }
 
   openExpressDialog() {
-    const dialogRef = this.dialog.open(DraftModalDialog);
+    const dialogRef = this.dialog.open(DraftModalDialog, {
+      height: '390px',
+      width: '485px',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

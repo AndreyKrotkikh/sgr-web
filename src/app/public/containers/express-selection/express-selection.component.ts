@@ -3,7 +3,7 @@ import {
   DropdownInterfaceMilti,
 } from './../../shared/types/data/dropdown-interface';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormService } from '../../shared/services/form.service';
 import { LayoutService } from '../../shared/services/layout.service';
 import { SGRDataService } from '../../shared/services/data.service';
@@ -87,10 +87,10 @@ export class ExpressSelectionComponent implements OnInit {
 
     this.expressForm = this._formBuilder.group({
       market: [],
-      creationDate: '',
+      creationDate: ['', [Validators.required]],
       companyStage: '',
       technologies: [],
-      services: '',
+      services: ['', [Validators.required]],
       businessModel: [],
     });
 

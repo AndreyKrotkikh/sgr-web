@@ -75,9 +75,9 @@ export class SGRDataService {
     {
       title: 'Консалтинг',
     },
-    {
-      title: 'NoneTechStackType',
-    },
+    // {
+    //   title: 'NoneTechStackType',
+    // },
     {
       title: 'Спорт',
     },
@@ -188,9 +188,9 @@ export class SGRDataService {
     {
       title: 'Мedia & Communication',
     },
-    {
-      title: 'NoneType',
-    },
+    // {
+    //   title: 'NoneType',
+    // },
     {
       title: 'AgroTech',
     },
@@ -276,9 +276,9 @@ export class SGRDataService {
     {
       title: 'Компьютерное зрение',
     },
-    {
-      title: 'NoneTechType',
-    },
+    // {
+    //   title: 'NoneTechType',
+    // },
     {
       title: 'Блокчейн',
     },
@@ -319,9 +319,9 @@ export class SGRDataService {
     {
       title: 'B2C',
     },
-    {
-      title: 'NoneBusinessType',
-    },
+    // {
+    //   title: 'NoneBusinessType',
+    // },
     {
       title: 'B2B2C',
     },

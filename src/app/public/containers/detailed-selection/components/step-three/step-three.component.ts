@@ -37,7 +37,7 @@ export class StepThreeComponent implements OnInit {
         ...this._stepperForm,
         isNew: false,
         form: {
-          ...this._stepperForm.form,
+          ...this._stepperForm?.form,
           isExporter: changedForm.isExporter,
           isSkolkovo: changedForm.isSkolkovo,
           isMemberMoscow: changedForm.isMemberMoscow,

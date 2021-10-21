@@ -62,7 +62,7 @@ export class StepFourComponent implements OnInit {
         ...this._stepperForm,
         isNew: false,
         form: {
-          ...this._stepperForm.form,
+          ...this._stepperForm?.form,
           patentList: changedForm.patentList,
           productList: changedForm.productList,
         },
@@ -98,10 +98,10 @@ export class StepFourComponent implements OnInit {
     });
 
     if (!this._stepperForm?.isNew) {
-      this._stepperForm?.form?.patentList.forEach(patent => {
+      this._stepperForm?.form?.patentList?.forEach(patent => {
           this.addPatent(patent.name)
       });
-      this._stepperForm?.form?.productList.forEach(product => {
+      this._stepperForm?.form?.productList?.forEach(product => {
         this.addProduct(product.name)
     });
     }

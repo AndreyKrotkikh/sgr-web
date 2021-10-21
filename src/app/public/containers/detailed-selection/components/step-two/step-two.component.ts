@@ -52,7 +52,7 @@ export class StepTwoComponent implements OnInit {
         ...this._stepperForm,
         isNew: false,
         form: {
-          ...this._stepperForm.form,
+          ...this._stepperForm?.form,
           companyTechnology: changedForm.companyTechnology,
           isCompanyMSP: changedForm.isCompanyMSP,
           technologies: changedForm.technologies,

@@ -12,6 +12,7 @@ export class FormService {
     new BehaviorSubject<StepperFormInterface>({
       currentStepIdx: 0,
       currentStepName: '1',
+      currentIsInvalid: true,
       maxSteps: 4,
     });
 
@@ -19,6 +20,10 @@ export class FormService {
 
   public resetAll() {
     this._form = null;
+  }
+
+  public setStepperValidState(validState: boolean) {
+    this.stepper$.next({...this.stepper$.value, currentIsInvalid: validState})
   }
 
   public initExpressForm() {
@@ -31,7 +36,7 @@ export class FormService {
         market: [],
         service: '',
         technologies: [],
-        stage: ''
+        stage: '',
       },
     };
     this._form = initExpressForm;
@@ -79,6 +84,6 @@ export class FormService {
 
   public getForm(): Observable<any> {
     console.log('Form getted: ', this._form);
-    return of<any>(this._form);
+    return of(this._form);
   }
 }

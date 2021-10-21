@@ -22,4 +22,9 @@ export class RecommendationCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
+  public getScore(score: number): string {
+    const percent = +score.toFixed(2) * 100;
+    return `${percent}%`
+  }
 }

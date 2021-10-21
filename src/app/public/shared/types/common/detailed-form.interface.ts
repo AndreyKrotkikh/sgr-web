@@ -4,6 +4,11 @@ export interface DetailedFormInterface {
   form: DetailedFormInnerInterface;
 }
 
+export interface IsInvalidStateInterface {
+  stateIdx: number;
+  isInvalid: boolean;
+}
+
 export interface DymanicFormInterface {
   name: string;
 }

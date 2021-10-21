@@ -14,9 +14,6 @@
     <div class="form-control__description">
       Можно выбрать несколько вариантов
     </div>
-    <div class="form-control__error">
-      Это обязательное поле
-    </div>
   </div>
 
   <!-- ДАТА ОСНОВАНИЯ -->
@@ -25,13 +22,13 @@
       Дата основания
     </div>
     <div class="form-control__input">
-      <input type="date" formControlName="creationDate">
+      <input type="date" formControlName="creationDate" required>
+    </div>
+    <div class="form-control__error" *ngIf="creationDate?.status === 'INVALID'">
+      Это обязательное поле
     </div>
     <div class="form-control__description">
-      Выберите дату основания
-    </div>
-    <div class="form-control__error">
-      Это обязательное поле
+      Выберите дату основания или дату начала работы над проектом.
     </div>
   </div>
 
@@ -49,9 +46,6 @@
     </div>
     <div class="form-control__description">
       Можно выбрать несколько вариантов
-    </div>
-    <div class="form-control__error">
-      Это обязательное поле
     </div>
   </div>
 
@@ -71,9 +65,6 @@
     <div class="form-control__description">
       Можно выбрать несколько вариантов
     </div>
-    <div class="form-control__error">
-      Это обязательное поле
-    </div>
   </div>
 
   <!-- Предоставляемые Услуги от Акселератора -->
@@ -84,15 +75,16 @@
     <div class="form-control__input">
       <mat-form-field appearance="fill">
         <mat-select formControlName="services" disableRipple>
-          <mat-option *ngFor="let serviceItem of servicesList" [value]="serviceItem.itemName">{{serviceItem.itemName}}</mat-option>
+          <mat-option *ngFor="let serviceItem of servicesList" [value]="serviceItem.itemName">{{serviceItem.itemName}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
+    <div class="form-control__error" *ngIf="services?.status === 'INVALID'">
+      Это обязательное поле
+    </div>
     <div class="form-control__description">
       Выберите рынок
-    </div>
-    <div class="form-control__error">
-      Это обязательное поле
     </div>
   </div>
 
@@ -104,22 +96,20 @@
     <div class="form-control__input">
       <mat-form-field appearance="fill">
         <mat-select formControlName="businessModel" multiple disableRipple>
-          <mat-option *ngFor="let business of businessModelList" [value]="business.itemName">{{business.itemName}}</mat-option>
+          <mat-option *ngFor="let business of businessModelList" [value]="business.itemName">{{business.itemName}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="form-control__description">
       Можно выбрать несколько вариантов
     </div>
-    <div class="form-control__error">
-      Это обязательное поле
-    </div>
   </div>
 
   <div class="full-width">
     <div class="actions">
-      <button (click)="cancel()" >Отмена</button>
-      <button type="submit" class="button__accent">Подобрать</button>
+      <button (click)="cancel()">Отмена</button>
+      <button type="submit" class="button__accent" [disabled]="expressForm.invalid">Подобрать</button>
     </div>
   </div>
 </form>

@@ -2,18 +2,24 @@ import { Router } from '@angular/router';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormService } from 'src/app/public/shared/services/form.service';
 import { StepperFormInterface } from 'src/app/public/shared/types/common/stepper-form.interface';
+import { DetailedFormInterface } from 'src/app/public/shared/types/common/detailed-form.interface';
 
 @Component({
   selector: 'app-stepper-actions',
   template: `
     <div class="actions">
       <button type="button" (click)="cancel()">Отмена</button>
-      <button type="button" (click)="prevStep()" [disabled]="!getIsBackAvaible()">
+      <button
+        type="button"
+        (click)="prevStep()"
+        [disabled]="!getIsBackAvaible()"
+      >
         Назад
       </button>
       <button
         type="button"
         class="button__accent"
+        [disabled]="stepperConfig.currentIsInvalid"
         (click)="nextStep()"
         *ngIf="getIsNextAvaible()"
       >
@@ -22,16 +28,19 @@ import { StepperFormInterface } from 'src/app/public/shared/types/common/stepper
       <button
         type="button"
         (click)="applyForm()"
+        [disabled]="stepperConfig.currentIsInvalid"
         class="button__accent"
         *ngIf="getIsApplyAvaible()"
       >
         Подобрать
       </button>
     </div>
+    <p class="warning-text" *ngIf="stepperConfig.currentIsInvalid">
+      Чтобы продолжить - заполните обязательные поля.
+    </p>
   `,
 })
 export class StepperActionsComponent implements OnInit {
-
   public stepperConfig!: StepperFormInterface;
 
   constructor(private _formService: FormService, private _router: Router) {}
@@ -40,6 +49,7 @@ export class StepperActionsComponent implements OnInit {
     this._formService.stepper$.subscribe((stepper) => {
       this.stepperConfig = stepper;
     });
+
   }
 
   public applyForm() {
