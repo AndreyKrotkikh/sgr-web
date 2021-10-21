@@ -24,7 +24,7 @@ export class RecommendationCardComponent implements OnInit {
   ngOnInit() { }
 
   public getScore(score: number): string {
-    const percent = +score.toFixed(2) * 100;
-    return `${percent}%`
+    const percent = score * 100;
+    return `${percent.toFixed(2)}%`
   }
 }

@@ -191,7 +191,7 @@
   }
 
   &.active-link {
-    background: #E1E4F4;
+    font-weight: bold;
   }
 }
 
@@ -204,9 +204,13 @@
 }
 
 .nav__link:hover {
-  color: var(--white-color);
+  color: #1F5EFF;
+  transition: .3s;
 }
 
+.active-link.nav__link {
+  font-weight: bold;
+}
 .nav__icon {
   font-size: 1.25rem;
 }

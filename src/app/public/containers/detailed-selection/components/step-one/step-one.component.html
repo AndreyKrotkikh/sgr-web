@@ -7,7 +7,7 @@
     <div class="form-control__input">
       <mat-form-field appearance="fill">
         <mat-select formControlName="ocvd" disableRipple #ocvdSelect>
-          <input (keyup)="onKey($event.target)" />
+          <!-- <input (keyup)="onKey($event.target)" /> -->
           <mat-option *ngFor="let ocvd of viewOcvdList" [value]="ocvd.itemName">{{ocvd.itemName}}</mat-option>
         </mat-select>
       </mat-form-field>

@@ -58,6 +58,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
 
   public onKey(target: any) {
     console.log('Search result: ', this.search(target.value));
+    this.viewOcvdList = this.search(target.value);
   }
 
   public search(value: string) {
@@ -69,7 +70,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
 
   private formUpdate() {
     this.stepOneForm.valueChanges.subscribe((changedForm) => {
-      this._formService.setStepperValidState(this.stepOneForm.invalid)
+      this._formService.setStepperValidState(this.stepOneForm.invalid);
 
       const updatedForm: DetailedFormInterface = {
         ...this._stepperForm,
@@ -89,10 +90,12 @@ export class StepOneComponent implements OnInit, AfterViewInit {
   }
 
   private registerPanelScrollEvent() {
-    const panel = this.selectOcvd.panel.nativeElement;
-    panel.addEventListener('scroll', (event: any) =>
-      this.loadAllOnScroll(event)
-    );
+    const panel = this.selectOcvd?.panel?.nativeElement;
+    if (panel) {
+      panel.addEventListener('scroll', (event: any) =>
+        this.loadAllOnScroll(event)
+      );
+    }
   }
 
   private loadAllOnScroll(event: any) {

@@ -16,7 +16,7 @@
 }
 
 .recommendation__data {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .recommendation__card {
@@ -60,6 +60,29 @@
   display: flex;
   flex-direction: column;
   gap: 26px;
+  margin-bottom: 40px;
+}
+
+.recommendation__data-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.recommendation__list-restrictions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+
+  .attention {
+    text-align: center;
+  }
 }
 
 .recommendation__title {

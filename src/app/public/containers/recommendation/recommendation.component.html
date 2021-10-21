@@ -25,6 +25,9 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>
+    <div class="recommendation__data-actions" *ngIf="questionnaire">
+      <button class="button__accent" (click)="doNewAnket()">Новая анкета</button>
+    </div>
 
     <ng-container *ngIf="isError; else noErrorTemplate">
       <div class="recommendation__card">
@@ -56,6 +59,15 @@
             <app-recommendation-card [name]="recommendation.name" [type]="recommendation.type"
               [score]="+recommendation.rating"></app-recommendation-card>
           </ng-container>
+          <div class="recommendation__list-restrictions">
+            <div class="attention">
+              Показано 10 из 100 организаций <br>
+              Создайте бесплатный аккаунт, чтобы посмотреть все!
+            </div>
+            <div class="action">
+              <button class="button__accent" (click)="onRegister()">Создать</button>
+            </div>
+          </div>
         </div>
       </ng-template>
     </ng-template>

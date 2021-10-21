@@ -52,6 +52,10 @@ export class RecommendationComponent implements OnInit {
     this._router.navigate(['/']);
   }
 
+  public onRegister() {
+    window.open('https://startupguide.innoagency.ru/', '_blank');
+  }
+
   private _getRecommendation() {
     this.isError = false;
     this.isLoading = true;
@@ -110,14 +114,10 @@ export class RecommendationComponent implements OnInit {
       )
       .subscribe(
         (response) => {
-          console.log('IN SUBSCRIBE');
           this.isLoading = false;
           this.recommendationList = response;
-
-          // improve it, after API update
           const newRecommendationList: ResultInterface[] = response;
           this._localstorageService.setResults(newRecommendationList);
-          console.log('response: ', response);
         },
         (error) => {
           console.log('IN ERROR', error);
