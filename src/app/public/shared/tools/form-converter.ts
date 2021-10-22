@@ -9,7 +9,6 @@ export class FormConverter {
   public static convertExpressForm(
     form: ExpressFormInnerInterface
   ): ExpressFormRequestInterface {
-    console.log('EXPRESSS FORM: ', form);
     const b_model = form.businessModel;
     const found_date = new Array(formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US'));
     const market_type = form.market;
@@ -27,7 +26,6 @@ export class FormConverter {
         evo_stage: evo_stage
       },
     };
-    console.log('CONVERTED', formRequest);
     return formRequest;
   }
 

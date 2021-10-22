@@ -63,17 +63,13 @@ export class RecommendationComponent implements OnInit {
     // Создаем переиспользуемый observable, с логикой запросов - если тип Express - отправляем на аналитику экспресса, иначе в Detailed
     const recommendation$ = this._formService.getForm().pipe(
       switchMap((formObject) => {
-        console.log('FORM: ', formObject);
         if (!formObject) {
-          console.log('NO FORM, ERROR THROW');
           throw 'err_no_form';
         }
 
         this.questionnaire = formObject;
         if (formObject.type === 'express') {
           const requestForm = FormConverter.convertExpressForm(formObject.form);
-
-          console.log('In Express: ', requestForm);
           return this._recommendationService.getExpressRecommendation(
             requestForm
           );

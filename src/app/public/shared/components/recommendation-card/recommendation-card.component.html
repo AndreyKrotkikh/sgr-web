@@ -44,4 +44,56 @@
       {{getScore(score)}}
     </div>
   </div>
+
+  <div class="recommendation-card__mobile">
+    <div class="recommendation-card__mobile-row">
+      <div class="recommendation-card__name">
+        Название
+      </div>
+      <div class="recommendation-card__content-name">
+        {{name}}
+      </div>
+    </div>
+
+    <div class="recommendation-card__mobile-row">
+      <div class="recommendation-card__name">
+        Тип
+      </div>
+      <div class="recommendation-card__content-name">
+        <ng-container [ngSwitch]="type">
+          <ng-container *ngSwitchCase="'engi_centres_services_df'">
+            Инжиниринговый центр
+          </ng-container>
+          <ng-container *ngSwitchCase="'accelerator_services_df'">
+            Акселератор
+          </ng-container>
+          <ng-container *ngSwitchCase="'business_incubs_services_df'">
+            Бизнес инкубатор
+          </ng-container>
+          <ng-container *ngSwitchCase="'institutes_services_df'">
+            Институт развития
+          </ng-container>
+          <ng-container *ngSwitchCase="'pilot_services_df'">
+            Площадка пилотного тестирования
+          </ng-container>
+          <ng-container *ngSwitchCase="'venture_fond_services_df'">
+            Венчурный фонд
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            -
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="recommendation-card__mobile-row">
+      <div class="recommendation-card__name">
+        Совпадения с Требованиями
+      </div>
+      <div class="recommendation-card__content-name">
+        {{getScore(score)}}
+      </div>
+    </div>
+
+  </div>
 </div>

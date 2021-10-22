@@ -28,7 +28,6 @@ export class StepThreeComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    console.log(item);
   }
 
   private formUpdate() {

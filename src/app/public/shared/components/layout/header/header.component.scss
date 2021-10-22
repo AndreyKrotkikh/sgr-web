@@ -30,6 +30,11 @@
   text-transform: uppercase;
 }
 
+.mobile__search,
+.mobile__logo {
+  display: none;
+}
+
 
 /*===== NAV =====*/
 .l-navbar {
@@ -103,44 +108,6 @@
   background-color: #E2EBF9;
 }
 
-// Mobile
-// .nav__expand {
-//   position: absolute;
-//   width: 100%;
-//   display: flex;
-//   align-items: flex-end;
-//   justify-content: center;
-//   top: 220px;
-//   height: 130px;
-//   background: linear-gradient(360deg, #FFFFFF 32.67%, rgba(255, 255, 255, 0) 100%);
-
-
-//   .nav__expand-title {
-//     color: (var(--first-color));
-//   }
-//   .nav__expand-pit {
-//     position: relative;
-
-//     .nav__expand-action {
-//       position: absolute;
-//       img {
-//         fill: black;
-//       }
-//     }
-//     .nav__expand-pit-box-bottom {
-//       position: absolute;
-//       height: 46px;
-//       width: 120px;
-//       left: -44px;
-//       top: -2rem;
-//       img {
-//         width: 120px;
-//       }
-//     }
-//   }
-// }
-
-
 .nav__list-dark {
   padding-top: 24px;
   background-color: var(--body-color-dark);
@@ -211,6 +178,7 @@
 .active-link.nav__link {
   font-weight: bold;
 }
+
 .nav__icon {
   font-size: 1.25rem;
 }
@@ -301,5 +269,84 @@
 
   .header__menu {
     display: none;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 768px) {
+  .l-navbar {
+    display: none;
+  }
+
+  .header {
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+    height: unset;
+
+    .header__menu {
+      display: none;
+    }
+
+    .search-input {
+      display: none;
+    }
+
+    .mobile__logo {
+      display: flex;
+      width: 100%;
+      height: 100px;
+      padding: 30px 0;
+      justify-content: center;
+      background-color: #fff;
+      align-items: center;
+
+      img {
+        width: 198px;
+        height: 40px;
+      }
+    }
+
+    .header__action {
+      width: 100%;
+    }
+
+    .mobile__search {
+      display: block;
+      width: 100%;
+      padding: 10px 16px;
+
+      .mobile__search-wrapper {
+        width: 100%;
+        display: flex;
+        position: relative;
+
+        align-items: center;
+
+        background: #FFFFFF;
+        border: 1px solid #EEEEEE;
+        box-sizing: border-box;
+        border-radius: 7px;
+
+        padding: 11px 30px 13px 16px;
+
+        input {
+          font-size: 16px;
+          line-height: 21px;
+          color: #6E7A99;
+        }
+
+        .search-input__icon {
+          position: absolute;
+          right: 12px;
+          width: 22px;
+          height: 22px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }

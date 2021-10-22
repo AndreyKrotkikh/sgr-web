@@ -43,7 +43,6 @@ export class StepTwoComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    console.log(item);
   }
 
   private formUpdate() {

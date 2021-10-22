@@ -57,3 +57,28 @@
     box-shadow: -4px -6px 12px rgba(255, 255, 255, 0.16), 8px 13px 12px rgba(36, 49, 74, 0.32);
   }
 }
+
+
+/* MOBILE */
+@media only screen and (max-width: 768px) {
+  .greetings__card {
+    flex-direction: column;
+    height: unset;
+
+    .greetings__card-title {
+      text-align: center;
+    }
+
+    .greetings__card-subtitle {
+      text-align: center;
+    }
+
+    .greetings__card-description {
+      text-align: center;
+    }
+
+    .greetings__card-information {
+      text-align: center;
+    }
+  }
+}

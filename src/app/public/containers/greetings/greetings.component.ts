@@ -57,7 +57,6 @@ export class GreetingsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
       if (result === 'edit') {
         this._formService.setDetailedForm(this._detailedFormDraft);
         this._router.navigate(['/detailed']);
@@ -78,7 +77,6 @@ export class GreetingsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
       if (result === 'edit') {
         this._formService.setExpressForm(this._expressFormDraft);
         this._router.navigate(['/express']);

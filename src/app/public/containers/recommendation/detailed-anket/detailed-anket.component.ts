@@ -206,7 +206,6 @@ import { Component, Input, OnInit } from '@angular/core';
         </p>
       </div>
     </div>
-    <hr />
   </div>`,
 })
 export class DetailedAnketComponent implements OnInit {

@@ -1,14 +1,24 @@
 .loading {
   display: flex;
+  min-height: 100vh;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 29px;
-  color: #1D2435;
+
+  .loading__main {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 29px;
+    color: #1D2435;
+  }
+
+  .loading__additional {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #30384b;
+  }
 }
 
 .recommendation-content {
@@ -131,6 +141,21 @@
       color: #1D2435;
       max-width: 200px;
       text-align: right;
+    }
+  }
+}
+
+
+/* MOBILE */
+@media only screen and (max-width: 768px) {
+  .recommendation__card .recommendation__card-actions {
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    gap: 8px;
+
+    button {
+      width: 100%;
     }
   }
 }

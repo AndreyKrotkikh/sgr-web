@@ -3,7 +3,9 @@
   <a href="#" class="header__menu" (click)="toggleNavbar($event)">
     <img src="../../../../../assets/img/icons/burger-icon.svg" alt="" class="nav__icon">
   </a>
-
+  <div class="mobile__logo">
+    <img src="../../../../../../assets/img/logo-full.svg" alt="">
+  </div>
   <div class="header__search search-input ">
     <input type="text" placeholder="Поиск">
     <div class="search-input__icon">
@@ -11,6 +13,14 @@
     </div>
   </div>
   <button (click)="onRegister()" class="header__action">Зарегистрироваться <br> войти</button>
+  <div class="mobile__search">
+    <div class="mobile__search-wrapper">
+      <input type="text" placeholder="Поиск">
+      <div class="search-input__icon">
+        <img src="../../../../../../assets/img/inputs/search-icon.svg" alt="">
+      </div>
+    </div>
+  </div>
 </header>
 
 <div class="l-navbar" id="nav-bar" [ngClass]="{'show':isShow}">

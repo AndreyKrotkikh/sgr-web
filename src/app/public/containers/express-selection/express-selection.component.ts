@@ -57,7 +57,6 @@ export class ExpressSelectionComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.expressForm.value);
     this._router.navigate(['/recommendation']);
   }
 

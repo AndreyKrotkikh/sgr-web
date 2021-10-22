@@ -481,16 +481,4 @@ export class SGRDataService {
     const url = '../../../../assets/data/okvedList.json';
     return this._http.get<any>(url);
   }
-
-  // var options = {
-  //     method: "POST",
-  //     mode: "cors",
-  //
-  //     body:
-  // }
-
-  // fetch(url, options)
-  // .then(response => response.text())
-  // .then(result => console.log(result))
-  // .catch(error => console.log("error", error));
 }

@@ -73,17 +73,14 @@ export class FormService {
   }
 
   public setDetailedForm(detailedForm: DetailedFormInterface) {
-    console.log('Detailed Form Setted: ', detailedForm);
     this._form = detailedForm;
   }
 
   public setExpressForm(expressForm: ExpressFormInterface) {
-    console.log('Express Form Setted: ', expressForm);
     this._form = expressForm;
   }
 
   public getForm(): Observable<any> {
-    console.log('Form getted: ', this._form);
     return of(this._form);
   }
 }

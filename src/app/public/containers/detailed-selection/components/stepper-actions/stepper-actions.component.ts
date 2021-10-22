@@ -6,11 +6,15 @@ import { DetailedFormInterface } from 'src/app/public/shared/types/common/detail
 
 @Component({
   selector: 'app-stepper-actions',
+  styleUrls: ['./stepper-actions.component.scss'],
   template: `
     <div class="actions">
-      <button type="button" (click)="cancel()">Отмена</button>
+      <button type="button" class="mobile__normal-width" (click)="cancel()">
+        Отмена
+      </button>
       <button
         type="button"
+        class="mobile__normal-width"
         (click)="prevStep()"
         [disabled]="!getIsBackAvaible()"
       >
@@ -18,7 +22,7 @@ import { DetailedFormInterface } from 'src/app/public/shared/types/common/detail
       </button>
       <button
         type="button"
-        class="button__accent"
+        class="button__accent mobile__full-width"
         [disabled]="stepperConfig.currentIsInvalid"
         (click)="nextStep()"
         *ngIf="getIsNextAvaible()"
@@ -29,7 +33,7 @@ import { DetailedFormInterface } from 'src/app/public/shared/types/common/detail
         type="button"
         (click)="applyForm()"
         [disabled]="stepperConfig.currentIsInvalid"
-        class="button__accent"
+        class="button__accent mobile__full-width"
         *ngIf="getIsApplyAvaible()"
       >
         Подобрать
@@ -49,7 +53,6 @@ export class StepperActionsComponent implements OnInit {
     this._formService.stepper$.subscribe((stepper) => {
       this.stepperConfig = stepper;
     });
-
   }
 
   public applyForm() {
@@ -84,7 +87,7 @@ export class StepperActionsComponent implements OnInit {
     if (this.stepperConfig.currentStepIdx === 0) {
       return;
     }
-
+    window.scroll(0,0);
     this.stepperConfig.currentStepIdx--;
   }
 
@@ -92,7 +95,7 @@ export class StepperActionsComponent implements OnInit {
     if (this.stepperConfig.currentStepIdx === this.stepperConfig.maxSteps - 1) {
       return;
     }
-
+    window.scroll(0,0);
     this.stepperConfig.currentStepIdx++;
   }
 

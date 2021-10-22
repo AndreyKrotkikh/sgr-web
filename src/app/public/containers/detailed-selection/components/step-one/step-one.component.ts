@@ -53,11 +53,9 @@ export class StepOneComponent implements OnInit, AfterViewInit {
   }
 
   onItemSelect(item: any) {
-    console.log(item);
   }
 
   public onKey(target: any) {
-    console.log('Search result: ', this.search(target.value));
     this.viewOcvdList = this.search(target.value);
   }
 
@@ -69,6 +67,8 @@ export class StepOneComponent implements OnInit, AfterViewInit {
   }
 
   private formUpdate() {
+    this._formService.setStepperValidState(this.stepOneForm.invalid);
+
     this.stepOneForm.valueChanges.subscribe((changedForm) => {
       this._formService.setStepperValidState(this.stepOneForm.invalid);
 

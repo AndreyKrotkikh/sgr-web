@@ -1,7 +1,12 @@
 <ng-container *ngIf="isLoading; else contentTemplate">
   <div class="loading">
     <img src="../../../../assets/img/logo-loading.svg" alt="">
-    Загрузка...
+    <p class="loading__main">
+      Загрузка...
+    </p>
+    <p class="loading__additional">
+      При первом поиске загрузка может занять до 1 минуты, следующие запросы будут быстрее.
+    </p>
   </div>
 </ng-container>
 <ng-template #contentTemplate>

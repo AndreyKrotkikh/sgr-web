@@ -28,18 +28,12 @@ export class UIKitComponent implements OnInit {
   public dropdownSettings = {};
 
   onItemSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
   }
   OnItemDeSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
   }
   onSelectAll(items: any) {
-    console.log(items);
   }
   onDeSelectAll(items: any) {
-    console.log(items);
   }
 
   constructor(private _layoutService: LayoutService) {}

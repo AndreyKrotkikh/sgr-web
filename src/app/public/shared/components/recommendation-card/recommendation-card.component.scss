@@ -8,15 +8,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
 
     .recommendation-card__name {
       width: 300px;
       font-weight: 400;
-      font-size: 18px;
-      line-height: 23px;
+      font-size: 16px;
+      line-height: 21px;
       color: #1D2435;
       text-transform: uppercase;
+
     }
   }
 
@@ -35,11 +36,47 @@
     .recommendation-card__content-name {
       width: 300px;
       font-weight: 500;
-      font-size: 22px;
-      line-height: 29px;
+      font-size: 16px;
+      line-height: 21px;
       color: #1D2435;
     }
   }
 
+  .recommendation-card__mobile {
+    display: none;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 768px) {
+  .recommendation-card {
+
+    .recommendation-card__header,
+    .line,
+    .recommendation-card__content {
+      display: none;
+    }
+
+    .recommendation-card__mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .recommendation-card__mobile-row {
+        .recommendation-card__name {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 18px;
+          color: #1D2435;
+        }
+
+        .recommendation-card__content-name {
+          font-size: 12px;
+          line-height: 16px;
+          color: #1D2435;
+        }
+      }
+    }
+  }
 
 }
