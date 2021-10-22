@@ -366,7 +366,7 @@
     justify-content: center;
     align-items: center;
     transition: .4s;
-    z-index: calc(var(--z-fixed) + 10);
+    z-index: var(--z-fixed);
 
     .bottom__navigation-link {
       display: flex;

@@ -2,7 +2,7 @@
   <!-- РЫНОК -->
   <div class="form-control">
     <div class="form-control__label">
-      Рынок для Инновационных компаний
+      Рынок Вашей компании
     </div>
     <div class="form-control__input">
       <mat-form-field appearance="fill">
@@ -28,14 +28,14 @@
       Это обязательное поле
     </div>
     <div class="form-control__description">
-      Выберите дату основания или дату начала работы над проектом.
+      Выберите дату основания или дату начала работы над проектом
     </div>
   </div>
 
   <!-- Технологии для Инновационных компаний -->
   <div class="form-control">
     <div class="form-control__label">
-      Технологии для Инновационных компаний
+      Технологии Вашей компании
     </div>
     <div class="form-control__input">
       <mat-form-field appearance="fill">
@@ -63,7 +63,7 @@
       </mat-form-field>
     </div>
     <div class="form-control__description">
-      Можно выбрать несколько вариантов
+      Выберите стадию развития Вашей компании
     </div>
   </div>
 
@@ -84,14 +84,14 @@
       Это обязательное поле
     </div>
     <div class="form-control__description">
-      Выберите рынок
+      Выберите нужную услугу
     </div>
   </div>
 
   <!-- Бизнес-модель для Инновационных компаний -->
   <div class="form-control">
     <div class="form-control__label">
-      Бизнес-модель для Инновационных компаний
+      Бизнес-модель Вашей компании
     </div>
     <div class="form-control__input">
       <mat-form-field appearance="fill">
@@ -111,5 +111,8 @@
       <button (click)="cancel()">Отмена</button>
       <button type="submit" class="button__accent" [disabled]="expressForm.invalid">Подобрать</button>
     </div>
+    <p class="warning-text" *ngIf="expressForm.invalid">
+      Чтобы подобрать сервисы - заполните обязательные поля.
+    </p>
   </div>
 </form>

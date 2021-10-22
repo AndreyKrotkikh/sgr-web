@@ -7,35 +7,33 @@
     <div class="form-control__input">
       <mat-form-field appearance="fill">
         <mat-select formControlName="companyTechnology" multiple disableRipple>
-          <mat-option *ngFor="let company of companyTechnologyList" [value]="company.itemName">{{company.itemName}}</mat-option>
+          <mat-option *ngFor="let company of companyTechnologyList" [value]="company.itemName">{{company.itemName}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="form-control__description">
       Выберите ниши, можно выбрать несколько вариантов
     </div>
-    <div class="form-control__error">
-      Это обязательное поле
-    </div>
   </div>
 
-    <!-- Компания является малым или средним предприятием -->
-    <div class="form-control">
-      <div class="form-control__label">
-        Вы являетесь малым или средним предприятием (МСП)
-      </div>
-      <div class="form-control__input">
-        <mat-radio-group formControlName="isCompanyMSP">
-          <mat-radio-button value="1">Да</mat-radio-button>
-          <mat-radio-button value="0">Нет</mat-radio-button>
-        </mat-radio-group>
-      </div>
+  <!-- Компания является малым или средним предприятием -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Вы являетесь малым или средним предприятием (МСП)
     </div>
+    <div class="form-control__input">
+      <mat-radio-group formControlName="isCompanyMSP">
+        <mat-radio-button value="1">Да</mat-radio-button>
+        <mat-radio-button value="0">Нет</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
 
   <!-- Технологии для Инновационных компаний -->
   <div class="form-control">
     <div class="form-control__label">
-      Технологии для Инновационных компаний
+      Технологии Вашей компании
     </div>
     <div class="form-control__input">
       <mat-form-field appearance="fill">
@@ -45,10 +43,7 @@
       </mat-form-field>
     </div>
     <div class="form-control__description">
-      Выберите технологии, можно выбрать несколько вариантов
-    </div>
-    <div class="form-control__error">
-      Это обязательное поле
+      Можно выбрать несколько вариантов
     </div>
   </div>
 
@@ -67,48 +62,41 @@
     <div class="form-control__description">
       Выберите Категорию
     </div>
-    <div class="form-control__error">
-      Это обязательное поле
-    </div>
   </div>
 
   <!-- Бизнес-модель для Инновационных компаний -->
   <div class="form-control">
     <div class="form-control__label">
-      Ваша бизнес-модель
+      Бизнес-модель Вашей компании
     </div>
     <div class="form-control__input">
       <mat-form-field appearance="fill">
         <mat-select formControlName="businessModel" multiple disableRipple>
-          <mat-option *ngFor="let business of businessModelList" [value]="business.itemName">{{business.itemName}}</mat-option>
+          <mat-option *ngFor="let business of businessModelList" [value]="business.itemName">{{business.itemName}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="form-control__description">
-      Выберите Бизнес-модель, можно выбрать несколько вариантов
-    </div>
-    <div class="form-control__error">
-      Это обязательное поле
+      Можно выбрать несколько вариантов
     </div>
   </div>
 
   <!-- Является ли компания резидентом технопарков -->
   <div class="form-control">
     <div class="form-control__label">
-      Является ли компания резидентом технопарков
+      Является ли Ваша компания резидентом технопарков
     </div>
     <div class="form-control__input">
       <mat-form-field appearance="fill">
         <mat-select formControlName="residentList" multiple disableRipple>
-          <mat-option *ngFor="let resident of residentAvaibleList" [value]="resident.itemName">{{resident.itemName}}</mat-option>
+          <mat-option *ngFor="let resident of residentAvaibleList" [value]="resident.itemName">{{resident.itemName}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="form-control__description">
-      Выберите технопарки, можно выбрать несколько вариантов
-    </div>
-    <div class="form-control__error">
-      Это обязательное поле
+      Можно выбрать несколько вариантов
     </div>
   </div>
 
