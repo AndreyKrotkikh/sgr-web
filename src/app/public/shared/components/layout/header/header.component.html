@@ -3,7 +3,7 @@
   <a href="#" class="header__menu" (click)="toggleNavbar($event)">
     <img src="../../../../../assets/img/icons/burger-icon.svg" alt="" class="nav__icon">
   </a>
-  <div class="mobile__logo">
+  <div class="mobile__logo" [routerLink]="['/']">
     <img src="../../../../../../assets/img/logo-full.svg" alt="">
   </div>
   <div class="header__search search-input ">
@@ -38,8 +38,8 @@
     <div class="nav__separator"></div>
     <!-- Core Links -->
     <div class="nav__list">
-      <a href="#" class="nav__link" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-        true}">
+      <a href="#" class="nav__link"  routerLinkActive="active"  [routerLinkActiveOptions]="{exact:
+        true}" >
         <img src="../../../../../assets/img/icons/fly-icon.svg" alt="" class="nav__icon">
         <span class="nav__name" [ngClass]="{'nav__name-show':isShow}">Рекомедательный сервис</span>
       </a>
@@ -115,4 +115,25 @@
       </a>
     </div> -->
   </nav>
+</div>
+
+<div class="bottom__navigation">
+  <!-- <div class="bottom__navigation-link">
+    <div class="bottom__navigation-icon">
+      <img src="../../../../../../assets/img/icons/bottom_menu/express-icon.svg" alt="">
+    </div>
+    <div class="bottom__navigation-name">Экспресс-подбор</div>
+  </div> -->
+  <div class="bottom__navigation-link" [routerLink]="['/']" routerLinkActive="active" >
+    <div class="bottom__navigation-icon">
+      <img src="../../../../../../assets/img/icons/bottom_menu/home-icon.svg" alt="">
+    </div>
+    <div class="bottom__navigation-name">Главная</div>
+  </div>
+  <!-- <div class="bottom__navigation-link">
+    <div class="bottom__navigation-icon">
+      <img src="../../../../../../assets/img/icons/bottom_menu/triangle-icon.svg" alt="">
+    </div>
+    <div class="bottom__navigation-name">Персонализированный подбор</div>
+  </div> -->
 </div>

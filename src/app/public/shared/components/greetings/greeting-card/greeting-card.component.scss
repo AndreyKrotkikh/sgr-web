@@ -58,12 +58,12 @@
   }
 }
 
-
 /* MOBILE */
 @media only screen and (max-width: 768px) {
   .greetings__card {
     flex-direction: column;
     height: unset;
+    max-width: unset;
 
     .greetings__card-title {
       text-align: center;
