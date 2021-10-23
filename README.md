@@ -16,3 +16,6 @@ SGR создается, для получения и предоставлени�
 - Node js
 - Angular 12
 - Angular Material
+
+# Документация
+https://disk.yandex.ru/i/31PgzplmUSNxhA
