@@ -18,7 +18,7 @@ export class DetailedSelectionComponent implements OnInit {
 
   ngOnInit() {
     this._layoutService.setCurrentPageConfig({
-      title: 'Точный подбор',
+      title: 'Персонализированный подбор',
       subTitle: 'Подбор сервисов с высокой точностью',
     });
 
