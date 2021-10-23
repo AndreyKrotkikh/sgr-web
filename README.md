@@ -1,27 +1,21 @@
-# Sgr
+# SGR (Startup Guide Recommendation) - клиент, для сервиса, по индивидуальному подбору сервисов, для стартапов из Москвы.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+SGR создается, для получения и предоставления сервисов.
 
-## Development server
+Проект использует собственную аналитику и машинное обучение, основанное на сложных алгоритмах и данных предоставленных в рамках хакатона "ЛИДЕРЫ ЦИФРОВОЙ ТРАНСФОРМАЦИИ 2021"
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Стартапы любого уровня развития используют данный сервис, который оценивает информацию о компании и подбирает необходимые, для лучшего развития сервисы.
 
-## Code scaffolding
+Используя данный сервис, Вы сможете:
+- Заполнить анкету о своей компании;
+- Получить максимально точную рекомендацию о развитии Вашей компании;
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+В рамках разработки MVP был реализован основной функционал, который позволяет подобрать сервисы, для развития Вашего проекта.
 
-## Build
+# Используемые технологии
+- Node js
+- Angular 12
+- Angular Material
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Документация
+https://disk.yandex.ru/i/31PgzplmUSNxhA
