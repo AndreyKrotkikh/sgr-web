@@ -34,6 +34,7 @@ export class StepThreeComponent implements OnInit {
     this.stepThreeForm.valueChanges.subscribe((changedForm) => {
       const updatedForm: DetailedFormInterface = {
         ...this._stepperForm,
+        type: 'detailed',
         isNew: false,
         form: {
           ...this._stepperForm?.form,

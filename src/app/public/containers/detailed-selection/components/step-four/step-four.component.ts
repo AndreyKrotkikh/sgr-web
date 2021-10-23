@@ -60,6 +60,7 @@ export class StepFourComponent implements OnInit {
     this.stepFourForm.valueChanges.subscribe((changedForm) => {
       const updatedForm: DetailedFormInterface = {
         ...this._stepperForm,
+        type: 'detailed',
         isNew: false,
         form: {
           ...this._stepperForm?.form,

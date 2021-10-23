@@ -34,49 +34,63 @@
       <button class="button__accent" (click)="doNewAnket()">Новая анкета</button>
     </div>
 
-    <ng-container *ngIf="isError; else noErrorTemplate">
+    <!-- TODO: Remove it, after API improve -->
+    <ng-container *ngIf="isDetailedAttention; else normalTemplate">
       <div class="recommendation__card">
-        <div class="recommendation__card-title">Произошла ошибка!</div>
+        <div class="recommendation__card-title">Внимание!</div>
         <div class="recommendation__card-description">
-          {{errorText}}
+          Аналитика анкеты "Персональный подбор" находится в разработке<br>
+          Пожалуйста, заполните анкету "Экспресс-подбор"
         </div>
         <div class="recommendation__card-actions">
-          <button class="button__accent" (click)="tryAgain()">Повторить</button>
           <button class="button__accent" (click)="doNewAnket()">Новая анкета</button>
         </div>
       </div>
     </ng-container>
-    <ng-template #noErrorTemplate>
-      <ng-container *ngIf="recommendationList && recommendationList.length < 1; else contentTemplate">
+    <ng-template #normalTemplate>
+      <ng-container *ngIf="isError; else noErrorTemplate">
         <div class="recommendation__card">
-          <div class="recommendation__card-title">По вашему запросу нет результатов</div>
+          <div class="recommendation__card-title">Произошла ошибка!</div>
           <div class="recommendation__card-description">
-            Попробуйте изменить параметры запроса
+            {{errorText}}
           </div>
           <div class="recommendation__card-actions">
+            <button class="button__accent" (click)="tryAgain()">Повторить</button>
             <button class="button__accent" (click)="doNewAnket()">Новая анкета</button>
           </div>
         </div>
       </ng-container>
-      <ng-template #contentTemplate>
-        <div class="recommendation__list">
-          <ng-container *ngFor="let recommendation of recommendationList">
-            <app-recommendation-card [name]="recommendation.name" [type]="recommendation.type"
-              [score]="+recommendation.rating"></app-recommendation-card>
-          </ng-container>
-          <div class="recommendation__list-restrictions">
-            <div class="attention">
-              Показано 10 из 100 организаций <br>
-              Создайте бесплатный аккаунт, чтобы посмотреть все!
+      <ng-template #noErrorTemplate>
+        <ng-container *ngIf="recommendationList && recommendationList.length < 1; else contentTemplate">
+          <div class="recommendation__card">
+            <div class="recommendation__card-title">По вашему запросу нет результатов</div>
+            <div class="recommendation__card-description">
+              Попробуйте изменить параметры запроса
             </div>
-            <div class="action">
-              <button class="button__accent" (click)="onRegister()">Создать</button>
+            <div class="recommendation__card-actions">
+              <button class="button__accent" (click)="doNewAnket()">Новая анкета</button>
             </div>
           </div>
-        </div>
+        </ng-container>
+        <ng-template #contentTemplate>
+          <div class="recommendation__list">
+            <ng-container *ngFor="let recommendation of recommendationList">
+              <app-recommendation-card [name]="recommendation.name" [type]="recommendation.type"
+                [score]="+recommendation.rating"></app-recommendation-card>
+            </ng-container>
+            <div class="recommendation__list-restrictions">
+              <div class="attention">
+                Показано 10 из 100 организаций <br>
+                Создайте бесплатный аккаунт, чтобы посмотреть все!
+              </div>
+              <div class="action">
+                <button class="button__accent" (click)="onRegister()">Создать</button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
       </ng-template>
     </ng-template>
-
 
     <ng-container *ngIf="prevRecommendationList && prevRecommendationList.length > 0">
       <div class="recommendation__title">

@@ -49,6 +49,7 @@ export class StepTwoComponent implements OnInit {
     this.stepTwoForm.valueChanges.subscribe((changedForm) => {
       const updatedForm: DetailedFormInterface = {
         ...this._stepperForm,
+        type: 'detailed',
         isNew: false,
         form: {
           ...this._stepperForm?.form,

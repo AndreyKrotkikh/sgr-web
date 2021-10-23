@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { FormConverter } from '../../shared/tools/form-converter';
 import { LocalStorageService } from '../../shared/services/localstorage.service';
 import { ResultInterface } from '../../shared/types/data/recommendation-results.inerface';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-recommendation',
@@ -17,6 +18,7 @@ import { ResultInterface } from '../../shared/types/data/recommendation-results.
 export class RecommendationComponent implements OnInit {
   public isLoading: boolean = false;
   public isError: boolean = false;
+  public isDetailedAttention: boolean = false;
   public errorText: string = '';
 
   public questionnaire: any;
@@ -32,6 +34,7 @@ export class RecommendationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isDetailedAttention = false;
     this._layoutService.setCurrentPageConfig({
       title: 'Результаты подбора',
       subTitle: 'Ознакомьтесь с Вашими результатами',
@@ -63,6 +66,7 @@ export class RecommendationComponent implements OnInit {
     // Создаем переиспользуемый observable, с логикой запросов - если тип Express - отправляем на аналитику экспресса, иначе в Detailed
     const recommendation$ = this._formService.getForm().pipe(
       switchMap((formObject) => {
+        console.log(formObject)
         if (!formObject) {
           throw 'err_no_form';
         }
@@ -74,14 +78,17 @@ export class RecommendationComponent implements OnInit {
             requestForm
           );
         } else {
-          const requestForm = FormConverter.convertDetailedForm(
-            formObject.form
-          );
+          throw 'err_detailed';
 
-          console.log('In Detailed: ', requestForm);
-          return this._recommendationService.getDetailedRecommendation(
-            formObject
-          );
+          // TODO: Upadte it after API improve
+          // const requestForm = FormConverter.convertDetailedForm(
+          //   formObject.form
+          // );
+
+          // console.log('In Detailed: ', requestForm);
+          // return this._recommendationService.getDetailedRecommendation(
+          //   formObject
+          // );
         }
       })
     );
@@ -121,6 +128,10 @@ export class RecommendationComponent implements OnInit {
             this.errorText = 'Вы не заполнили анкету.';
           } else {
             this.errorText = 'Не удалось подобрать сервисы.';
+          }
+
+          if(error === 'err_detailed') {
+            this.isDetailedAttention = true;
           }
           this.isError = true;
           this.isLoading = false;

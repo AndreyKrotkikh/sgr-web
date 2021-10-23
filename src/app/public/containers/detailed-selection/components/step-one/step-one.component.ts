@@ -74,6 +74,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
 
       const updatedForm: DetailedFormInterface = {
         ...this._stepperForm,
+        type: 'detailed',
         isNew: false,
         form: {
           ...this._stepperForm?.form,
