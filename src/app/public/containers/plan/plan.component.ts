@@ -29,7 +29,7 @@ export class PlanComponent implements OnInit {
 
   private _openAttention() {
     const dialogRef = this.dialog.open(AttentionModalDialog, {
-      height: '390px',
+      height: '440px',
       width: '485px',
     });
 

@@ -38,3 +38,13 @@
     color: #1D2435;
   }
 }
+/* MOBILE */
+@media only screen and (max-width: 768px) {
+  .plan__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
