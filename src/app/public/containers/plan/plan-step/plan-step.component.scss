@@ -1,0 +1,40 @@
+.plan__step {
+  width: 586px;
+  background: #F2F3F6;
+  box-shadow: -4px -4px 8px 2px #FFFFFF, 4px 4px 8px 2px rgba(36, 49, 74, 0.26);
+  border-radius: 16px;
+
+  .plan__step-header {
+    padding: 16px 40px;
+    background: #0458FE;
+    border-radius: 16px 16px 0px 0px;
+
+    h4 {
+      color: #FFFFFF;
+    }
+  }
+
+  .plan__step-body {
+    padding: 12px 40px 0 40px;
+    margin-bottom: 10px;
+    height: 190px;
+
+    .plan__name {
+      margin-bottom: 14px;
+      p {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23px;
+        color: #1D2435;
+      }
+    }
+  }
+
+  .plan__step-footer {
+    padding: 0px 40px 12px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

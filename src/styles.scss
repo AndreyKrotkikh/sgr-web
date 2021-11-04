@@ -1,3 +1,6 @@
+/*=============== SHARE BUTTONS STYLES ===============*/
+@import '~ngx-sharebuttons/themes/circles';
+
 /*=============== GOOGLE FONTS ===============*/
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,500;0,600;0,700;1,400&amp;display=swap');
 @import url('./assets/fonts/tt-firs-bold/style.css');
@@ -385,6 +388,15 @@ button {
 
   &.button__accent {
     background: #FF1F55;
+
+    &.button__accent-small {
+      padding: 0px;
+      width: 150px;
+      height: 40px;
+      font-size: 10px;
+      line-height: 13px;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -474,6 +486,7 @@ button:disabled {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     .full-width {
       .actions {
         flex-wrap: wrap;

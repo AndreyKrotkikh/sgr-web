@@ -30,6 +30,33 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>
+    <!-- *ngIf="recommendationList && recommendationList.length > 1" -->
+    <div class="additional-actions"  >
+      <div class="additional-action additional-action__blue">
+        <div class="additional-action__icon">
+          <img src="../../../../assets/img/icons/grow-white-big-icon.svg" alt="">
+        </div>
+        <div class="additional-action__content">
+          <div class="additional-action__title">Получите бесплатный план по развитию Вашей компании!</div>
+          <div class="additional-action__inner">Мы бережно сделали план развития, для Вашей организации, на основе введенной информации, узнайте, как эффективно развиваться уже сейчас!</div>
+          <button class="additional-action__action" [routerLink]="['/plan']">получить</button>
+        </div>
+      </div>
+
+      <div class="additional-action" [formGroup]="emailForm">
+        <div class="additional-action__icon">
+          <img src="../../../../assets/img/icons/open-big-icon.svg" alt="">
+        </div>
+        <div class="additional-action__content">
+          <div class="additional-action__title">Подпишитесь на новые рекомендации, для Вашей компании!</div>
+          <div class="additional-action__inner">
+            <input class="additional-action__input" formControlName="email" type="email"  placeholder="Введите почту" required>
+          </div>
+          <button class="additional-action__action" (click)="subscribeEmail()" [disabled]="!emailForm.valid">подписаться</button>
+        </div>
+      </div>
+    </div>
+
     <div class="recommendation__data-actions" *ngIf="questionnaire">
       <button class="button__accent" (click)="doNewAnket()">Новая анкета</button>
     </div>
@@ -103,7 +130,6 @@
           </app-recommendation-card>
         </ng-container>
       </div>
-
     </ng-container>
   </div>
 </ng-template>

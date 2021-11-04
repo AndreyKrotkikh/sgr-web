@@ -25,7 +25,11 @@
 
 /* ===== MATERIAL RESTYLE =====*/
 ::ng-deep {
-
+  share-buttons {
+    .sb-wrapper {
+      width: unset !important;
+    }
+  }
   // ------------- SELECT ----------------- //
   .mat-select-panel {
     background: #F2F3F6 !important;
@@ -133,8 +137,8 @@
     border-radius: 16px !important;
 
     .mat-expansion-panel-header-title {
-      font-size: 22px;
-      line-height: 29px;
+      font-size: 14px;
+      line-height: 18px;
       color: #1D2435;
     }
   }

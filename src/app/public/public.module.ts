@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Modules
 import { AngularMaterialModule } from '../shared/modules/material.module';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 // Components
 import { PublicComponent } from './public.component';
 import { GreetingsComponent } from './containers/greetings/greetings.component';
@@ -30,6 +32,9 @@ import { StepTwoComponent } from './containers/detailed-selection/components/ste
 import { StepThreeComponent } from './containers/detailed-selection/components/step-three/step-three.component';
 import { ExpressAnketComponent } from './containers/recommendation/express-anket/express-anket.component';
 import { DetailedAnketComponent } from './containers/recommendation/detailed-anket/detailed-anket.component';
+import { PlanComponent } from './containers/plan/plan.component';
+import { EmailModalDialog } from './shared/components/modals/email-modal-dialog/email-modal-dialog.component';
+import { PlanStepComponent } from './containers/plan/plan-step/plan-step.component';
 
 const routes = [
   {
@@ -45,7 +50,15 @@ const routes = [
         component: ExpressSelectionComponent,
       },
       {
+        path: 'express/draft',
+        component: ExpressSelectionComponent,
+      },
+      {
         path: 'detailed',
+        component: DetailedSelectionComponent
+      },
+      {
+        path: 'detailed/draft',
         component: DetailedSelectionComponent
       },
       {
@@ -55,6 +68,10 @@ const routes = [
       {
         path: 'recommendation',
         component: RecommendationComponent
+      },
+      {
+        path: 'plan',
+        component: PlanComponent
       }
     ],
   },
@@ -72,6 +89,9 @@ const routes = [
     AngularMaterialModule,
     // Other
     AngularMultiSelectModule,
+    // Share buttons
+    ShareButtonsModule,
+    ShareIconsModule,
   ],
   declarations: [
     // Layout
@@ -90,6 +110,7 @@ const routes = [
     ExpressSelectionComponent,
     DetailedSelectionComponent,
     RecommendationComponent,
+    PlanComponent,
     // Components
     // Detailed Selection
     StepOneComponent,
@@ -100,8 +121,11 @@ const routes = [
     // Result view
     ExpressAnketComponent,
     DetailedAnketComponent,
+    // Plan
+    PlanStepComponent,
     // Modals
-    DraftModalDialog
+    DraftModalDialog,
+    EmailModalDialog
   ],
   providers: [RecommendationService, SGRDataService],
 })

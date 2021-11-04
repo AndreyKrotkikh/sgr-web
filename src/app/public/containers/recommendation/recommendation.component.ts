@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormService } from '../../shared/services/form.service';
 import { LayoutService } from '../../shared/services/layout.service';
@@ -8,6 +9,8 @@ import { FormConverter } from '../../shared/tools/form-converter';
 import { LocalStorageService } from '../../shared/services/localstorage.service';
 import { ResultInterface } from '../../shared/types/data/recommendation-results.inerface';
 import { of } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { EmailModalDialog } from '../../shared/components/modals/email-modal-dialog/email-modal-dialog.component';
 
 @Component({
   selector: 'app-recommendation',
@@ -25,8 +28,12 @@ export class RecommendationComponent implements OnInit {
   public recommendationList: ResultInterface[] = [];
   public prevRecommendationList: ResultInterface[] = [];
 
+  public emailForm!: FormGroup;
+
   constructor(
+    public dialog: MatDialog,
     private _router: Router,
+    private _fb: FormBuilder,
     private _formService: FormService,
     private _layoutService: LayoutService,
     private _localstorageService: LocalStorageService,
@@ -45,6 +52,10 @@ export class RecommendationComponent implements OnInit {
       ?.prev?.slice(0, 5);
 
     this._getRecommendation();
+
+    this.emailForm = this._fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    })
   }
 
   public tryAgain() {
@@ -59,6 +70,19 @@ export class RecommendationComponent implements OnInit {
     window.open('https://startupguide.innoagency.ru/', '_blank');
   }
 
+  public subscribeEmail() {
+    if(this.emailForm.invalid) {
+      return;
+    }
+
+    const dialogRef = this.dialog.open(EmailModalDialog, {
+      height: '390px',
+      width: '485px',
+    });
+
+    dialogRef.afterClosed().subscribe(() => { });
+  }
+
   private _getRecommendation() {
     this.isError = false;
     this.isLoading = true;
@@ -66,7 +90,6 @@ export class RecommendationComponent implements OnInit {
     // Создаем переиспользуемый observable, с логикой запросов - если тип Express - отправляем на аналитику экспресса, иначе в Detailed
     const recommendation$ = this._formService.getForm().pipe(
       switchMap((formObject) => {
-        console.log(formObject)
         if (!formObject) {
           throw 'err_no_form';
         }

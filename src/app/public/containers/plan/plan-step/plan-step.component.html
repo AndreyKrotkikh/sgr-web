@@ -1,0 +1,21 @@
+<div class="plan__step">
+  <div class="plan__step-header">
+    <h4>{{stepName}}</h4>
+  </div>
+  <div class="plan__step-body">
+    <div class="plan__name">
+      <p>
+       {{serviceName}}
+      </p>
+    </div>
+    <div class="plan__description">
+      {{comment}}
+    </div>
+  </div>
+  <div class="plan__step-footer">
+    <div class="plan__date">
+      Дата достижения: {{date}}
+    </div>
+    <button class="button__accent button__accent-small" (click)="openService()" >перейти на сайт</button>
+  </div>
+</div>

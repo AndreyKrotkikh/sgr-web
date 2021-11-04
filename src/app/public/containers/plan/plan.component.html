@@ -1,0 +1,53 @@
+<div class="plan">
+  <p>
+    Ваша организация нуждается в инвестициях, мы советуем придерживаться плана.
+  </p>
+  <h3>
+    Дата достижения: 14.02.2024
+  </h3>
+
+  <div class="plan__steps">
+    <plan-step [stepName]="'Шаг 1 - Акселератор'"
+      [serviceName]="' Центр сертификации, стандартизации и испытаний технологий, материалов, рабочих сред, продукции энергетики и энергомашиностроения (ЦСCИ на базе Технопарка ВТИ)'"
+      [comment]="'
+      Вам необходимо получить услуги от Сколково.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet.'"
+      [date]="'21.02.2021'" [actionURL]="'https://sk.ru/'">
+    </plan-step>
+    <plan-step [stepName]="'Шаг 2 - Акселератор'"
+      [serviceName]="' Центр сертификации, стандартизации и испытаний технологий, материалов, рабочих сред, продукции энергетики и энергомашиностроения (ЦСCИ на базе Технопарка ВТИ)'"
+      [comment]="'
+      Вам необходимо получить услуги от Сколково.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet.'"
+      [date]="'21.02.2021'" [actionURL]="'https://sk.ru/'">
+    </plan-step>
+    <plan-step [stepName]="'Шаг 3 - Акселератор'"
+      [serviceName]="' Центр сертификации, стандартизации и испытаний технологий, материалов, рабочих сред, продукции энергетики и энергомашиностроения (ЦСCИ на базе Технопарка ВТИ)'"
+      [comment]="'
+      Вам необходимо получить услуги от Сколково.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet.'"
+      [date]="'21.02.2021'" [actionURL]="'https://sk.ru/'">
+    </plan-step>
+    <plan-step [stepName]="'Шаг 4 - Акселератор'"
+      [serviceName]="' Центр сертификации, стандартизации и испытаний технологий, материалов, рабочих сред, продукции энергетики и энергомашиностроения (ЦСCИ на базе Технопарка ВТИ)'"
+      [comment]="'
+      Вам необходимо получить услуги от Сколково.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet.'"
+      [date]="'21.02.2021'" [actionURL]="'https://sk.ru/'">
+    </plan-step>
+    <plan-step [stepName]="'Шаг 5 - Акселератор'"
+      [serviceName]="' Центр сертификации, стандартизации и испытаний технологий, материалов, рабочих сред, продукции энергетики и энергомашиностроения (ЦСCИ на базе Технопарка ВТИ)'"
+      [comment]="'
+      Вам необходимо получить услуги от Сколково.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet.'"
+      [date]="'21.02.2021'" [actionURL]="'https://sk.ru/'">
+    </plan-step>
+  </div>
+
+  <div class="share-actions">
+    <div class="share-actions__social">
+      <p>Поделитесь результатом в социальных сетях</p>
+      <share-buttons [theme]="'circles-dark'" [include]="['facebook','vk','telegram','whatsapp', 'email' ]" [show]="11"
+        [url]="'https://sgr-prod-web.herokuapp.com/plan'" [title]="'Мой план'"
+        [description]="'Мой план по развитию стартапа'"
+        [image]="'https://startupguide.innoagency.ru/static/img/general/logo.svg'" [tags]="'plan, startup'">
+      </share-buttons>
+    </div>
+    <button class="button__accent" [routerLink]="['/']">Новая анкета</button>
+  </div>
+</div>

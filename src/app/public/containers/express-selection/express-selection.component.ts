@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormService } from '../../shared/services/form.service';
 import { LayoutService } from '../../shared/services/layout.service';
 import { SGRDataService } from '../../shared/services/data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   ExpressFormInnerInterface,
   ExpressFormInterface,
@@ -40,7 +40,8 @@ export class ExpressSelectionComponent implements OnInit {
     private _layoutService: LayoutService,
     private _dataService: SGRDataService,
     private _localstorageService: LocalStorageService,
-    private _formService: FormService
+    private _formService: FormService,
+    private _route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -48,8 +49,13 @@ export class ExpressSelectionComponent implements OnInit {
       title: 'Экспресс-подбор',
       subTitle: 'Быстрый подбор сервисов, за несколько кликов',
     });
+
     this.initValue();
     this.formUpdate();
+
+    if (this._router.url.includes('draft')) {
+      this._fillForm();
+    }
   }
 
   public cancel(): void {
@@ -71,7 +77,7 @@ export class ExpressSelectionComponent implements OnInit {
           dateCreation: changedForm.creationDate,
           service: changedForm.services,
           technologies: changedForm.technologies,
-          stage: changedForm.companyStage
+          stage: changedForm.companyStage,
         },
       };
       this._localstorageService.setExpressDraft(updatedForm);
@@ -163,5 +169,18 @@ export class ExpressSelectionComponent implements OnInit {
 
   get businessModel() {
     return this.expressForm.get('businessModel');
+  }
+
+  private _fillForm() {
+    const draftForm = this._localstorageService.getExpressDraft().form;
+
+    this.expressForm.patchValue({
+      market: draftForm?.market,
+      creationDate: draftForm?.dateCreation,
+      technologies: draftForm?.technologies,
+      services: draftForm?.service,
+      businessModel: draftForm?.businessModel,
+      companyStage: draftForm?.stage,
+    });
   }
 }

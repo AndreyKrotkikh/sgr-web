@@ -59,7 +59,7 @@ export class GreetingsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'edit') {
         this._formService.setDetailedForm(this._detailedFormDraft);
-        this._router.navigate(['/detailed']);
+        this._router.navigate(['/detailed/draft']);
       } else if (result === 'new') {
         this._formService.resetAll();
         this._formService.initDetailedForm();
@@ -79,7 +79,7 @@ export class GreetingsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'edit') {
         this._formService.setExpressForm(this._expressFormDraft);
-        this._router.navigate(['/express']);
+        this._router.navigate(['/express/draft']);
       } else if (result === 'new') {
         this._formService.resetAll();
         this._formService.initExpressForm();
