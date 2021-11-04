@@ -15,7 +15,11 @@ SGR создается, для получения и предоставлени�
 # Используемые технологии
 - Node js
 - Angular 12
+- RxJs
 - Angular Material
 
 # Документация
 https://disk.yandex.ru/i/31PgzplmUSNxhA
+
+# Презентация
+https://disk.yandex.ru/i/F06KcNVIrK6yWA
