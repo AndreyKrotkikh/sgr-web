@@ -35,6 +35,7 @@ import { DetailedAnketComponent } from './containers/recommendation/detailed-ank
 import { PlanComponent } from './containers/plan/plan.component';
 import { EmailModalDialog } from './shared/components/modals/email-modal-dialog/email-modal-dialog.component';
 import { PlanStepComponent } from './containers/plan/plan-step/plan-step.component';
+import { AttentionModalDialog } from './shared/components/modals/attention-modal-dialog/attention-modal-dialog.component';
 
 const routes = [
   {
@@ -125,7 +126,8 @@ const routes = [
     PlanStepComponent,
     // Modals
     DraftModalDialog,
-    EmailModalDialog
+    EmailModalDialog,
+    AttentionModalDialog
   ],
   providers: [RecommendationService, SGRDataService],
 })
