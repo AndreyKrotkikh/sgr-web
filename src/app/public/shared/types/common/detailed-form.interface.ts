@@ -25,8 +25,6 @@ export interface DetailedFormInnerInterface {
   stage: string;
   // Рынок для Инновационных компаний
   market: string[];
-  // Тип фонда
-  fond: number;
 
   // step 2
   // Технологическая ниша компании

@@ -36,8 +36,6 @@ export class FormConverter {
   public static convertDetailedForm(
     form: DetailedFormInnerInterface
   ): DetailedFormRequestInterface {
-    console.log('Converting...', form);
-
     const b_model = form.businessModel;
     const found_date = new Array(
       formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US')
@@ -47,7 +45,6 @@ export class FormConverter {
     const tech_type = form.technologies;
     const evo_stage = new Array(form.stage);
     const techp_residents = form.residentList;
-    const fond_type = [...[], form.fond];
     const inno_comp =  [...[], +form.isInnovation];
     const msk_inno =  [...[], +form.isMemberMoscow];
     const msp =  [...[], +form.isCompanyMSP];
@@ -65,7 +62,6 @@ export class FormConverter {
         service: service,
         tech_type: tech_type,
         evo_stage: evo_stage,
-        fond_type: fond_type,
         inno_comp: inno_comp,
         msk_inno: msk_inno,
         msp: msp,

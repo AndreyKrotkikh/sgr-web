@@ -1,0 +1,131 @@
+<div class="learning">
+  <div class="alert alert__learning">
+    <h4 class="alert-title">
+      Эффект будет заметен при добавлении от 1 000 случаев
+    </h4>
+    <p class="alert-description">В дальнейшем планируется импорт Excel файла</p>
+  </div>
+
+  <div class="content">
+    <form [formGroup]="learningForm" class="form-wrapper" (ngSubmit)="onSubmit()">
+      <!-- РЫНОК -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Рынок Вашей компании
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="market" multiple disableRipple>
+              <mat-option *ngFor="let market of marketList" [value]="market.itemName">{{market.itemName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Можно выбрать несколько вариантов
+        </div>
+      </div>
+
+      <!-- ДАТА ОСНОВАНИЯ -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Дата основания
+        </div>
+        <div class="form-control__input">
+          <input type="date" formControlName="dateCreation" required>
+        </div>
+        <div class="form-control__error" *ngIf="dateCreation?.status === 'INVALID'">
+          Это обязательное поле
+        </div>
+        <div class="form-control__description">
+          Выберите дату основания или дату начала работы над проектом
+        </div>
+      </div>
+
+      <!-- Технологии для Инновационных компаний -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Технологии Вашей компании
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="technologies" multiple disableRipple>
+              <mat-option *ngFor="let tech of technologiesList" [value]="tech.itemName">{{tech.itemName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Можно выбрать несколько вариантов
+        </div>
+      </div>
+
+      <!-- Стадия развития компании -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Стадия развития компании
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <!-- <mat-label>Выберите</mat-label> -->
+            <mat-select formControlName="stage" disableRipple>
+              <mat-option *ngFor="let stage of stageList" [value]="stage.itemName">{{stage.itemName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Выберите стадию развития Вашей компании
+        </div>
+      </div>
+
+      <!-- Предоставляемые Услуги от Акселератора -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Предоставляемые Услуги от Акселератора
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="service" disableRipple>
+              <mat-option *ngFor="let serviceItem of servicesList" [value]="serviceItem.itemName">
+                {{serviceItem.itemName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__error" *ngIf="service?.status === 'INVALID'">
+          Это обязательное поле
+        </div>
+        <div class="form-control__description">
+          Выберите нужную услугу
+        </div>
+      </div>
+
+      <!-- Бизнес-модель для Инновационных компаний -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Бизнес-модель Вашей компании
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="businessModel" multiple disableRipple>
+              <mat-option *ngFor="let business of businessModelList" [value]="business.itemName">{{business.itemName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Можно выбрать несколько вариантов
+        </div>
+      </div>
+
+      <div class="full-width">
+        <div class="actions">
+          <button (click)="cancel()">Отмена</button>
+          <button type="submit" class="button__accent" [disabled]="learningForm.invalid">Подобрать</button>
+        </div>
+        <p class="warning-text" *ngIf="learningForm.invalid">
+          Чтобы подобрать сервисы - заполните обязательные поля.
+        </p>
+      </div>
+    </form>
+
+  </div>
+</div>

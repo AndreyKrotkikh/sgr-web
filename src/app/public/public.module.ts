@@ -36,6 +36,7 @@ import { PlanComponent } from './containers/plan/plan.component';
 import { EmailModalDialog } from './shared/components/modals/email-modal-dialog/email-modal-dialog.component';
 import { PlanStepComponent } from './containers/plan/plan-step/plan-step.component';
 import { AttentionModalDialog } from './shared/components/modals/attention-modal-dialog/attention-modal-dialog.component';
+import { LearningComponent } from './containers/learning/learning.component';
 
 const routes = [
   {
@@ -45,6 +46,10 @@ const routes = [
       {
         path: '',
         component: GreetingsComponent,
+      },
+      {
+        path: 'learning',
+        component: LearningComponent
       },
       {
         path: 'express',
@@ -108,6 +113,7 @@ const routes = [
     // Containers
     UIKitComponent,
     GreetingsComponent,
+    LearningComponent,
     ExpressSelectionComponent,
     DetailedSelectionComponent,
     RecommendationComponent,

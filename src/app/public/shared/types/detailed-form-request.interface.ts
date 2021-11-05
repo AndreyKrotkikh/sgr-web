@@ -15,6 +15,5 @@ export interface DetailedFormRequestInterface {
     start_up: number[];
     msp: number[];
     msp_cat: string[];
-    fond_type: number[];
   };
 }

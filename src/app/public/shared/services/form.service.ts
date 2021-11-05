@@ -67,7 +67,6 @@ export class FormService {
         service: '',
         stage: '',
         technologies: [],
-        fond: 0
       },
     };
     this._form = initDetailedForm;

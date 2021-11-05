@@ -41,6 +41,10 @@ export class GreetingsComponent implements OnInit {
     }
   }
 
+  onLearning() {
+    this._router.navigate(['/learning']);
+  }
+
   onDetailed() {
     this._detailedFormDraft = this._localstorageService.getDetailedDraft();
     if (this._detailedFormDraft) {

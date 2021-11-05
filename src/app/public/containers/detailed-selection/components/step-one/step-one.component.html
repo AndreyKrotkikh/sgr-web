@@ -49,23 +49,6 @@
     </div>
   </div>
 
-  <!-- Тип Фонда -->
-  <div class="form-control">
-    <div class="form-control__label">
-      Тип фонда
-    </div>
-    <div class="form-control__input">
-      <mat-form-field appearance="fill">
-        <mat-select formControlName="fond" disableRipple>
-          <mat-option *ngFor="let fond of fondList" [value]="fond.id">{{fond.itemName}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="form-control__description">
-      Выберите нужный тип фонда
-    </div>
-  </div>
-
   <!-- Стадия развития компании -->
   <div class="form-control">
     <div class="form-control__label">

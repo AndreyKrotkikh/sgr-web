@@ -30,8 +30,7 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>
-    <!-- *ngIf="recommendationList && recommendationList.length > 1" -->
-    <div class="additional-actions"  >
+    <div class="additional-actions" *ngIf="recommendationList && recommendationList.length > 1">
       <div class="additional-action additional-action__blue">
         <div class="additional-action__icon">
           <img src="../../../../assets/img/icons/grow-white-big-icon.svg" alt="">

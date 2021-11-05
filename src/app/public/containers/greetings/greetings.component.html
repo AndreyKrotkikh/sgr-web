@@ -10,6 +10,10 @@
     [subTitle]="'Время заполнения 15 минут'" [description]="'Подбор сервисов с высокой точностью. Обычно заполнение анкеты занимает не более 15 минут.
     На сервисе работает функция Автосохранения, Вы всегда сможете вернуться к редактированию анкеты.'">
   </app-greeting-card>
+  <app-greeting-card (click)="onLearning()" [title]="'Инструмент администратора'"
+    [img]="'../../../../assets/img/greetings-cards/learning-icon.svg'" [greetingType]="'learning'"
+    [subTitle]="'Обучение модели'" [description]="'Позволяет дообучить модель, для более эффективного подбора сервисов.'">
+  </app-greeting-card>
   <!-- <app-greeting-card [title]="'UI KIT'" [img]="'../../../../assets/img/greetings-cards/detailed-icon.svg'"
   [greetingType]="'ui-kit'" [subTitle]="'UI KIT'">
 </app-greeting-card> -->
