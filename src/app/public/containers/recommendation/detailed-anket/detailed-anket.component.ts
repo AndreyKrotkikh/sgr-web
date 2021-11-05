@@ -20,13 +20,13 @@ import { Component, Input, OnInit } from '@angular/core';
       </div>
     </div>
     <hr />
-    <div class="profile__table-row">
+    <!-- <div class="profile__table-row">
       <div class="profile__property-name">Основной ОКВЭД</div>
       <div class="profile__property-value">
         {{ questionnaire?.form?.ocvd }}
       </div>
     </div>
-    <hr />
+    <hr /> -->
     <div class="profile__table-row">
       <div class="profile__property-name">
         Предоставляемые услуги от акселератора
@@ -115,7 +115,7 @@ import { Component, Input, OnInit } from '@angular/core';
       <p>Шаг <strong>3</strong></p>
     </div>
 
-    <div class="profile__table-row">
+    <!-- <div class="profile__table-row">
       <div class="profile__property-name">Является ли комнания экспортером</div>
       <div class="profile__property-value">
         <ng-container [ngSwitch]="questionnaire?.form?.isExporter">
@@ -124,7 +124,7 @@ import { Component, Input, OnInit } from '@angular/core';
         </ng-container>
       </div>
     </div>
-    <hr />
+    <hr /> -->
 
     <div class="profile__table-row">
       <div class="profile__property-name">
@@ -161,7 +161,7 @@ import { Component, Input, OnInit } from '@angular/core';
     </div>
     <hr />
 
-    <div class="profile__table-row">
+    <!-- <div class="profile__table-row">
       <div class="profile__property-name">
         Организация аккредитована на Бирже контрактного производства
       </div>
@@ -172,7 +172,7 @@ import { Component, Input, OnInit } from '@angular/core';
         </ng-container>
       </div>
     </div>
-    <hr />
+    <hr />-->
 
     <div class="profile__table-row">
       <div class="profile__property-name">Стартап</div>
@@ -184,7 +184,7 @@ import { Component, Input, OnInit } from '@angular/core';
       </div>
     </div>
 
-    <div class="profile__table-row profile__table-row__title">
+    <!-- <div class="profile__table-row profile__table-row__title">
       <p>Шаг <strong>4</strong></p>
     </div>
 
@@ -205,7 +205,7 @@ import { Component, Input, OnInit } from '@angular/core';
           {{ item.name }}
         </p>
       </div>
-    </div>
+    </div> -->
   </div>`,
 })
 export class DetailedAnketComponent implements OnInit {

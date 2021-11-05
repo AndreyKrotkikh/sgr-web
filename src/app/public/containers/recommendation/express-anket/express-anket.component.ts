@@ -41,6 +41,15 @@ import { ExpressFormInterface } from 'src/app/public/shared/types/common/express
       <hr />
       <div class="profile__table-row">
         <div class="profile__property-name">
+        Стадия развития компании
+        </div>
+        <div class="profile__property-value">
+          {{ questionnaire?.form?.stage }}
+        </div>
+      </div>
+      <hr />
+      <div class="profile__table-row">
+        <div class="profile__property-name">
           Бизнес-модель для Инновационных компаний
         </div>
         <div class="profile__property-value">

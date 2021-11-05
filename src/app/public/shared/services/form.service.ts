@@ -13,7 +13,7 @@ export class FormService {
       currentStepIdx: 0,
       currentStepName: '1',
       currentIsInvalid: true,
-      maxSteps: 4,
+      maxSteps: 3,
     });
 
   constructor() {}
@@ -24,7 +24,7 @@ export class FormService {
       currentStepIdx: 0,
       currentStepName: '1',
       currentIsInvalid: true,
-      maxSteps: 4,
+      maxSteps: 3,
     })
   }
 
