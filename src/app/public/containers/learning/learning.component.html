@@ -3,7 +3,7 @@
     <h4 class="alert-title">
       Эффект будет заметен при добавлении от 1 000 случаев
     </h4>
-    <p class="alert-description">В дальнейшем планируется импорт Excel файла</p>
+    <p class="alert-description">В дальнейшем планируется реализация функции импорта Excel файла</p>
   </div>
 
   <div class="content">
@@ -116,10 +116,227 @@
         </div>
       </div>
 
+
+      <!-- Технологическая ниша компании -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Ваша технологическая ниша
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="companyTechnology" multiple disableRipple>
+              <mat-option *ngFor="let company of companyTechnologyList" [value]="company.itemName">{{company.itemName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Выберите ниши, можно выбрать несколько вариантов
+        </div>
+      </div>
+
+      <!-- Компания является малым или средним предприятием -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Вы являетесь малым или средним предприятием (МСП)
+        </div>
+        <div class="form-control__input">
+          <mat-radio-group formControlName="isCompanyMSP">
+            <mat-radio-button value="1">Да</mat-radio-button>
+            <mat-radio-button value="0">Нет</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <!-- Технологии для Инновационных компаний -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Технологии Вашей компании
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="technologies" multiple disableRipple>
+              <mat-option *ngFor="let tech of technologyList" [value]="tech.itemName">{{tech.itemName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Можно выбрать несколько вариантов
+        </div>
+      </div>
+
+      <!-- Категория МСП - если на предыдущий вопрос ответ "Да" *ngIf="stepTwoForm.value.isCompanyMSP" -->
+      <div class="form-control" *ngIf="isMSP()">
+        <div class="form-control__label">
+          Категория МСП
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="mspCategory" disableRipple>
+              <mat-option *ngFor="let msp of mspList" [value]="msp.itemName">{{msp.itemName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Выберите Категорию
+        </div>
+      </div>
+
+      <!-- Бизнес-модель для Инновационных компаний -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Бизнес-модель Вашей компании
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="businessModel" multiple disableRipple>
+              <mat-option *ngFor="let business of businessModelList" [value]="business.itemName">{{business.itemName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Можно выбрать несколько вариантов
+        </div>
+      </div>
+
+      <!-- Является ли компания резидентом технопарков -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Является ли Ваша компания резидентом технопарков
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="residentList" multiple disableRipple>
+              <mat-option *ngFor="let resident of residentAvaibleList" [value]="resident.itemName">{{resident.itemName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Можно выбрать несколько вариантов
+        </div>
+      </div>
+
+      <!-- Организация  участник Сколково -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Компания участник Сколково
+        </div>
+        <div class="form-control__input">
+          <mat-radio-group formControlName="isSkolkovo">
+            <mat-radio-button value="1">Да</mat-radio-button>
+            <mat-radio-button value="0">Нет</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="form-control__description">
+          Ваша компания является участником Сколково
+        </div>
+      </div>
+
+      <!-- Участник инновационного кластера города Москвы -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Участником инновационного кластера города Москвы
+        </div>
+        <div class="form-control__input">
+          <mat-radio-group formControlName="isMemberMoscow">
+            <mat-radio-button value="1">Да</mat-radio-button>
+            <mat-radio-button value="0">Нет</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="form-control__description">
+          Компания является участником инновационного кластера города Москвы
+        </div>
+      </div>
+
+      <!-- Инновационная компания -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Инновационная компания
+        </div>
+        <div class="form-control__input">
+          <mat-radio-group formControlName="isInnovation">
+            <mat-radio-button value="1">Да</mat-radio-button>
+            <mat-radio-button value="0">Нет</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="form-control__description">
+          Ваша компания является инновационной
+        </div>
+      </div>
+
+      <!-- Опубликован на Навигаторе по стартап-экосистеме Москвы  -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Опубликован на Навигаторе по стартап-экосистеме Москвы
+        </div>
+        <div class="form-control__input">
+          <mat-radio-group formControlName="isPublished">
+            <mat-radio-button value="1">Да</mat-radio-button>
+            <mat-radio-button value="0">Нет</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="form-control__description">
+          Ваша компания опубликована на Навигаторе по стартап-экосистеме Москвы
+        </div>
+      </div>
+
+      <!-- Стартап -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Стартап
+        </div>
+        <div class="form-control__input">
+          <mat-radio-group formControlName="isStatup">
+            <mat-radio-button value="1">Да</mat-radio-button>
+            <mat-radio-button value="0">Нет</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="form-control__description">
+          Ваша компания является стартапом
+        </div>
+      </div>
+
+      <!-- Тип фонда -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Тип фонда
+        </div>
+        <div class="form-control__input">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="fond_type" disableRipple>
+              <mat-option *ngFor="let serviceItem of fondList" [value]="serviceItem.id">
+                {{serviceItem.itemName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-control__description">
+          Выберите тип фонда
+        </div>
+      </div>
+
+      <!-- Стартап -->
+      <div class="form-control">
+        <div class="form-control__label">
+          Стартап получил услугу?
+        </div>
+        <div class="form-control__input">
+          <mat-radio-group formControlName="result">
+            <mat-radio-button value="1">Успешно</mat-radio-button>
+            <mat-radio-button value="0">Неудачно</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="form-control__description">
+          Укажите результат обращения в сервис
+        </div>
+      </div>
+
       <div class="full-width">
         <div class="actions">
-          <button (click)="cancel()">Отмена</button>
-          <button type="submit" class="button__accent" [disabled]="learningForm.invalid">Подобрать</button>
+          <button (click)="cancel()" [disabled]="isLoading">Отмена</button>
+          <button type="submit" class="button__accent" [disabled]="learningForm.invalid || isLoading">Подобрать</button>
         </div>
         <p class="warning-text" *ngIf="learningForm.invalid">
           Чтобы подобрать сервисы - заполните обязательные поля.

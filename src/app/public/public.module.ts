@@ -37,6 +37,8 @@ import { EmailModalDialog } from './shared/components/modals/email-modal-dialog/
 import { PlanStepComponent } from './containers/plan/plan-step/plan-step.component';
 import { AttentionModalDialog } from './shared/components/modals/attention-modal-dialog/attention-modal-dialog.component';
 import { LearningComponent } from './containers/learning/learning.component';
+import { SuccessLearningModalDialog } from './shared/components/modals/success-learning-modal-dialog/success-learning-modal-dialog.component';
+import { AttentionLearningModalDialog } from './shared/components/modals/attention-learning-modal-dialog/attention-learning-modal-dialog.component';
 
 const routes = [
   {
@@ -49,7 +51,7 @@ const routes = [
       },
       {
         path: 'learning',
-        component: LearningComponent
+        component: LearningComponent,
       },
       {
         path: 'express',
@@ -61,24 +63,24 @@ const routes = [
       },
       {
         path: 'detailed',
-        component: DetailedSelectionComponent
+        component: DetailedSelectionComponent,
       },
       {
         path: 'detailed/draft',
-        component: DetailedSelectionComponent
+        component: DetailedSelectionComponent,
       },
       {
         path: 'ui-kit',
-        component: UIKitComponent
+        component: UIKitComponent,
       },
       {
         path: 'recommendation',
-        component: RecommendationComponent
+        component: RecommendationComponent,
       },
       {
         path: 'plan',
-        component: PlanComponent
-      }
+        component: PlanComponent,
+      },
     ],
   },
 ];
@@ -133,7 +135,9 @@ const routes = [
     // Modals
     DraftModalDialog,
     EmailModalDialog,
-    AttentionModalDialog
+    AttentionModalDialog,
+    SuccessLearningModalDialog,
+    AttentionLearningModalDialog,
   ],
   providers: [RecommendationService, SGRDataService],
 })

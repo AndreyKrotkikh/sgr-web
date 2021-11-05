@@ -17,6 +17,11 @@ export class RecommendationService {
     return this.http.post<any>(url, data);
   }
 
+  updateLearn(data: any): Observable<any> {
+    const url = environment.apiUrl + `/update`;
+    return this.http.post<any>(url, data);
+  }
+
   public checkAPI(): Observable<any> {
     const url = environment.apiUrl + `/ping`;
     return this.http.get<any>(url);
