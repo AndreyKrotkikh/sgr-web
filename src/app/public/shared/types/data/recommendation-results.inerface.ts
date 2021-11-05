@@ -8,4 +8,5 @@ export interface ResultInterface {
   rating: string;
   rate: string;
   type: string;
+  site: string;
 }

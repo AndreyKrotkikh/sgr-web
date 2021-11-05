@@ -101,7 +101,7 @@
         <ng-template #contentTemplate>
           <div class="recommendation__list">
             <ng-container *ngFor="let recommendation of recommendationList">
-              <app-recommendation-card [name]="recommendation.name" [type]="recommendation.type"
+              <app-recommendation-card [url]="recommendation.site" [name]="recommendation.name" [type]="recommendation.type"
                 [score]="+recommendation.rating"></app-recommendation-card>
             </ng-container>
             <div class="recommendation__list-restrictions">
@@ -124,7 +124,7 @@
       </div>
       <div class="recommendation__list">
         <ng-container *ngFor="let prevRecommendation of prevRecommendationList">
-          <app-recommendation-card [name]="prevRecommendation.name" [type]="prevRecommendation.type"
+          <app-recommendation-card [url]="prevRecommendation.site" [name]="prevRecommendation.name" [type]="prevRecommendation.type"
             [score]="+prevRecommendation.rating">
           </app-recommendation-card>
         </ng-container>

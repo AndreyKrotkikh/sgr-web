@@ -20,6 +20,12 @@ export class FormService {
 
   public resetAll() {
     this._form = null;
+    this.stepper$.next({
+      currentStepIdx: 0,
+      currentStepName: '1',
+      currentIsInvalid: true,
+      maxSteps: 4,
+    })
   }
 
   public setStepperValidState(validState: boolean) {

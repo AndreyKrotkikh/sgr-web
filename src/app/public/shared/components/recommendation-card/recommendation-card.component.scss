@@ -1,4 +1,5 @@
 .recommendation-card {
+  cursor: pointer;
   background: #F2F3F6;
   box-shadow: -4px -4px 8px 2px #FFFFFF, 4px 4px 8px 2px rgba(36, 49, 74, 0.26);
   border-radius: 16px;
@@ -79,4 +80,20 @@
     }
   }
 
+}
+
+.recommendation-card:hover {
+  background: #FF1F55;
+  transition: .4s;
+
+  .line {
+    background: #FFFFFF !important;
+  }
+  .recommendation-card__name {
+    color: #FFFFFF !important;
+  }
+
+  .recommendation-card__content-name {
+    color: #FFFFFF !important;
+  }
 }
