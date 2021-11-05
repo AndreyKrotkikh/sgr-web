@@ -48,7 +48,7 @@ export class FormService {
       isNew: true,
       form: {
         businessModel: [],
-        companyTechnology: '',
+        companyTechnology: [],
         dateCreation: '',
         isAccreditated: 0,
         isCompanyMSP: 0,
@@ -67,6 +67,7 @@ export class FormService {
         service: '',
         stage: '',
         technologies: [],
+        fond: 0
       },
     };
     this._form = initDetailedForm;

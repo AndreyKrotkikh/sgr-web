@@ -101,17 +101,15 @@ export class RecommendationComponent implements OnInit {
             requestForm
           );
         } else {
-          throw 'err_detailed';
+          // throw 'err_detailed';
+          const requestForm = FormConverter.convertDetailedForm(
+            formObject.form
+          );
 
-          // TODO: Upadte it after API improve
-          // const requestForm = FormConverter.convertDetailedForm(
-          //   formObject.form
-          // );
-
-          // console.log('In Detailed: ', requestForm);
-          // return this._recommendationService.getDetailedRecommendation(
-          //   formObject
-          // );
+          console.log('In Detailed: ', requestForm);
+          return this._recommendationService.getDetailedRecommendation(
+            requestForm
+          );
         }
       })
     );

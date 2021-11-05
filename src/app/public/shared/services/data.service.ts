@@ -1,6 +1,9 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { DropdownInterface } from './../types/data/dropdown-interface';
+import {
+  DropdownInterface,
+  DropdownInterfaceMilti,
+} from './../types/data/dropdown-interface';
 import { Injectable } from '@angular/core';
 @Injectable()
 export class SGRDataService {
@@ -434,6 +437,30 @@ export class SGRDataService {
     },
   ];
 
+  // Тип Фонда
+  private _fondListInitialValue: DropdownInterfaceMilti[] = [
+    {
+      id: 0,
+      itemName: 'Частный',
+    },
+    {
+      id: 1,
+      itemName: 'Государственный',
+    },
+    {
+      id: 2,
+      itemName: 'Акселератор',
+    },
+    {
+      id: 3,
+      itemName: 'Корпоративный фонд',
+    },
+    {
+      id: 4,
+      itemName: 'Корпоративный инвестор',
+    },
+  ];
+
   //#endregion
   constructor(private _http: HttpClient) {}
 
@@ -450,6 +477,11 @@ export class SGRDataService {
   // Стадия развития компании для Инновационных компаний
   get stateCompanyList(): DropdownInterface[] {
     return this._stateCompanyInitialValue;
+  }
+
+  // Тип Фонда
+  get fondList(): DropdownInterfaceMilti[] {
+    return this._fondListInitialValue;
   }
 
   //Рынок для Инновационных компаний

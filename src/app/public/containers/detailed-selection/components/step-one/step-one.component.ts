@@ -23,6 +23,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
   public stepOneForm!: FormGroup;
 
   public stageList: DropdownInterfaceMilti[] = [];
+  public fondList: DropdownInterfaceMilti[] = [];
   public ocvdList: DropdownInterfaceMilti[] = [];
   public viewOcvdList: DropdownInterfaceMilti[] = [];
 
@@ -47,9 +48,9 @@ export class StepOneComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.selectOcvd.openedChange.subscribe(() => {
-      this.registerPanelScrollEvent();
-    });
+    // this.selectOcvd.openedChange.subscribe(() => {
+    //   this.registerPanelScrollEvent();
+    // });
   }
 
   onItemSelect(item: any) {
@@ -83,6 +84,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
           service: changedForm.services,
           stage: changedForm.companyStage,
           market: changedForm.market,
+          fond: changedForm.fond
         },
       };
       this._localstorageService.setDetailedDraft(updatedForm);
@@ -136,6 +138,8 @@ export class StepOneComponent implements OnInit, AfterViewInit {
       };
     });
 
+    this.fondList = this._dataService.fondList;
+
     this._formService.getForm().subscribe((form) => {
       this._stepperForm = form;
     });
@@ -153,6 +157,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
 
     this.stepOneForm = this._formBuilder.group({
       ocvd: '',
+      fond: 0,
       creationDate: ['', [Validators.required]],
       services: '',
       companyStage: '',
@@ -166,6 +171,7 @@ export class StepOneComponent implements OnInit, AfterViewInit {
         services: this._stepperForm?.form?.service,
         creationDate: this._stepperForm?.form?.dateCreation,
         ocvd: this._stepperForm?.form?.ocvd,
+        fond: this._stepperForm?.form?.fond
       });
     }
   }

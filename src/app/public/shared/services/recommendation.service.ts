@@ -13,7 +13,7 @@ export class RecommendationService {
   }
 
   getDetailedRecommendation(data: any): Observable<any> {
-    const url = environment.apiUrl + `/easyrecommend`;
+    const url = environment.apiUrl + `/personalrecommend`;
     return this.http.post<any>(url, data);
   }
 

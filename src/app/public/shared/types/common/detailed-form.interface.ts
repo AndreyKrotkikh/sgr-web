@@ -25,10 +25,12 @@ export interface DetailedFormInnerInterface {
   stage: string;
   // Рынок для Инновационных компаний
   market: string[];
+  // Тип фонда
+  fond: number;
 
   // step 2
   // Технологическая ниша компании
-  companyTechnology: string;
+  companyTechnology: string[];
   // Компания является малым или средним предприятием
   isCompanyMSP: number;
   // Категория МСП - если на предыдущий вопрос ответ "Да"

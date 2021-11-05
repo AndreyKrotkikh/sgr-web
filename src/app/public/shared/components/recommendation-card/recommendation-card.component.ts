@@ -25,6 +25,21 @@ export class RecommendationCardComponent implements OnInit {
 
   public getScore(score: number): string {
     const percent = score * 100;
-    return `${percent.toFixed(2)}%`
+    let result: string = '';
+
+    if (percent > 90) {
+      return 'Лучший результат'
+    }
+    if (percent > 80 && percent < 89) {
+      return 'Высокий'
+    }
+    if (percent > 50 && percent < 79) {
+      return 'Средний'
+    }
+    if (percent < 50) {
+      return 'Низкий'
+    }
+
+    return result;
   }
 }

@@ -1,13 +1,12 @@
 <form class="form-wrapper" [formGroup]="stepOneForm">
   <!-- Список ОКВЭД -->
-  <div class="form-control">
+  <!-- <div class="form-control">
     <div class="form-control__label">
       Основной ОКВЭД
     </div>
     <div class="form-control__input">
       <mat-form-field appearance="fill">
         <mat-select formControlName="ocvd" disableRipple #ocvdSelect>
-          <!-- <input (keyup)="onKey($event.target)" /> -->
           <mat-option *ngFor="let ocvd of viewOcvdList" [value]="ocvd.itemName">{{ocvd.itemName}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -15,7 +14,7 @@
     <div class="form-control__description">
       Выберите один ОКВЭД. Позже будет добавлен поиск и оптимизация.
     </div>
-  </div>
+  </div> -->
 
   <!-- ДАТА ОСНОВАНИЯ -->
   <div class="form-control">
@@ -47,6 +46,23 @@
     </div>
     <div class="form-control__description">
       Выберите нужную услугу
+    </div>
+  </div>
+
+  <!-- Тип Фонда -->
+  <div class="form-control">
+    <div class="form-control__label">
+      Тип фонда
+    </div>
+    <div class="form-control__input">
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="fond" disableRipple>
+          <mat-option *ngFor="let fond of fondList" [value]="fond.id">{{fond.itemName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-control__description">
+      Выберите нужный тип фонда
     </div>
   </div>
 
