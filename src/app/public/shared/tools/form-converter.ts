@@ -45,7 +45,7 @@ export class FormConverter {
     const service = [...[], form.service];
     const tech_type = form.technologies ? form.technologies : [];
     const evo_stage = [...[], form.stage];
-    const techp_residents = form.residentList;
+    const techp_residents = form.residentList ? form.residentList : [];
     const inno_comp = [...[], +form.isInnovation];
     const msk_inno = [...[], +form.isMemberMoscow];
     const msp = [...[], +form.isCompanyMSP];
@@ -86,11 +86,11 @@ export class FormConverter {
       ...[],
       formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US'),
     ];
-    const market_type = form.market;
+    const market_type = form.market ? form.market : [];
     const service = [...[], form.service];
     const tech_type = form.technologies ? form.technologies : [];
     const evo_stage = [...[], form.stage];
-    const techp_residents = form.residentList;
+    const techp_residents = form.residentList  ? form.residentList : [];
     const inno_comp = [...[], +form.isInnovation];
     const msk_inno = [...[], +form.isMemberMoscow];
     const msp = [...[], +form.isCompanyMSP];
