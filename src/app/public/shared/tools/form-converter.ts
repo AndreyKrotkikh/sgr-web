@@ -1,6 +1,4 @@
-import {
-  ExpressFormInnerInterface,
-} from './../types/common/express-form.interface';
+import { ExpressFormInnerInterface } from './../types/common/express-form.interface';
 import { formatDate } from '@angular/common';
 import { ExpressFormRequestInterface } from '../types/express-form-request.interface';
 import { DetailedFormRequestInterface } from '../types/detailed-form-request.interface';
@@ -12,14 +10,15 @@ export class FormConverter {
   public static convertExpressForm(
     form: ExpressFormInnerInterface
   ): ExpressFormRequestInterface {
-    const b_model = form.businessModel;
-    const found_date = new Array(
-      formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US')
-    );
-    const market_type = form.market;
-    const service = new Array(form.service);
-    const tech_type = form.technologies;
-    const evo_stage = new Array(form.stage);
+    const b_model = form.businessModel ? form.businessModel : [];
+    const found_date = [
+      ...[],
+      formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US'),
+    ];
+    const market_type = form.market ? form.market : [];
+    const service = [...[], form.service];
+    const tech_type = form.technologies ? form.technologies : [];
+    const evo_stage = [...[], form.stage];
 
     let formRequest: ExpressFormRequestInterface = {
       start_up: {
@@ -37,23 +36,24 @@ export class FormConverter {
   public static convertDetailedForm(
     form: DetailedFormInnerInterface
   ): DetailedFormRequestInterface {
-    const b_model = form.businessModel;
-    const found_date = new Array(
-      formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US')
-    );
-    const market_type = form.market;
-    const service = new Array(form.service);
-    const tech_type = form.technologies;
-    const evo_stage = new Array(form.stage);
+    const b_model = form.businessModel ? form.businessModel : [];
+    const found_date = [
+      ...[],
+      formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US'),
+    ];
+    const market_type = form.market ? form.market : [];
+    const service = [...[], form.service];
+    const tech_type = form.technologies ? form.technologies : [];
+    const evo_stage = [...[], form.stage];
     const techp_residents = form.residentList;
     const inno_comp = [...[], +form.isInnovation];
     const msk_inno = [...[], +form.isMemberMoscow];
     const msp = [...[], +form.isCompanyMSP];
-    const msp_cat = new Array(form.mspCategory);
+    const msp_cat = [...[], form.mspCategory];
     const nav_stat = [...[], +form.isPublished];
     const skolk_inno = [...[], +form.isSkolkovo];
     const start_up = [...[], +form.isStatup];
-    const tech_stack = form.companyTechnology;
+    const tech_stack = form.companyTechnology ? form.companyTechnology : [];
 
     let formRequest: DetailedFormRequestInterface = {
       start_up: {
@@ -82,22 +82,23 @@ export class FormConverter {
     form: LearningFormInnerInterface
   ): DetailedFormRequestInterface {
     const b_model = form.businessModel;
-    const found_date = new Array(
-      formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US')
-    );
+    const found_date = [
+      ...[],
+      formatDate(form.dateCreation, 'yyyy-MM-dd', 'en-US'),
+    ];
     const market_type = form.market;
-    const service = new Array(form.service);
-    const tech_type = form.technologies;
-    const evo_stage = new Array(form.stage);
+    const service = [...[], form.service];
+    const tech_type = form.technologies ? form.technologies : [];
+    const evo_stage = [...[], form.stage];
     const techp_residents = form.residentList;
     const inno_comp = [...[], +form.isInnovation];
     const msk_inno = [...[], +form.isMemberMoscow];
     const msp = [...[], +form.isCompanyMSP];
-    const msp_cat = new Array(form.mspCategory);
+    const msp_cat = [...[], form.mspCategory];
     const nav_stat = [...[], +form.isPublished];
     const skolk_inno = [...[], +form.isSkolkovo];
     const start_up = [...[], +form.isStatup];
-    const tech_stack = form.companyTechnology;
+    const tech_stack = form.companyTechnology ? form.companyTechnology : [];
     const fond_type = form.fond_type;
     const result = +form.result;
 
