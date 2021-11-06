@@ -411,9 +411,9 @@ export class SGRDataService {
     {
       title: 'Технопарк "Центр хайтек инноваций "РИКОР"',
     },
-    {
-      title: 'NoneTechParksType',
-    },
+    // {
+    //   title: 'NoneTechParksType',
+    // },
     {
       title: 'Технопарк "ИТЭЛМА"',
     },
