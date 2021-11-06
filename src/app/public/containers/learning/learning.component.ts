@@ -70,6 +70,8 @@ export class LearningComponent implements OnInit {
     this._recommendationService.updateLearn(request).subscribe((resp) => {
       this._openSuccess();
       this.isLoading = false;
+    }, (err) => {
+      this.isLoading = false;
     });
   }
 
