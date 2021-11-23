@@ -14,7 +14,7 @@ app.listen(process.env.PORT || 8080);
 
 console.log(`Running on port ${process.env.PORT || 8080}`)
 
-setInterval(function () {
-  http.get("http://sgr-prod-web.herokuapp.com/");
-  console.log('Check Active');
-}, 300000); // every 5 minutes (300000)
+// setInterval(function () {
+//   http.get("http://sgr-prod-web.herokuapp.com/");
+//   console.log('Check Active');
+// }, 300000); // every 5 minutes (300000)
